@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-28T09:06:00.037Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="DP_ksnm4DPHe_W6l7RL6" version="22.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-28T12:42:47.964Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="-s48c8Q8Ps-mbGSLl0JU" version="22.1.4" type="github" pages="3">
   <diagram name="Page-1" id="B_uwW1igQrW0XAac92bT">
     <mxGraphModel dx="678" dy="1256" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -50,6 +50,137 @@
         </mxCell>
         <mxCell id="opC6YixWpWs6JGuSJar5-6" value="Measurable changes that occurs e.g. lower unemployment, increase quality of life, reduced accidents" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="225" y="-175" width="210" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Copy of Page-1" id="krvjAXqbwhVYbC34-yLA">
+    <mxGraphModel dx="1160" dy="1376" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-0" />
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-1" parent="7--vA8Afppj5ZKCQB-Zb-0" />
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="7--vA8Afppj5ZKCQB-Zb-1" source="7--vA8Afppj5ZKCQB-Zb-3" target="7--vA8Afppj5ZKCQB-Zb-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="235" y="-230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-3" value="Input" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="85" y="-750" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="7--vA8Afppj5ZKCQB-Zb-1" source="7--vA8Afppj5ZKCQB-Zb-5" target="7--vA8Afppj5ZKCQB-Zb-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-5" value="Activities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="85" y="-620" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="7--vA8Afppj5ZKCQB-Zb-1" source="7--vA8Afppj5ZKCQB-Zb-7" target="7--vA8Afppj5ZKCQB-Zb-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-7" value="Outputs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="85" y="-470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="7--vA8Afppj5ZKCQB-Zb-1" source="7--vA8Afppj5ZKCQB-Zb-9" target="7--vA8Afppj5ZKCQB-Zb-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-9" value="Economic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="300" y="-180" width="125" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-10" value="Impact" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="30" y="105" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-11" value="&lt;h1&gt;Impact pathway&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="50" y="-830" width="190" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-12" value="Time and material resources e.g. research icome, staff, anfrastructure" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="215" y="-735" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-13" value="Research work, facility use, community and stakeholders engagement" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="215" y="-605" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-15" value="Deliverable from the research project&amp;nbsp;&lt;br&gt;e.g. publication, IP, pathens, media, policy, briefings, presentation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="225" y="-445" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7--vA8Afppj5ZKCQB-Zb-16" value="Measurable changes that occurs e.g. lower unemployment, increase quality of life, reduced accidents" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="215" y="120" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tnzwlWeJHCZnMNGtmYcX-1" value="Increase in the local tax base and employment opportunities from agrotourism" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="480" y="-140" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tnzwlWeJHCZnMNGtmYcX-2" value="Lower income compared to vegetable crops" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="640" y="-210" width="145" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tnzwlWeJHCZnMNGtmYcX-3" value="Cash return is slower" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="640" y="-140" width="145" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tnzwlWeJHCZnMNGtmYcX-4" value="Outcomes" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="30" y="-200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tnzwlWeJHCZnMNGtmYcX-6" value="Additional income generated from agrotourism (terrace rice fields)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="480" y="-210" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tnzwlWeJHCZnMNGtmYcX-8" value="Farm level" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="510" y="-270" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tnzwlWeJHCZnMNGtmYcX-11" value="Landscape level" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7--vA8Afppj5ZKCQB-Zb-1">
+          <mxGeometry x="658.75" y="-270" width="107.5" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="JYKXm8l_zaGcK5xjHE-d" name="Page-2">
+    <mxGraphModel dx="927" dy="728" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="WoxdD8nkiWm4vZRmWk6o-1" target="WoxdD8nkiWm4vZRmWk6o-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-1" value="Investment/support of rice mills by government&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="590" y="300" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="WoxdD8nkiWm4vZRmWk6o-4" target="WoxdD8nkiWm4vZRmWk6o-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="585" />
+              <mxPoint x="165" y="585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="WoxdD8nkiWm4vZRmWk6o-4" target="WoxdD8nkiWm4vZRmWk6o-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="WoxdD8nkiWm4vZRmWk6o-4" target="WoxdD8nkiWm4vZRmWk6o-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-4" value="Farmers keep growing rice in their field twice per year without changing it to other crops" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="545" y="470" width="205" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-7" value="Additional income generated from agrotourism (terrace fields)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="90" y="620" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-8" value="Increase in the local tax base and employment opportunities from agrotourism (terrace fields)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="270" y="620" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-9" value="Maintain the local tradition by growing local rice" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="450" y="620" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-10" value="Contributing to achieving food security&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="620" y="620" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-11" value="Lower income compared to vegetable crops" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF99CC;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="800" y="620" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-12" value="Cash return is slower" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF99CC;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="970" y="620" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-13" value="Increase in methane emissions" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF99CC;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="620" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="WoxdD8nkiWm4vZRmWk6o-14" target="WoxdD8nkiWm4vZRmWk6o-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WoxdD8nkiWm4vZRmWk6o-14" value="Input" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="90" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
