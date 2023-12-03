@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-03T23:19:34.988Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="C2cM44U3UACVn_E-t0qe" version="22.1.4" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2023-12-03T23:25:21.666Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="I135u7BWSZMBPDv8Y8pN" version="22.1.4" type="github" pages="5">
   <diagram name="Page-1" id="B_uwW1igQrW0XAac92bT">
     <mxGraphModel dx="678" dy="1256" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -844,8 +844,26 @@
         <mxCell id="z1Ksxd2J-i77lMT50VgZ-98" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="z1Ksxd2J-i77lMT50VgZ-99">
           <mxGeometry y="1" width="13.333333333333332" height="31" as="geometry" />
         </mxCell>
-        <mxCell id="z1Ksxd2J-i77lMT50VgZ-101" value="SDGs:&lt;br&gt;1.&amp;nbsp;" style="whiteSpace=wrap;html=1;" vertex="1" parent="K4NJ02m3LdSnVh-o5X2V-1">
-          <mxGeometry x="920" y="-350" width="120" height="60" as="geometry" />
+        <mxCell id="z1Ksxd2J-i77lMT50VgZ-115" value="" style="group" vertex="1" connectable="0" parent="K4NJ02m3LdSnVh-o5X2V-1">
+          <mxGeometry x="113" y="-586" width="162" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="z1Ksxd2J-i77lMT50VgZ-110" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;1. Farmers&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;div style=&quot;border-color: var(--border-color); color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;2. Ministry of agriculture&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="z1Ksxd2J-i77lMT50VgZ-115">
+          <mxGeometry x="22" y="38" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="z1Ksxd2J-i77lMT50VgZ-114" value="" style="group" vertex="1" connectable="0" parent="z1Ksxd2J-i77lMT50VgZ-115">
+          <mxGeometry width="132" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="z1Ksxd2J-i77lMT50VgZ-106" value="" style="group" vertex="1" connectable="0" parent="z1Ksxd2J-i77lMT50VgZ-114">
+          <mxGeometry width="30" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="z1Ksxd2J-i77lMT50VgZ-104" value="" style="shape=actor;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="z1Ksxd2J-i77lMT50VgZ-106">
+          <mxGeometry x="7.5" y="8" width="15" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="z1Ksxd2J-i77lMT50VgZ-105" value="" style="shape=actor;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="z1Ksxd2J-i77lMT50VgZ-106">
+          <mxGeometry x="15" y="16" width="15" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="z1Ksxd2J-i77lMT50VgZ-108" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Decision makers:&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="z1Ksxd2J-i77lMT50VgZ-114">
+          <mxGeometry x="32" y="20" width="100" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
