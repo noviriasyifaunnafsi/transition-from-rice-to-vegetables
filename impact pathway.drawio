@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-03T23:25:21.666Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="I135u7BWSZMBPDv8Y8pN" version="22.1.4" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2023-12-03T23:25:47.443Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="i8DntxbXuqIg-sIpKkM5" version="22.1.4" type="github" pages="5">
   <diagram name="Page-1" id="B_uwW1igQrW0XAac92bT">
     <mxGraphModel dx="678" dy="1256" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -489,7 +489,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Copy of Copy of Page-2" id="vDUr5s72ZQy0Ufth-yC9">
-    <mxGraphModel dx="1517" dy="1538" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1148" dy="1538" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="K4NJ02m3LdSnVh-o5X2V-0" />
         <mxCell id="K4NJ02m3LdSnVh-o5X2V-1" parent="K4NJ02m3LdSnVh-o5X2V-0" />
@@ -829,7 +829,7 @@
         <mxCell id="z1Ksxd2J-i77lMT50VgZ-89" value="Indonesia 2045 vision" style="whiteSpace=wrap;html=1;" vertex="1" parent="K4NJ02m3LdSnVh-o5X2V-1">
           <mxGeometry x="990" y="-460" width="90" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="z1Ksxd2J-i77lMT50VgZ-91" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Stakeholders:&lt;br&gt;1. Ministry of agriculture&lt;br&gt;2. Agricultural agencies (extension services)&lt;br&gt;3. Local government&lt;br&gt;4. NGOs, private sector&lt;br&gt;5. Farmers group&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="K4NJ02m3LdSnVh-o5X2V-1">
+        <mxCell id="z1Ksxd2J-i77lMT50VgZ-91" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Stakeholders:&lt;br&gt;1. Ministry of agriculture&lt;br&gt;2. Agricultural agencies (extension services)&lt;br&gt;3. Local government&lt;br&gt;4. NGOs, private sector&lt;br&gt;5. Farmers group&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;strokeColor=none;" vertex="1" parent="K4NJ02m3LdSnVh-o5X2V-1">
           <mxGeometry x="135" y="-360" width="110" height="110" as="geometry" />
         </mxCell>
         <mxCell id="z1Ksxd2J-i77lMT50VgZ-99" value="" style="group" vertex="1" connectable="0" parent="K4NJ02m3LdSnVh-o5X2V-1">
