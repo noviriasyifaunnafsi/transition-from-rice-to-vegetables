@@ -10,44 +10,42 @@ Transition_rice_to_vegetables <- function(x, varnames){
   
   
   # pre-calculation of common random draws for all intervention model runs ####
-  
     
   #profits from the transition from rice to vegetables (TRV)
   TRV <- vv(TRV_no_intervention, var_CV, n_years)
   TRV_profits <- vv(profit_per_TRV, var_CV, n_years)
   
   
-  #benefits of income (to be calculated from each vegetable cultivated?)
+  #benefits of income (to be calculated from each vegetable)
   ##for potato
   precalc_intervention_income_potato <- 
     vv(intervention_income_potato_area_ha, var_CV, n_years) *
     vv(intervention_income_potato_yield_t_ha, var_CV, n_years) *
-    vv(intervention_income_potato_profit_USD_t, var_CV, n_years)
+    vv(intervention_income_potato_profit_IDR_t, var_CV, n_years)
   
   ##for shallot
   precalc_intervention_income_shallot <- 
     vv(intervention_income_shallot_area_ha, var_CV, n_years) *
     vv(intervention_income_shallot_yield_t_ha, var_CV, n_years) *
-    vv(intervention_income_shallot_profit_USD_t, var_CV, n_years)
+    vv(intervention_income_shallot_profit_IDR_t, var_CV, n_years)
   
   ##for chili
   precalc_intervention_income_chili <- 
     vv(intervention_income_chili_area_ha, var_CV, n_years) *
     vv(intervention_income_chili_yield_t_ha, var_CV, n_years) *
-    vv(intervention_income_chili_profit_USD_t, var_CV, n_years)
+    vv(intervention_income_chili_profit_IDR_t, var_CV, n_years)
   
   ##for carrot
   precalc_intervention_income_carrot <- 
     vv(intervention_income_carrot_area_ha, var_CV, n_years) *
     vv(intervention_income_carrot_yield_t_ha, var_CV, n_years) *
-    vv(intervention_income_carrot_profit_USD_t, var_CV, n_years)
-  
+    vv(intervention_income_carrot_profit_IDR_t, var_CV, n_years)
   
   ##for cabbage
   precalc_intervention_income_cabbage <- 
     vv(intervention_income_cabbage_area_ha, var_CV, n_years) *
     vv(intervention_income_cabbage_yield_t_ha, var_CV, n_years) *
-    vv(intervention_income_cabbage_profit_USD_t, var_CV, n_years)
+    vv(intervention_income_cabbage_profit_IDR_t, var_CV, n_years)
   
   ##income for all vegetables
   precalc_intervention_income_all <- 
@@ -58,36 +56,36 @@ Transition_rice_to_vegetables <- function(x, varnames){
     precalc_intervention_income_cabbage
   
   
-  #benefits of reduced water use (to be calculated from each vegetable cultivated?)
+  #benefits of reduced water use (to be calculated from each vegetable)
   ##for potato
   precalc_intervention_wateruse_potato <-
     vv(intervention_wateruse_potato_area_ha, var_CV, n_years) *
     vv(intervention_wateruse_potato_yield_t_ha, var_CV, n_years) *
-    vv(intervention_wateruse_potato_profit_USD_t, var_CV, n_years)
+    vv(intervention_wateruse_potato_profit_IDR_t, var_CV, n_years)
   
   ##for shallot
   precalc_intervention_wateruse_shallot <-
     vv(intervention_wateruse_shallot_area_ha, var_CV, n_years) *
     vv(intervention_wateruse_shallot_yield_t_ha, var_CV, n_years) *
-    vv(intervention_wateruse_shallot_profit_USD_t, var_CV, n_years)
+    vv(intervention_wateruse_shallot_profit_IDR_t, var_CV, n_years)
   
   ##for chili
   precalc_intervention_wateruse_chili <-
     vv(intervention_wateruse_chili_area_ha, var_CV, n_years) *
     vv(intervention_wateruse_chili_yield_t_ha, var_CV, n_years) *
-    vv(intervention_wateruse_chili_profit_USD_t, var_CV, n_years)
+    vv(intervention_wateruse_chili_profit_IDR_t, var_CV, n_years)
   
   ##for carrot
   precalc_intervention_wateruse_carrot <-
     vv(intervention_wateruse_carrot_area_ha, var_CV, n_years) *
     vv(intervention_wateruse_carrot_yield_t_ha, var_CV, n_years) *
-    vv(intervention_wateruse_carrot_profit_USD_t, var_CV, n_years)
+    vv(intervention_wateruse_carrot_profit_IDR_t, var_CV, n_years)
   
   ##for cabbage
   precalc_intervention_wateruse_cabbage <-
     vv(intervention_wateruse_cabbage_area_ha, var_CV, n_years) *
     vv(intervention_wateruse_cabbage_yield_t_ha, var_CV, n_years) *
-    vv(intervention_wateruse_cabbage_profit_USD_t, var_CV, n_years)
+    vv(intervention_wateruse_cabbage_profit_IDR_t, var_CV, n_years)
   
   
   ##water use for all vegetables
@@ -100,37 +98,36 @@ Transition_rice_to_vegetables <- function(x, varnames){
   
   
   
-  #benefits of nutrition (to be calculated from each vegetables)
+  #benefits of nutrition (to be calculated from each vegetable)
   ##for potato
   precalc_intervention_nutrition_potato <-
     vv(intervention_nutrition_potato_area_ha, var_CV, n_years) *
     vv(intervention_nutrition_potato_yield_t_ha, var_CV, n_years) *
-    vv(intervention_nutrition_potato_profit_USD_t, var_CV, n_years)
+    vv(intervention_nutrition_potato_profit_IDR_t, var_CV, n_years)
   
   ##for shallot
   precalc_intervention_nutrition_shallot <-
     vv(intervention_nutrition_shallot_area_ha, var_CV, n_years) *
     vv(intervention_nutrition_shallot_yield_t_ha, var_CV, n_years) *
-    vv(intervention_nutrition_shallot_profit_USD_t, var_CV, n_years)
+    vv(intervention_nutrition_shallot_profit_IDR_t, var_CV, n_years)
   
   ##for chili
   precalc_intervention_nutrition_chili <-
     vv(intervention_nutrition_chili_area_ha, var_CV, n_years) *
     vv(intervention_nutrition_chili_yield_t_ha, var_CV, n_years) *
-    vv(intervention_nutrition_chili_profit_USD_t, var_CV, n_years)
+    vv(intervention_nutrition_chili_profit_IDR_t, var_CV, n_years)
   
   ##for carrot
   precalc_intervention_nutrition_carrot <-
     vv(intervention_nutrition_carrot_area_ha, var_CV, n_years) *
     vv(intervention_nutrition_carrot_yield_t_ha, var_CV, n_years) *
-    vv(intervention_nutrition_carrot_profit_USD_t, var_CV, n_years)
+    vv(intervention_nutrition_carrot_profit_IDR_t, var_CV, n_years)
   
   ##for cabbage
   precalc_intervention_nutrition_cabbage <-
     vv(intervention_nutrition_cabbage_area_ha, var_CV, n_years) *
     vv(intervention_nutrition_cabbage_yield_t_ha, var_CV, n_years) *
-    vv(intervention_nutrition_cabbage_profit_USD_t, var_CV, n_years)
-  
+    vv(intervention_nutrition_cabbage_profit_IDR_t, var_CV, n_years)
   
   ##nutrition for all vegetables
   precalc_intervention_nutrition_all <- 
@@ -218,8 +215,47 @@ Transition_rice_to_vegetables <- function(x, varnames){
 }
 
 
-  
-  
-  
+
+# perform a monte carlo simulation
+mcSimulation_results <- decisionSupport::mcSimulation(
+  estimate = decisionSupport::estimate_read_csv("example_input_table.csv"),
+  model_function = example_decision_function,
+  numberOfModelRuns = 1e3, #run 1,000 times
+  functionSyntax = "plainNames"
+)
+
+
+# plot NPV distributions
+decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
+                                    vars = c("Interv_NPV", "NO_Interv_NPV"),
+                                    method = 'smooth_simple_overlay', 
+                                    base_size = 7)
+
+
+# cashflow analysis
+plot_cashflow(mcSimulation_object = mcSimulation_results, cashflow_var_name = "Cashflow_decision_do")
+
+
+# PLS analysis
+pls_result <- plsr.mcSimulation(object = mcSimulation_results,
+                                resultName = names(mcSimulation_results$y)[3], ncomp = 1)
+input_table <- read.csv("example_input_table.csv")
+plot_pls(pls_result, input_table = input_table, threshold = 0)
+
+
+# VOI analysis
+mcSimulation_table <- data.frame(mcSimulation_results$x, mcSimulation_results$y[1:3])
+evpi <- multi_EVPI(mc = mcSimulation_table, first_out_var = "Interv_NPV")
+
+plot_evpi(evpi, decision_vars = "NPV_decision_do")
+
+
+
+
+compound_figure(mcSimulation_object = mcSimulation_results, 
+                input_table = input_table, plsrResults = pls_result, 
+                EVPIresults = evpi, decision_var_name = "NPV_decision_do", 
+                cashflow_var_name = "Cashflow_decision_do", base_size = 7)
+
   
   
