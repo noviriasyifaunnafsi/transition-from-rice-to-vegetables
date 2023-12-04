@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-04T00:16:58.447Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="zziQ0SUR22FPYKT0D_0W" version="22.1.4" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2023-12-04T08:19:15.704Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="7zb4WPbGugXbQ8H94aH9" version="22.1.4" type="github" pages="7">
   <diagram name="Page-1" id="B_uwW1igQrW0XAac92bT">
     <mxGraphModel dx="678" dy="1256" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -1078,7 +1078,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Copy of bismillah fix" id="Al0P_OOzSxGurIwR00QU">
-    <mxGraphModel dx="829" dy="1347" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="1096" dy="1347" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="loQRprQuDK0M16v-EBJr-0" />
         <mxCell id="loQRprQuDK0M16v-EBJr-1" parent="loQRprQuDK0M16v-EBJr-0" />
@@ -1110,6 +1110,9 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="loQRprQuDK0M16v-EBJr-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;fillColor=#6d8764;strokeColor=#3A5431;" edge="1" parent="loQRprQuDK0M16v-EBJr-1" source="loQRprQuDK0M16v-EBJr-12" target="loQRprQuDK0M16v-EBJr-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="loQRprQuDK0M16v-EBJr-1" source="loQRprQuDK0M16v-EBJr-12" target="t7IPNKDG_cUyX-wURZAt-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="loQRprQuDK0M16v-EBJr-12" value="Agroecology promotion initiative" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#d5e8d4;strokeColor=#82b366;gradientColor=#97d077;" vertex="1" parent="loQRprQuDK0M16v-EBJr-1">
@@ -1263,7 +1266,7 @@
           <mxGeometry x="32" y="20" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="loQRprQuDK0M16v-EBJr-62" value="" style="group;labelBackgroundColor=none;rounded=1;fillColor=none;" vertex="1" connectable="0" parent="loQRprQuDK0M16v-EBJr-1">
-          <mxGeometry x="127" y="-466" width="127.32999999999998" height="151" as="geometry" />
+          <mxGeometry x="120" y="-466" width="127.32999999999998" height="151" as="geometry" />
         </mxCell>
         <mxCell id="loQRprQuDK0M16v-EBJr-63" value="" style="group;labelBackgroundColor=none;rounded=1;" vertex="1" connectable="0" parent="loQRprQuDK0M16v-EBJr-62">
           <mxGeometry x="34" width="40" height="32" as="geometry" />
@@ -1300,6 +1303,33 @@
         </mxCell>
         <mxCell id="pQESq83qUG-FxdBPSTmC-12" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;SDG 1: No poverty&lt;br&gt;SDG 8: Decent work and economic growth&lt;/font&gt;" style="whiteSpace=wrap;html=1;labelBackgroundColor=none;rounded=1;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="loQRprQuDK0M16v-EBJr-1">
           <mxGeometry x="790" y="-500" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="loQRprQuDK0M16v-EBJr-1" source="t7IPNKDG_cUyX-wURZAt-2" target="3Q2c_lMbhhwZUOyeySxM-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t7IPNKDG_cUyX-wURZAt-2" value="Increased awareness and understanding of sustainable farming practices" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" vertex="1" parent="loQRprQuDK0M16v-EBJr-1">
+          <mxGeometry x="285" y="-180" width="100" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="loQRprQuDK0M16v-EBJr-1" source="3Q2c_lMbhhwZUOyeySxM-2" target="3Q2c_lMbhhwZUOyeySxM-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-2" value="Maintain the ecosystem landscape" style="whiteSpace=wrap;html=1;labelBackgroundColor=none;rounded=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" vertex="1" parent="loQRprQuDK0M16v-EBJr-1">
+          <mxGeometry x="435" y="-165" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="loQRprQuDK0M16v-EBJr-1" source="3Q2c_lMbhhwZUOyeySxM-4" target="loQRprQuDK0M16v-EBJr-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="loQRprQuDK0M16v-EBJr-1" source="3Q2c_lMbhhwZUOyeySxM-8" target="loQRprQuDK0M16v-EBJr-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;dashed=1;" edge="1" parent="loQRprQuDK0M16v-EBJr-1" source="3Q2c_lMbhhwZUOyeySxM-4" target="3Q2c_lMbhhwZUOyeySxM-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-4" value="Employment opportunities from agrotourism" style="whiteSpace=wrap;html=1;labelBackgroundColor=none;rounded=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" vertex="1" parent="loQRprQuDK0M16v-EBJr-1">
+          <mxGeometry x="575" y="-165" width="115" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q2c_lMbhhwZUOyeySxM-8" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;SDG 1: No poverty&lt;br&gt;SDG 8: Decent work and economic growth&lt;/font&gt;" style="whiteSpace=wrap;html=1;labelBackgroundColor=none;rounded=1;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="loQRprQuDK0M16v-EBJr-1">
+          <mxGeometry x="740" y="-165" width="90" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
