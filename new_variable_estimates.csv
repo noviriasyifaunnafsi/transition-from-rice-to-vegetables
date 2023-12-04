@@ -1,0 +1,30 @@
+Description;label;variable;distribution;lower;median;upper;unit
+Crop yield;Potato yield;potato_yield;posnorm;10000;;20000;kg/ha
+Crop yield;Shallot yield;shallot_yield;posnorm;6000;;12000;kg/ha
+Crop yield;Chili yield;chili_yield;posnorm;5500;;11000;kg/ha
+Crop yield;Carrot yield;carrot_yield;posnorm;11000;;22000;kg/ha
+Crop yield;Cabbage yield;cabbage_yield;posnorm;17000;;34000;kg/ha
+Crop yield;Rice yield;rice_yield;posnorm;3000;;6000;kg/ha
+Crop price;Potato price;potato_price;posnorm;5000;;15000;IDR/kg
+Crop price;Shallot price;shallot_price;posnorm;10000;;50000;IDR/kg
+Crop price;Chili price;chili_price;posnorm;5000;;60000;IDR/kg
+Crop price;Carrot price;carrot_price;posnorm;2000;;12000;IDR/kg
+Crop price;Cabbage price;cabbage_price;posnorm;1000;;8000;IDR/kg
+Crop price;Rice price;rice_price;posnorm;3000;;6000;IDR/kg
+Water use;Water price;water_price;posnorm;100;;1000;IDR/m3
+Water use;Potato water use;potato_water_use;posnorm;1500;;2500;m3/ha
+Water use;Shallot water use;shallot_water_use;posnorm;1000;;2000;m3/ha
+Water use;Chili water use;chili_water_use;posnorm;1200;;2500;m3/ha
+Water use;Carrot water use;carrot_water_use;posnorm;1200;;2200;m3/ha
+Water use;Cabbage water use;cabbage_water_use;posnorm;1500;;3000;m3/ha
+Water use;Rice water use;rice_water_use;posnorm;3000;;6000;m3/ha
+Cost-production;Potato production cost;potato_production_cost;posnorm;73000000;;90000000;IDR/ha/season
+Cost-production;Shallot production cost;shallot_production_cost;posnorm;37000000;;55000000;IDR/ha/season
+Cost-production;Chili production cost;chili_production_cost;posnorm;40000000;;58000000;IDR/ha/season
+Cost-production;Carrot production cost;carrot_production_cost;posnorm;26000000;;44000000;IDR/ha/season
+Cost-production;Cabbage production cost;cabbage_production_cost;posnorm;18000000;;37000000;IDR/ha/season
+Cost-production;Rice production cost;rice_production_cost;posnorm;14000000;;32000000;IDR/ha/season
+Storage facility;Warehouse;storage_facility;posnorm;20000000;;80000000;IDR/unit
+Storage facility;Warehouse maintenance cost;storage_maintenance_cost;posnorm;4000000;;16000000;IDR/year
+Discount rate;Discount rate;discount_rate;posnorm;0.05;;0.10;
+Year;Year of implementation;n_year;const;25;;25;
