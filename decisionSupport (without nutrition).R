@@ -119,7 +119,6 @@ TRV_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
 
 
 # plot NPV distribution analysis
-
 decisionSupport::plot_distributions(mcSimulation_object = TRV_mc_simulation, 
                                     vars = c("Interv_NPV","NO_Interv_NPV"),
                                     method = 'smooth_simple_overlay')
@@ -128,12 +127,6 @@ decisionSupport::plot_distributions(mcSimulation_object = TRV_mc_simulation,
                                     vars = c("Interv_NPV","NO_Interv_NPV"),
                                     method = 'boxplot')
 
-decisionSupport::plot_distributions(mcSimulation_object = TRV_mc_simulation, 
-                                    vars = c("Interv_NPV","NO_Interv_NPV"),
-                                    method = 'boxplot_density')
-
-
-
 
 
 # cashflow analysis
@@ -141,9 +134,7 @@ plot_cashflow(mcSimulation_object = TRV_mc_simulation, cashflow_var_name = "Cash
 
 
 
-
 # Projection to Latent Structures (PLS) analysis
-
 pls_result <- plsr.mcSimulation(object = TRV_mc_simulation,
                                 resultName = names(TRV_mc_simulation$y)[3], ncomp = 1)
 plot_pls(pls_result, threshold = 0)
