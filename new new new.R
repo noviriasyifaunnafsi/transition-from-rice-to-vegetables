@@ -3,8 +3,6 @@ library(ggplot2)
 library(dplyr)
 library(decisionSupport)
 
-read.csv("new_variable_estimates!!!.csv", sep=";")
-
 
 transition_rice_to_vegetables <- function(){
   
@@ -16,15 +14,15 @@ transition_rice_to_vegetables <- function(){
   ##assuming water use weight
   water_use_weight <- 2
   
-  ##assuming nutrition weight
-  nutrition_weight <- 3
+  ##assuming nutrient weight
+  nutrient_weight <- 3
   
   
   
   # Estimate benefits of no intervention (rice cultivation)
   rice_income <- vv(rice_yield * rice_price, n=n_year, var_CV=100)
   rice_water_use <- vv(rice_water_use, n=n_year, var_CV=100)
-  #nutrition
+  #nutrient
   rice_calories <- vv(rice_calories, n=n_year, var_CV=100)
   rice_protein <- vv(rice_protein, n=n_year, var_CV=100)
   rice_fat <- vv(rice_fat, n=n_year, var_CV=100)
@@ -39,12 +37,12 @@ transition_rice_to_vegetables <- function(){
   rice_potassium <- vv(rice_potassium, n=n_year, var_CV=100)
   rice_sodium <- vv(rice_sodium,  n=n_year, var_CV=100)
   
-  rice_nutrition_precal <- sum(rice_calories, rice_protein, rice_fat,
+  rice_nutrient_precal <- sum(rice_calories, rice_protein, rice_fat,
                                rice_carbohydrates, rice_fiber,
                                rice_vitB3, rice_folate, rice_calcium,
                                rice_iron, rice_magnesium, rice_phosphorus,
                                rice_potassium, rice_sodium)
-  rice_nutrition <- vv(rice_nutrition_precal, n=n_year, var_CV=100)
+  rice_nutrient <- vv(rice_nutrient_precal, n=n_year, var_CV=100)
   
   
   
@@ -77,24 +75,24 @@ transition_rice_to_vegetables <- function(){
   scaled_rice_water_use <- vv(scaled_rice_water_use_precal, n=n_year, var_CV=100)
   
   
-  ###nutrition
-  min_rice_nutrition_precal <- min(rice_nutrition)
-  min_rice_nutrition <- vv(min_rice_nutrition_precal, n=n_year, var_CV=100)
+  ###nutrient
+  min_rice_nutrient_precal <- min(rice_nutrient)
+  min_rice_nutrient <- vv(min_rice_nutrient_precal, n=n_year, var_CV=100)
   
-  max_rice_nutrition_precal <- max(rice_nutrition)
-  max_rice_nutrition <- max(max_rice_nutrition_precal, n=n_year, var_CV=100)
+  max_rice_nutrient_precal <- max(rice_nutrient)
+  max_rice_nutrient <- max(max_rice_nutrient_precal, n=n_year, var_CV=100)
   
-  estimated_mean_nutrition_rice <- (min_rice_nutrition+max_rice_income)/2
-  estimated_sd_nutrition_rice <- (max_rice_nutrition-min_rice_income)/4
+  estimated_mean_nutrient_rice <- (min_rice_nutrient+max_rice_income)/2
+  estimated_sd_nutrient_rice <- (max_rice_nutrient-min_rice_income)/4
   
-  scaled_rice_nutrition_precal <- (rice_nutrition - estimated_mean_nutrition_rice) / estimated_sd_nutrition_rice
-  scaled_rice_nutrition <- vv(scaled_rice_nutrition_precal, n=n_year, var_CV=100)
+  scaled_rice_nutrient_precal <- (rice_nutrient - estimated_mean_nutrient_rice) / estimated_sd_nutrient_rice
+  scaled_rice_nutrient <- vv(scaled_rice_nutrient_precal, n=n_year, var_CV=100)
   
   
   #total benefits results of no intervention (rice)
   rice_total_benefits_precal <- sum((income_weight * scaled_rice_income), 
                                     (water_use_weight * scaled_rice_water_use),
-                                    (nutrition_weight * scaled_rice_nutrition))
+                                    (nutrient_weight * scaled_rice_nutrient))
   rice_total_benefit <- vv(rice_total_benefits_precal, n=n_year, var_CV=100)
   
   
@@ -102,7 +100,7 @@ transition_rice_to_vegetables <- function(){
   #Estimate costs of no intervention
   rice_production_cost <- vv(rice_production_cost, n=n_year, var_CV=100)
   #depreciation cost
-  rice_warehouse_precal <- warehouse / 25 #assuming 25 years useful life 
+  rice_warehouse_precal <- warehouse / 25  
   rice_warehouse <- vv(rice_warehouse_precal, n=n_year, var_CV=100)
   #total cost
   rice_total_cost_precal <- sum(rice_production_cost, rice_warehouse)
@@ -120,7 +118,7 @@ transition_rice_to_vegetables <- function(){
   #potato
   potato_income <- vv( potato_yield * potato_price, n=n_year, var_CV=100)
   potato_water_use <- vv(potato_water_use, n=n_year, var_CV=100)
-  #nutrition
+  #nutrient
   potato_calories <- vv(potato_calories, n=n_year, var_CV=100)
   potato_protein <- vv(potato_protein, n=n_year, var_CV=100)
   potato_fat <- vv(potato_fat, n=n_year, var_CV=100)
@@ -136,12 +134,12 @@ transition_rice_to_vegetables <- function(){
   potato_potassium <- vv(potato_potassium, n=n_year, var_CV=100)
   potato_sodium <- vv(potato_sodium,  n=n_year, var_CV=100)
   
-  potato_nutrition_precal <- sum(potato_calories, potato_protein, potato_fat,
+  potato_nutrient_precal <- sum(potato_calories, potato_protein, potato_fat,
                                  potato_carbohydrates, potato_fiber,
                                  potato_vitC, potato_vitB3, potato_folate, potato_calcium,
                                  potato_iron, potato_magnesium, potato_phosphorus,
                                  potato_potassium, potato_sodium)
-  potato_nutrition <- vv(potato_nutrition_precal, n=n_year, var_CV=100)
+  potato_nutrient <- vv(potato_nutrient_precal, n=n_year, var_CV=100)
   
   
   ##standardize values of potato benefits with z-score (?)
@@ -173,31 +171,31 @@ transition_rice_to_vegetables <- function(){
   scaled_potato_water_use <- vv(scaled_potato_water_use_precal, n=n_year, var_CV=100)
   
   
-  ###potato nutrition
-  min_potato_nutrition_precal <- min(potato_nutrition)
-  min_potato_nutrition <- vv(min_potato_nutrition_precal, n=n_year, var_CV=100)
+  ###potato nutrient
+  min_potato_nutrient_precal <- min(potato_nutrient)
+  min_potato_nutrient <- vv(min_potato_nutrient_precal, n=n_year, var_CV=100)
   
-  max_potato_nutrition_precal <- max(potato_nutrition)
-  max_potato_nutrition <- max(max_potato_nutrition_precal, n=n_year, var_CV=100)
+  max_potato_nutrient_precal <- max(potato_nutrient)
+  max_potato_nutrient <- max(max_potato_nutrient_precal, n=n_year, var_CV=100)
   
-  estimated_mean_nutrition_potato <- (min_potato_nutrition+max_potato_nutrition)/2
-  estimated_sd_nutrition_potato <- (max_potato_nutrition-min_potato_nutrition)/4
+  estimated_mean_nutrient_potato <- (min_potato_nutrient+max_potato_nutrient)/2
+  estimated_sd_nutrient_potato <- (max_potato_nutrient-min_potato_nutrient)/4
   
-  scaled_potato_nutrition_precal <- (potato_nutrition - estimated_mean_nutrition_potato) / estimated_sd_nutrition_potato
-  scaled_potato_nutrition <- vv(scaled_potato_nutrition_precal, n=n_year, var_CV=100)
+  scaled_potato_nutrient_precal <- (potato_nutrient - estimated_mean_nutrient_potato) / estimated_sd_nutrient_potato
+  scaled_potato_nutrient <- vv(scaled_potato_nutrient_precal, n=n_year, var_CV=100)
   
   
   #total benefits of potato
   potato_total_benefits_precal <- sum((income_weight * scaled_potato_income), 
                                       (water_use_weight * scaled_potato_water_use),
-                                      (nutrition_weight * scaled_potato_nutrition))
+                                      (nutrient_weight * scaled_potato_nutrient))
   potato_total_benefit <- vv(potato_total_benefits_precal, n=n_year, var_CV=100)
   
   
   #shallot
   shallot_income <- vv(shallot_yield * shallot_price, n=n_year, var_CV=100)
   shallot_water_use <- vv(shallot_water_use, n=n_year, var_CV=100)
-  #nutrition
+  #nutrient
   shallot_calories <- vv(shallot_calories, n=n_year, var_CV=100)
   shallot_protein <- vv(shallot_protein, n=n_year, var_CV=100)
   shallot_fat <- vv(shallot_fat, n=n_year, var_CV=100)
@@ -213,12 +211,12 @@ transition_rice_to_vegetables <- function(){
   shallot_potassium <- vv(shallot_potassium, n=n_year, var_CV=100)
   shallot_sodium <- vv(shallot_sodium,  n=n_year, var_CV=100)
   
-  shallot_nutrition_precal <- sum(shallot_calories, shallot_protein, shallot_fat,
+  shallot_nutrient_precal <- sum(shallot_calories, shallot_protein, shallot_fat,
                                   shallot_carbohydrates, shallot_fiber,
                                   shallot_vitC, shallot_vitB3, shallot_folate, shallot_calcium,
                                   shallot_iron, shallot_magnesium, shallot_phosphorus,
                                   shallot_potassium, shallot_sodium)
-  shallot_nutrition <- vv(shallot_nutrition_precal, n=n_year, var_CV=100)
+  shallot_nutrient <- vv(shallot_nutrient_precal, n=n_year, var_CV=100)
   
   
   ##standardize values of shallot benefits with z-score (?)
@@ -250,23 +248,23 @@ transition_rice_to_vegetables <- function(){
   scaled_shallot_water_use <- vv(scaled_shallot_water_use_precal, n=n_year, var_CV=100)
   
   
-  ###shallot nutrition
-  min_shallot_nutrition_precal <- min(shallot_nutrition)
-  min_shallot_nutrition <- vv(min_shallot_nutrition_precal, n=n_year, var_CV=100)
+  ###shallot nutrient
+  min_shallot_nutrient_precal <- min(shallot_nutrient)
+  min_shallot_nutrient <- vv(min_shallot_nutrient_precal, n=n_year, var_CV=100)
   
-  max_shallot_nutrition_precal <- max(shallot_nutrition)
-  max_shallot_nutrition <- max(max_shallot_nutrition_precal, n=n_year, var_CV=100)
+  max_shallot_nutrient_precal <- max(shallot_nutrient)
+  max_shallot_nutrient <- max(max_shallot_nutrient_precal, n=n_year, var_CV=100)
   
-  estimated_mean_nutrition_shallot <- (min_shallot_nutrition+max_shallot_nutrition)/2
-  estimated_sd_nutrition_shallot <- (max_shallot_nutrition-min_shallot_nutrition)/4
+  estimated_mean_nutrient_shallot <- (min_shallot_nutrient+max_shallot_nutrient)/2
+  estimated_sd_nutrient_shallot <- (max_shallot_nutrient-min_shallot_nutrient)/4
   
-  scaled_shallot_nutrition_precal <- (shallot_nutrition - estimated_mean_nutrition_shallot) / estimated_sd_nutrition_shallot
-  scaled_shallot_nutrition <- vv(scaled_shallot_nutrition_precal, n=n_year, var_CV=100)
+  scaled_shallot_nutrient_precal <- (shallot_nutrient - estimated_mean_nutrient_shallot) / estimated_sd_nutrient_shallot
+  scaled_shallot_nutrient <- vv(scaled_shallot_nutrient_precal, n=n_year, var_CV=100)
   
   #total benefits of shallot
   shallot_total_benefits_precal <- sum((income_weight * scaled_shallot_income), 
                                        (water_use_weight * scaled_shallot_water_use),
-                                       (nutrition_weight * scaled_shallot_nutrition))
+                                       (nutrient_weight * scaled_shallot_nutrient))
   shallot_total_benefit <- vv(shallot_total_benefits_precal, n=n_year, var_CV=100)
   
   
@@ -274,7 +272,7 @@ transition_rice_to_vegetables <- function(){
   #chili
   chili_income <- vv(chili_yield * chili_price, n=n_year, var_CV=100)
   chili_water_use <- vv(chili_water_use, n=n_year, var_CV=100)
-  #nutrition
+  #nutrient
   chili_calories <- vv(chili_calories, n=n_year, var_CV=100)
   chili_protein <- vv(chili_protein, n=n_year, var_CV=100)
   chili_fat <- vv(chili_fat, n=n_year, var_CV=100)
@@ -291,12 +289,12 @@ transition_rice_to_vegetables <- function(){
   chili_potassium <- vv(chili_potassium, n=n_year, var_CV=100)
   chili_sodium <- vv(chili_sodium,  n=n_year, var_CV=100)
   
-  chili_nutrition_precal <- sum(chili_calories, chili_protein, chili_fat,
+  chili_nutrient_precal <- sum(chili_calories, chili_protein, chili_fat,
                                 chili_carbohydrates, chili_fiber, chili_vitA,
                                 chili_vitC, chili_vitB3, chili_folate, chili_calcium,
                                 chili_iron, chili_magnesium, chili_phosphorus,
                                 chili_potassium, chili_sodium)
-  chili_nutrition <- vv(chili_nutrition_precal, n=n_year, var_CV=100)
+  chili_nutrient <- vv(chili_nutrient_precal, n=n_year, var_CV=100)
   
   
   ##standardize values of chili benefits with z-score (?)
@@ -328,24 +326,24 @@ transition_rice_to_vegetables <- function(){
   scaled_chili_water_use <- vv(scaled_chili_water_use_precal, n=n_year, var_CV=100)
   
   
-  ###chili nutrition
-  min_chili_nutrition_precal <- min(chili_nutrition)
-  min_chili_nutrition <- vv(min_chili_nutrition_precal, n=n_year, var_CV=100)
+  ###chili nutrient
+  min_chili_nutrient_precal <- min(chili_nutrient)
+  min_chili_nutrient <- vv(min_chili_nutrient_precal, n=n_year, var_CV=100)
   
-  max_chili_nutrition_precal <- max(chili_nutrition)
-  max_chili_nutrition <- max(max_chili_nutrition_precal, n=n_year, var_CV=100)
+  max_chili_nutrient_precal <- max(chili_nutrient)
+  max_chili_nutrient <- max(max_chili_nutrient_precal, n=n_year, var_CV=100)
   
-  estimated_mean_nutrition_chili <- (min_chili_nutrition+max_chili_nutrition)/2
-  estimated_sd_nutrition_chili <- (max_chili_nutrition-min_chili_nutrition)/4
+  estimated_mean_nutrient_chili <- (min_chili_nutrient+max_chili_nutrient)/2
+  estimated_sd_nutrient_chili <- (max_chili_nutrient-min_chili_nutrient)/4
   
-  scaled_chili_nutrition_precal <- (chili_nutrition - estimated_mean_nutrition_chili) / estimated_sd_nutrition_chili
-  scaled_chili_nutrition <- vv(scaled_chili_nutrition_precal, n=n_year, var_CV=100)
+  scaled_chili_nutrient_precal <- (chili_nutrient - estimated_mean_nutrient_chili) / estimated_sd_nutrient_chili
+  scaled_chili_nutrient <- vv(scaled_chili_nutrient_precal, n=n_year, var_CV=100)
   
   
   #total benefits of chili
   chili_total_benefits_precal <- sum((income_weight * scaled_chili_income), 
                                      (water_use_weight * scaled_chili_water_use),
-                                     (nutrition_weight * scaled_chili_nutrition))
+                                     (nutrient_weight * scaled_chili_nutrient))
   chili_total_benefit <- vv(chili_total_benefits_precal, n=n_year, var_CV=100)
   
   
@@ -353,7 +351,7 @@ transition_rice_to_vegetables <- function(){
   #carrot
   carrot_income <- vv(carrot_yield * carrot_price, n=n_year, var_CV=100)
   carrot_water_use <- vv(carrot_water_use, n=n_year, var_CV=100)
-  #nutrition
+  #nutrient
   carrot_calories <- vv(carrot_calories, n=n_year, var_CV=100)
   carrot_protein <- vv(carrot_protein, n=n_year, var_CV=100)
   carrot_fat <- vv(carrot_fat, n=n_year, var_CV=100)
@@ -370,12 +368,12 @@ transition_rice_to_vegetables <- function(){
   carrot_potassium <- vv(carrot_potassium, n=n_year, var_CV=100)
   carrot_sodium <- vv(carrot_sodium,  n=n_year, var_CV=100)
   
-  carrot_nutrition_precal <- sum(carrot_calories, carrot_protein, carrot_fat,
+  carrot_nutrient_precal <- sum(carrot_calories, carrot_protein, carrot_fat,
                                  carrot_carbohydrates, carrot_fiber, carrot_vitA,
                                  carrot_vitC, carrot_vitB3, carrot_folate, carrot_calcium,
                                  carrot_iron, carrot_magnesium, carrot_phosphorus,
                                  carrot_potassium, carrot_sodium)
-  carrot_nutrition <- vv(carrot_nutrition_precal, n=n_year, var_CV=100)
+  carrot_nutrient <- vv(carrot_nutrient_precal, n=n_year, var_CV=100)
   
   ##standardize values of carrot benefits with z-score (?)
   ###carrot income
@@ -406,31 +404,31 @@ transition_rice_to_vegetables <- function(){
   scaled_carrot_water_use <- vv(scaled_carrot_water_use_precal, n=n_year, var_CV=100)
   
   
-  ###carrot nutrition
-  min_carrot_nutrition_precal <- min(carrot_nutrition)
-  min_carrot_nutrition <- vv(min_carrot_nutrition_precal, n=n_year, var_CV=100)
+  ###carrot nutrient
+  min_carrot_nutrient_precal <- min(carrot_nutrient)
+  min_carrot_nutrient <- vv(min_carrot_nutrient_precal, n=n_year, var_CV=100)
   
-  max_carrot_nutrition_precal <- max(carrot_nutrition)
-  max_carrot_nutrition <- max(max_carrot_nutrition_precal, n=n_year, var_CV=100)
+  max_carrot_nutrient_precal <- max(carrot_nutrient)
+  max_carrot_nutrient <- max(max_carrot_nutrient_precal, n=n_year, var_CV=100)
   
-  estimated_mean_nutrition_carrot <- (min_carrot_nutrition+max_carrot_nutrition)/2
-  estimated_sd_nutrition_carrot <- (max_carrot_nutrition-min_carrot_nutrition)/4
+  estimated_mean_nutrient_carrot <- (min_carrot_nutrient+max_carrot_nutrient)/2
+  estimated_sd_nutrient_carrot <- (max_carrot_nutrient-min_carrot_nutrient)/4
   
-  scaled_carrot_nutrition_precal <- (carrot_nutrition - estimated_mean_nutrition_carrot) / estimated_sd_nutrition_carrot
-  scaled_carrot_nutrition <- vv(scaled_carrot_nutrition_precal, n=n_year, var_CV=100)
+  scaled_carrot_nutrient_precal <- (carrot_nutrient - estimated_mean_nutrient_carrot) / estimated_sd_nutrient_carrot
+  scaled_carrot_nutrient <- vv(scaled_carrot_nutrient_precal, n=n_year, var_CV=100)
   
   
   #total benefits of carrot
   carrot_total_benefits_precal <- sum((income_weight * scaled_carrot_income), 
                                       (water_use_weight * scaled_carrot_water_use),
-                                      (nutrition_weight * scaled_carrot_nutrition))
+                                      (nutrient_weight * scaled_carrot_nutrient))
   carrot_total_benefit <- vv(carrot_total_benefits_precal, n=n_year, var_CV=100)
   
   
   #cabbage
   cabbage_income <- vv(cabbage_yield * cabbage_price, n=n_year, var_CV=100)
   cabbage_water_use <- vv(cabbage_water_use, n=n_year, var_CV=100)
-  #nutrition
+  #nutrient
   cabbage_calories <- vv(cabbage_calories, n=n_year, var_CV=100)
   cabbage_protein <- vv(cabbage_protein, n=n_year, var_CV=100)
   cabbage_fat <- vv(cabbage_fat, n=n_year, var_CV=100)
@@ -447,12 +445,12 @@ transition_rice_to_vegetables <- function(){
   cabbage_potassium <- vv(cabbage_potassium, n=n_year, var_CV=100)
   cabbage_sodium <- vv(cabbage_sodium,  n=n_year, var_CV=100)
   
-  cabbage_nutrition_precal <- sum(cabbage_calories, cabbage_protein, cabbage_fat,
+  cabbage_nutrient_precal <- sum(cabbage_calories, cabbage_protein, cabbage_fat,
                                   cabbage_carbohydrates, cabbage_fiber, cabbage_vitA,
                                   cabbage_vitC, cabbage_vitB3, cabbage_folate, cabbage_calcium,
                                   cabbage_iron, cabbage_magnesium, cabbage_phosphorus,
                                   cabbage_potassium, cabbage_sodium)
-  cabbage_nutrition <- vv(cabbage_nutrition_precal, n=n_year, var_CV=100)
+  cabbage_nutrient <- vv(cabbage_nutrient_precal, n=n_year, var_CV=100)
   
   ##standardize values of cabbage benefits with z-score (?)
   ###cabbage income
@@ -483,23 +481,23 @@ transition_rice_to_vegetables <- function(){
   scaled_cabbage_water_use <- vv(scaled_cabbage_water_use_precal, n=n_year, var_CV=100)
   
   
-  ###cabbage nutrition
-  min_cabbage_nutrition_precal <- min(cabbage_nutrition)
-  min_cabbage_nutrition <- vv(min_cabbage_nutrition_precal, n=n_year, var_CV=100)
+  ###cabbage nutrient
+  min_cabbage_nutrient_precal <- min(cabbage_nutrient)
+  min_cabbage_nutrient <- vv(min_cabbage_nutrient_precal, n=n_year, var_CV=100)
   
-  max_cabbage_nutrition_precal <- max(cabbage_nutrition)
-  max_cabbage_nutrition <- max(max_cabbage_nutrition_precal, n=n_year, var_CV=100)
+  max_cabbage_nutrient_precal <- max(cabbage_nutrient)
+  max_cabbage_nutrient <- max(max_cabbage_nutrient_precal, n=n_year, var_CV=100)
   
-  estimated_mean_nutrition_cabbage <- (min_cabbage_nutrition+max_cabbage_nutrition)/2
-  estimated_sd_nutrition_cabbage <- (max_cabbage_nutrition-min_cabbage_nutrition)/4
+  estimated_mean_nutrient_cabbage <- (min_cabbage_nutrient+max_cabbage_nutrient)/2
+  estimated_sd_nutrient_cabbage <- (max_cabbage_nutrient-min_cabbage_nutrient)/4
   
-  scaled_cabbage_nutrition_precal <- (cabbage_nutrition - estimated_mean_nutrition_cabbage) / estimated_sd_nutrition_cabbage
-  scaled_cabbage_nutrition <- vv(scaled_cabbage_nutrition_precal, n=n_year, var_CV=100)
+  scaled_cabbage_nutrient_precal <- (cabbage_nutrient - estimated_mean_nutrient_cabbage) / estimated_sd_nutrient_cabbage
+  scaled_cabbage_nutrient <- vv(scaled_cabbage_nutrient_precal, n=n_year, var_CV=100)
   
   #total benefits of cabbage
   cabbage_total_benefits_precal <- sum((income_weight * scaled_cabbage_income), 
                                       (water_use_weight * scaled_cabbage_water_use),
-                                      (nutrition_weight * scaled_cabbage_nutrition))
+                                      (nutrient_weight * scaled_cabbage_nutrient))
   cabbage_total_benefit <- vv(cabbage_total_benefits_precal, n=n_year, var_CV=100)
   
   
@@ -509,7 +507,7 @@ transition_rice_to_vegetables <- function(){
   ##potato costs
   potato_production_cost <- vv(potato_production_cost, n=n_year, var_CV=100)
   #depreciation cost
-  potato_warehouse_precal <- warehouse / 25 #assuming 25 years useful life 
+  potato_warehouse_precal <- warehouse / 25  
   potato_warehouse <- vv(potato_warehouse_precal, n=n_year, var_CV=100)
   potato_irrigation_precal <- pipe_installation / 25
   potato_irrigation <- vv(potato_irrigation_precal, n=n_year, var_CV=100)
@@ -520,7 +518,7 @@ transition_rice_to_vegetables <- function(){
   ##shallot costs
   shallot_production_cost <- vv(shallot_production_cost, n=n_year, var_CV=100)
   #depreciation cost
-  shallot_warehouse_precal <- warehouse / 25 #assuming 25 years useful life 
+  shallot_warehouse_precal <- warehouse / 25  
   shallot_warehouse <- vv(shallot_warehouse_precal, n=n_year, var_CV=100)
   shallot_irrigation_precal <- pipe_installation / 25
   shallot_irrigation <- vv(shallot_irrigation_precal, n=n_year, var_CV=100)
@@ -532,7 +530,7 @@ transition_rice_to_vegetables <- function(){
   ##chili costs
   chili_production_cost <- vv(chili_production_cost, n=n_year, var_CV=100)
   #depreciation cost
-  chili_warehouse_precal <- warehouse / 25 #assuming 25 years useful life 
+  chili_warehouse_precal <- warehouse / 25  
   chili_warehouse <- vv(chili_warehouse_precal, n=n_year, var_CV=100)
   chili_irrigation_precal <- pipe_installation / 25
   chili_irrigation <- vv(chili_irrigation_precal, n=n_year, var_CV=100)
@@ -544,7 +542,7 @@ transition_rice_to_vegetables <- function(){
   ##carrot costs
   carrot_production_cost <- vv(carrot_production_cost, n=n_year, var_CV=100)
   #depreciation cost
-  carrot_warehouse_precal <- warehouse / 25 #assuming 25 years useful life 
+  carrot_warehouse_precal <- warehouse / 25  
   carrot_warehouse <- vv(carrot_warehouse_precal, n=n_year, var_CV=100)
   carrot_irrigation_precal <- pipe_installation / 25
   carrot_irrigation <- vv(carrot_irrigation_precal, n=n_year, var_CV=100)
@@ -556,7 +554,7 @@ transition_rice_to_vegetables <- function(){
   ##cabbage costs
   cabbage_production_cost <- vv(cabbage_production_cost, n=n_year, var_CV=100)
   #depreciation cost
-  cabbage_warehouse_precal <- warehouse / 25 #assuming 25 years useful life 
+  cabbage_warehouse_precal <- warehouse / 25  
   cabbage_warehouse <- vv(cabbage_warehouse_precal, n=n_year, var_CV=100)
   cabbage_irrigation_precal <- pipe_installation / 25
   cabbage_irrigation <- vv(cabbage_irrigation_precal, n=n_year, var_CV=100)
@@ -623,9 +621,7 @@ transition_rice_to_vegetables <- function(){
 
 
 # Run the Monte Carlo simulation using the model function
-input_estimates <- read.csv("cleaned_data.csv", sep = ",")
-
-str(input_estimates)
+input_estimates <- read.csv("new_variable_estimates~fix.csv", sep = ";")
 
 TRV_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
                                   model_function = transition_rice_to_vegetables,
