@@ -46,7 +46,7 @@ transition_rice_to_vegetables <- function(){
   
   
   
-  ##standardize values of rice benefits with z-score (?)
+  ##standardize values of rice benefits 
   ###income
   min_rice_income_precal <- min(rice_income)
   min_rice_income <- vv(min_rice_income_precal, n=n_year, var_CV=100)
@@ -142,7 +142,7 @@ transition_rice_to_vegetables <- function(){
   potato_nutrient <- vv(potato_nutrient_precal, n=n_year, var_CV=100)
   
   
-  ##standardize values of potato benefits with z-score (?)
+  ##standardize values of potato benefits 
   ###potato income
   min_potato_income_precal <- min(potato_income)
   min_potato_income <- vv(min_potato_income_precal, n=n_year, var_CV=100)
@@ -219,7 +219,7 @@ transition_rice_to_vegetables <- function(){
   shallot_nutrient <- vv(shallot_nutrient_precal, n=n_year, var_CV=100)
   
   
-  ##standardize values of shallot benefits with z-score (?)
+  ##standardize values of shallot benefits 
   ###shallot income
   min_shallot_income_precal <- min(shallot_income)
   min_shallot_income <- vv(min_shallot_income_precal, n=n_year, var_CV=100)
@@ -297,7 +297,7 @@ transition_rice_to_vegetables <- function(){
   chili_nutrient <- vv(chili_nutrient_precal, n=n_year, var_CV=100)
   
   
-  ##standardize values of chili benefits with z-score (?)
+  ##standardize values of chili benefits 
   ###chili income
   min_chili_income_precal <- min(chili_income)
   min_chili_income <- vv(min_chili_income_precal, n=n_year, var_CV=100)
@@ -375,7 +375,7 @@ transition_rice_to_vegetables <- function(){
                                  carrot_potassium, carrot_sodium)
   carrot_nutrient <- vv(carrot_nutrient_precal, n=n_year, var_CV=100)
   
-  ##standardize values of carrot benefits with z-score (?)
+  ##standardize values of carrot benefits 
   ###carrot income
   min_carrot_income_precal <- min(carrot_income)
   min_carrot_income <- vv(min_carrot_income_precal, n=n_year, var_CV=100)
@@ -452,7 +452,7 @@ transition_rice_to_vegetables <- function(){
                                   cabbage_potassium, cabbage_sodium)
   cabbage_nutrient <- vv(cabbage_nutrient_precal, n=n_year, var_CV=100)
   
-  ##standardize values of cabbage benefits with z-score (?)
+  ##standardize values of cabbage benefits 
   ###cabbage income
   min_cabbage_income_precal <- min(cabbage_income)
   min_cabbage_income <- vv(min_cabbage_income_precal, n=n_year, var_CV=100)
