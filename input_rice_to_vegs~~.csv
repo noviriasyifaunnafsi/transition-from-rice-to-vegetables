@@ -1,0 +1,33 @@
+Description;label;variable;distribution;lower;median;upper
+;Number of years;n_year;const;25;;25
+;Discount rate;discount_rate;posnorm;5;;10
+;Coefficient of variation for switching rice to vegetables (%);CV_value;tnorm_0_1;0.1;;0.4
+;Inflation rate;inflation_rate;posnorm;5;;10
+;Rice yield (kg/ha);rice_yield;posnorm;3000;;6000
+;Potato yield (kg/ha);potato_yield;posnorm;10000;;20000
+;Shallot yield (kg/ha);shallot_yield;posnorm;6000;;12000
+;Cabbage yield (kg/ha);cabbage_yield;posnorm;17000;;34000
+;Rice price (kg/ha);rice_price;posnorm;3000;;6000
+;Potato price (kg/ha);potato_price;posnorm;5000;;15000
+;Shallot price (kg/ha);shallot_price;posnorm;10000;;50000
+;Cabbage price (kg/ha);cabbage_price;posnorm;1000;;8000
+;Rice water use (m3/ha);rice_water_use;posnorm;3000;;6000
+;Vegetables water use (m3/ha);vegetables_water_use;posnorm;1000;;2500
+;Estimated yearly value for accessing nutrition from growing rice (IDR/ha);rice_nutrition_to_health_value;posnorm;500000;;1000000
+;Estimated yearly value for accessing nutrition from growing vegetables (IDR/ha);vegetables_nutrition_to_health_value;posnorm;1000000;;2000000
+;Rice farming input costs (seed, fertilizer, pesticides, etc.) (IDR/ha);rice_farming_input_costs;posnorm;10000000;;15000000
+;Rice labor costs (IDR/ha);rice_labor_costs;posnorm;4000000;;7000000
+;Rice machinery costs (IDR/ha);rice_machinery_costs;posnorm;1500000;;2500000
+;Potato farming input costs (seed, fertilizer, pesticides) (IDR/ha);potato_farming_input_costs;posnorm;60000000;;80000000
+;Potato labor costs (IDR/ha);potato_labor_costs;posnorm;10000000;;15000000
+;Potato machinery costs (IDR/ha);potato_machinery_costs;posnorm;1500000;;2500000
+;Shallot farming input costs (seed, fertilizer, pesticides) (IDR/ha);shallot_farming_input_costs;posnorm;35000000;;55000000
+;Shallot labor costs (IDR/ha);shallot_labor_costs;posnorm;4000000;;8000000
+;Shallot machinery costs (IDR/ha);shallot_machinery_costs;posnorm;1500000;;2500000
+;Cabbage farming input costs (seed, fertilizer, pesticides) (IDR/ha);cabbage_farming_input_costs;posnorm;18000000;;25000000
+;Cabbage labor costs (IDR/ha);cabbage_labor_costs;posnorm;4000000;;8000000
+;Cabbage machinery costs (IDR/ha);cabbage_machinery_costs;posnorm;1500000;;2500000
+;Vegetables farming equimpent (sprayer, sprinkler, hoe, etc.) (IDR/ha);vegetables_farming_equipment_costs;posnorm;1000000;;10000000
+;Pipes installation costs for watering vegetables (IDR/ha);pipes_installation_costs;posnorm;700000;;1300000
+;Warehouse establishment costs for storing the harvests (IDR/ha);warehouse_establishment_costs;posnorm;1000000;;4000000
+;Warehouse maintenance costs for storing the harvests (IDR/ha);warehouse_maintenance_costs;posnorm;100000;;400000
