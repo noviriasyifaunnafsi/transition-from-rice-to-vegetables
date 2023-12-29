@@ -217,7 +217,17 @@ decisionSupport::plot_distributions(mcSimulation_object = TRV_mc_simulation,
                                              "Interv_NPV_crop_rotation2",
                                              "Interv_NPV_crop_rotation3",
                                              "NO_interv_NPV_rice"),
+                                    method = 'smooth_simple_overlay')
+
+
+decisionSupport::plot_distributions(mcSimulation_object = TRV_mc_simulation, 
+                                    vars = c("Interv_NPV_vegetables", 
+                                             "Interv_NPV_crop_rotation1",
+                                             "Interv_NPV_crop_rotation2",
+                                             "Interv_NPV_crop_rotation3",
+                                             "NO_interv_NPV_rice"),
                                     method = 'hist_simple_overlay')
+
 
 decisionSupport::plot_distributions(mcSimulation_object = TRV_mc_simulation, 
                                     vars = c("Interv_NPV_vegetables", 
