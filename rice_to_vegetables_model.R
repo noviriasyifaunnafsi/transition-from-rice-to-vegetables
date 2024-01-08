@@ -192,7 +192,7 @@ transition_rice_to_vegetables <- function(x, varnames){
 
 
 # Run the Monte Carlo simulation using the model function
-input_estimates <- read.csv("input_rice_to_vegs~~.csv", sep = ";")
+input_estimates <- read.csv("input_rice_to_vegs.csv", sep = ";")
 
 TRV_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
                                   model_function = transition_rice_to_vegetables,
