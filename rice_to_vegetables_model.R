@@ -4,14 +4,29 @@ library(gtExtras)
 install.packages("svglite")
 library(svglite)
 
+input_estimates <- read.csv("input_rice_to_vegs.csv", sep = ";")
+                                  
+make_variables <- function(est,n=1)
+{ x<-random(rho=est, n=n)
+for(i in colnames(x)) assign(i,
+                             as.numeric(x[1,i]),envir=.GlobalEnv)
+}
+
+make_variables(as.estimate(input_estimates))
 
 transition_rice_to_vegetables <- function(x, varnames){
   
   # Estimate the benefits
   
   ##if farmers grow rice (assuming they grow rice 3 times per year)
-  rice_income_precal <- (rice_yield * rice_price)*3
+  rice_income_precal <- (rice_yield * rice_price)*3 #Indonesian Rupee
   rice_income <- vv(rice_income_precal, n_year, var_CV=CV_value)
+  
+  annual_irrigation_infra_mgmnt <- 100
+  cost_of_pipes_per_ha_irrigated <- 10000
+  
+  cost_of_rice_water_use <- vv(annual_irrigation_infra_mgmnt, n_year, var_CV=CV_value)
+  cost_of_rice_water_use[1] <- cost_of_pipes_per_ha_irrigated
   
   rice_water_use <- vv(rice_income/rice_water_use, n_year, var_CV=CV_value)
   rice_nutrition <- vv(rice_nutrition_to_health_value, n_year, var_CV=CV_value)
