@@ -22,17 +22,21 @@ transition_rice_to_vegetables <- function(x, varnames){
   rice_income_precal <- (rice_yield * rice_price)*3 #Indonesian Rupee
   rice_income <- vv(rice_income_precal, n_year, var_CV=CV_value)
   
+  ## Prajna's suggestion
   annual_irrigation_infra_mgmnt <- 100
   cost_of_pipes_per_ha_irrigated <- 10000
   
   cost_of_rice_water_use <- vv(annual_irrigation_infra_mgmnt, n_year, var_CV=CV_value)
   cost_of_rice_water_use[1] <- cost_of_pipes_per_ha_irrigated
   
-  rice_water_use <- vv(rice_income/rice_water_use, n_year, var_CV=CV_value)
+  ## This is wrong
+ # rice_water_use <- vv(rice_income/rice_water_use, n_year, var_CV=CV_value)
   rice_nutrition <- vv(rice_nutrition_to_health_value, n_year, var_CV=CV_value)
   
-  rice_total_benefit_precal <- rice_income + rice_water_use + rice_nutrition
-  rice_total_benefit <- vv(rice_total_benefit_precal, n_year, var_CV=CV_value)
+  rice_total_benefit_precal <- rice_income + cost_of_rice_water_use + rice_nutrition
+  # Do not do this - vv() does something weird when the values are already a list 
+  # (selects first value I think)
+  # rice_total_benefit <- vv(rice_total_benefit_precal, n_year, var_CV=CV_value)
   
   
   ##if farmers grow vegetables 
