@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-12T12:27:35.412Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="hi-W6odzgYU9rNu3pTAS" version="22.1.17" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2024-01-12T13:41:02.515Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="8Uoqv3rrzguy4XRZP8nO" version="22.1.17" type="github" pages="3">
   <diagram name="impact pathway" id="Al0P_OOzSxGurIwR00QU">
     <mxGraphModel dx="1517" dy="1504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
       <root>
@@ -257,78 +257,126 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QFaTB1_xHqgM_wmw4koP" name="Page-3">
-    <mxGraphModel dx="1096" dy="472" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1233" dy="531" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="1RnaGErhJqpbVjAF1R0t-2" value="growing rice" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="400" y="210" width="90" height="50" as="geometry" />
+          <mxGeometry x="490" y="315" width="90" height="50" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-4" value="growing vegetables" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="400" y="330" width="90" height="50" as="geometry" />
+          <mxGeometry x="490" y="504" width="90" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-7" value="price" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="230" y="170" width="80" height="40" as="geometry" />
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-7" target="1RnaGErhJqpbVjAF1R0t-4">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-8" value="government policy" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="90" y="160" width="90" height="60" as="geometry" />
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-7" target="AUkE8HFZY5_CjjTgL1hR-7">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-9" value="staple food demands" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="395" width="100" height="60" as="geometry" />
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-7" value="price" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF33;" vertex="1" parent="1">
+          <mxGeometry x="170" y="520" width="80" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-10" value="vegetables demands" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="220" y="420" width="100" height="60" as="geometry" />
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-8" target="1RnaGErhJqpbVjAF1R0t-7">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-11" value="water supply" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="360" y="100" width="90" height="60" as="geometry" />
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-8" target="1RnaGErhJqpbVjAF1R0t-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-8" target="1RnaGErhJqpbVjAF1R0t-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-8" value="agricultural policy" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="195" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-9" target="AUkE8HFZY5_CjjTgL1hR-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-9" target="1RnaGErhJqpbVjAF1R0t-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-9" value="staple food demands" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF33;" vertex="1" parent="1">
+          <mxGeometry x="160" y="325" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-10" target="AUkE8HFZY5_CjjTgL1hR-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-10" target="1RnaGErhJqpbVjAF1R0t-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-10" value="vegetables demands" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF33;" vertex="1" parent="1">
+          <mxGeometry x="140" y="425" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-11" value="water supply" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="380" y="140" width="50" height="40" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-20" value="market price" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
-          <mxGeometry x="90" y="10" width="90" height="50" as="geometry" />
+          <mxGeometry x="525" y="150" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-21" value="market availability" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
-          <mxGeometry x="220" y="5" width="120" height="45" as="geometry" />
+          <mxGeometry x="220" y="5" width="80" height="35" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-22" value="seasonal variability" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
-          <mxGeometry x="380" y="20" width="100" height="60" as="geometry" />
+          <mxGeometry x="380" y="20" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-23" value="water shortage" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
-          <mxGeometry x="520" y="30" width="110" height="60" as="geometry" />
+          <mxGeometry x="520" y="30" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-24" value="farming inputs availability" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
-          <mxGeometry x="670" y="5" width="120" height="60" as="geometry" />
+          <mxGeometry x="620" y="22.5" width="90" height="45" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-25" value="labor shortage" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
-          <mxGeometry x="810" y="5" width="110" height="60" as="geometry" />
+          <mxGeometry x="740" y="15" width="60" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-27" value="increased income" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="810" y="371" width="120" height="60" as="geometry" />
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-27" target="6Q5hdL7NuNT7QDE-BOTC-15">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-28" value="improved nutrition or reduced malnutrition" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="810" y="471" width="120" height="60" as="geometry" />
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-27" value="increased farmers income" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="405" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-28" target="6Q5hdL7NuNT7QDE-BOTC-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-28" value="improved nutrition or reduced malnutrition" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="554" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-29" value="balance diet" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="680" y="520" width="90" height="48" as="geometry" />
+          <mxGeometry x="780" y="760" width="90" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-30" value="maintain water resource" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="805" y="560" width="120" height="60" as="geometry" />
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="1RnaGErhJqpbVjAF1R0t-30" target="6Q5hdL7NuNT7QDE-BOTC-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-30" value="maintain water resource" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="480" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="1RnaGErhJqpbVjAF1R0t-32" value="crop yield" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
-          <mxGeometry x="200" y="70" width="100" height="40" as="geometry" />
+          <mxGeometry x="200" y="70" width="70" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="1RnaGErhJqpbVjAF1R0t-33" value="Improved community livelihood" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="970" y="400" width="120" height="60" as="geometry" />
+        <mxCell id="1RnaGErhJqpbVjAF1R0t-33" value="Improved community livelihood" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF8000;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="554" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="AUkE8HFZY5_CjjTgL1hR-7" target="1RnaGErhJqpbVjAF1R0t-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="AUkE8HFZY5_CjjTgL1hR-7" target="1RnaGErhJqpbVjAF1R0t-4">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="AUkE8HFZY5_CjjTgL1hR-7" value="farmers" style="ellipse;whiteSpace=wrap;html=1;fillColor=#66CC00;" vertex="1" parent="1">
-          <mxGeometry x="220" y="260" width="100" height="70" as="geometry" />
+          <mxGeometry x="340" y="380" width="100" height="70" as="geometry" />
         </mxCell>
         <mxCell id="AUkE8HFZY5_CjjTgL1hR-8" value="middle man" style="ellipse;whiteSpace=wrap;html=1;fillColor=#66CC00;" vertex="1" parent="1">
-          <mxGeometry x="1010" y="317.5" width="100" height="70" as="geometry" />
+          <mxGeometry x="590" y="670" width="100" height="70" as="geometry" />
         </mxCell>
         <mxCell id="AUkE8HFZY5_CjjTgL1hR-11" value="wholesaler" style="ellipse;whiteSpace=wrap;html=1;fillColor=#66CC00;" vertex="1" parent="1">
-          <mxGeometry x="940" y="227.5" width="100" height="70" as="geometry" />
+          <mxGeometry x="1180" y="267.5" width="100" height="70" as="geometry" />
         </mxCell>
         <mxCell id="AUkE8HFZY5_CjjTgL1hR-12" value="consumers" style="ellipse;whiteSpace=wrap;html=1;fillColor=#66CC00;" vertex="1" parent="1">
           <mxGeometry x="1095" y="22.5" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="AUkE8HFZY5_CjjTgL1hR-13" target="1RnaGErhJqpbVjAF1R0t-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="AUkE8HFZY5_CjjTgL1hR-13" target="AUkE8HFZY5_CjjTgL1hR-18">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="AUkE8HFZY5_CjjTgL1hR-13" value="government/&lt;br&gt;politician" style="ellipse;whiteSpace=wrap;html=1;fillColor=#66CC00;" vertex="1" parent="1">
           <mxGeometry x="10" y="70" width="100" height="70" as="geometry" />
@@ -337,16 +385,155 @@
           <mxGeometry x="960" y="27.5" width="100" height="70" as="geometry" />
         </mxCell>
         <mxCell id="AUkE8HFZY5_CjjTgL1hR-15" value="traditional market" style="ellipse;whiteSpace=wrap;html=1;fillColor=#66CC00;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="137.5" width="100" height="70" as="geometry" />
+          <mxGeometry x="1260" y="177.5" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="AUkE8HFZY5_CjjTgL1hR-16" target="AUkE8HFZY5_CjjTgL1hR-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="AUkE8HFZY5_CjjTgL1hR-16" target="AUkE8HFZY5_CjjTgL1hR-19">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="AUkE8HFZY5_CjjTgL1hR-16" value="Intervention:&lt;br&gt;contract farming" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="550" y="147.5" width="110" height="50" as="geometry" />
+          <mxGeometry x="800" y="200" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="AUkE8HFZY5_CjjTgL1hR-18" value="fair price market" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="740" y="130" width="110" height="50" as="geometry" />
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="AUkE8HFZY5_CjjTgL1hR-18" target="1RnaGErhJqpbVjAF1R0t-27">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="AUkE8HFZY5_CjjTgL1hR-19" value="shorter value chain" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="740" y="207.5" width="110" height="50" as="geometry" />
+        <mxCell id="AUkE8HFZY5_CjjTgL1hR-18" value="fair price regulation" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="980" y="170" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="AUkE8HFZY5_CjjTgL1hR-19" target="1RnaGErhJqpbVjAF1R0t-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AUkE8HFZY5_CjjTgL1hR-19" value="shorter value chain" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="970" y="287.5" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-1" value="farming input supplier" style="ellipse;whiteSpace=wrap;html=1;fillColor=#66CC00;" vertex="1" parent="1">
+          <mxGeometry x="580" y="770" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="6Q5hdL7NuNT7QDE-BOTC-15" target="6Q5hdL7NuNT7QDE-BOTC-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-15" value="Long-term benefits" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="485" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-16" value="Long-term costs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="330" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6Q5hdL7NuNT7QDE-BOTC-21" value="Outcomes" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF8000;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="de_amEsHy38tS3pp2vvq" name="Page-4">
+    <mxGraphModel dx="794" dy="593" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-1" target="gtn5RmGmdPiWdwUuMkL7-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-1" target="gtn5RmGmdPiWdwUuMkL7-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-1" target="gtn5RmGmdPiWdwUuMkL7-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-1" value="farmers" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CCFF99;" vertex="1" parent="1">
+          <mxGeometry x="350" y="370" width="80" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-2" target="gtn5RmGmdPiWdwUuMkL7-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-2" value="government/&lt;br&gt;politician" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CCFF99;" vertex="1" parent="1">
+          <mxGeometry x="30" y="70" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-3" target="gtn5RmGmdPiWdwUuMkL7-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-3" target="gtn5RmGmdPiWdwUuMkL7-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-3" target="gtn5RmGmdPiWdwUuMkL7-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="390" />
+              <mxPoint x="290" y="510" />
+              <mxPoint x="493" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-3" value="staple food demands" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="330" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-4" target="gtn5RmGmdPiWdwUuMkL7-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-4" target="gtn5RmGmdPiWdwUuMkL7-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-4" target="gtn5RmGmdPiWdwUuMkL7-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-4" target="gtn5RmGmdPiWdwUuMkL7-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="240" />
+              <mxPoint x="610" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-4" value="Agricultural policy" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-5" target="gtn5RmGmdPiWdwUuMkL7-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-5" target="gtn5RmGmdPiWdwUuMkL7-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="502" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-5" target="gtn5RmGmdPiWdwUuMkL7-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="485" />
+              <mxPoint x="330" y="583" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-5" value="vegetable demands" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="425" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-6" value="commodity price" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="520" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-7" value="growing rice" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="330" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-8" value="growing vegetables" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="400" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.067;entryY=0.771;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-6" target="gtn5RmGmdPiWdwUuMkL7-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-20" value="crop rotation (rice and vegetables)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="485" y="470" width="90" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-23" target="gtn5RmGmdPiWdwUuMkL7-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-23" target="gtn5RmGmdPiWdwUuMkL7-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-23" value="consumer demands" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="370" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-39" value="Intervention:&lt;br&gt;contract farming" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="130" width="110" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
