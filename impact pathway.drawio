@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-22T10:03:11.318Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="1LL6g_-2MJFwiw__ZEdy" version="22.1.20" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-22T10:03:45.169Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="nNPpJ3tnRvvOajr1tORA" version="22.1.20" type="github">
   <diagram id="de_amEsHy38tS3pp2vvq" name="Page-4">
     <mxGraphModel dx="1972" dy="918" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -122,13 +122,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-33" value="farming inputs shortage" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF3333;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="351.1304347826087" y="754.0981006864988" width="66.55072463768116" height="63.59267734553775" as="geometry" />
+          <mxGeometry x="351.13" y="754.1" width="98.87" height="63.59" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-34" value="market price fluctuation" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF3333;shadow=1;" parent="1" vertex="1">
           <mxGeometry x="227.53623188405797" y="726.8440961098398" width="85.56521739130434" height="63.59267734553775" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-36" value="seasonal variability" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF3333;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="180" y="645.0820823798626" width="66.55072463768116" height="63.59267734553775" as="geometry" />
+          <mxGeometry x="160" y="645.08" width="86.55" height="63.59" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-37" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="iEysgFRMbrWrRHz_KQDW-34" target="gtn5RmGmdPiWdwUuMkL7-6" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
