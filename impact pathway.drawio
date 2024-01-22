@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-22T09:43:46.909Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="WRKMTJQkze65MmQhZjZa" version="22.1.20" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-22T09:44:55.382Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="v73I_kbQhtEzeJsToVLI" version="22.1.20" type="github">
   <diagram id="de_amEsHy38tS3pp2vvq" name="Page-4">
     <mxGraphModel dx="1643" dy="765" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -149,19 +149,19 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-40" value="maintain water resource" style="ellipse;whiteSpace=wrap;html=1;shadow=1;strokeColor=#0000FF;" parent="1" vertex="1">
-          <mxGeometry x="1085.5652173913045" y="554.2334096109839" width="118.84057971014494" height="63.59267734553775" as="geometry" />
+          <mxGeometry x="1083.1852173913044" y="567.8634096109839" width="118.84057971014494" height="63.59267734553775" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-41" value="improved nutrition in local community (and consumers)" style="ellipse;whiteSpace=wrap;html=1;shadow=1;strokeColor=#0000FF;" parent="1" vertex="1">
           <mxGeometry x="1083.1884057971015" y="635.9954233409611" width="123.59420289855073" height="90.8466819221968" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-42" value="increased farmers income" style="ellipse;whiteSpace=wrap;html=1;shadow=1;strokeColor=#0000FF;" parent="1" vertex="1">
-          <mxGeometry x="1085.5652173913045" y="477.01372997711667" width="123.59420289855073" height="63.59267734553775" as="geometry" />
+          <mxGeometry x="1081.5652173913045" y="497.64372997711666" width="123.59420289855073" height="63.59267734553775" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-43" value="total benefits" style="ellipse;whiteSpace=wrap;html=1;shadow=1;strokeColor=#0000FF;" parent="1" vertex="1">
           <mxGeometry x="1301.8550724637682" y="554.2334096109839" width="114.08695652173914" height="63.59267734553775" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-44" value="total costs" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF8000;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="1301.8550724637682" y="295.3203661327231" width="114.08695652173914" height="63.59267734553775" as="geometry" />
+          <mxGeometry x="1301.8550724637682" y="318.0303661327231" width="114.08695652173914" height="63.59267734553775" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-45" value="economic outcomes" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" parent="1" vertex="1">
           <mxGeometry x="1501.5072463768117" y="353.91647597254007" width="114.08695652173914" height="63.59267734553775" as="geometry" />
@@ -227,13 +227,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-59" value="production costs (input, labor, equipment,&amp;nbsp; machinery)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF8000;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="1064.1739130434783" y="109.00135011441648" width="161.6231884057971" height="81.76201372997711" as="geometry" />
+          <mxGeometry x="1064.1739130434783" y="137.00135011441648" width="161.6231884057971" height="81.76201372997711" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-60" value="warehouse costs" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF8000;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="1088.96" y="194" width="116.81" height="56.46" as="geometry" />
+          <mxGeometry x="1088.96" y="222" width="116.81" height="56.46" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-62" value="maintenance costs (warehouse, irrigation facilities)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF8000;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="1087.7" y="321.03000000000003" width="127.3" height="68.31" as="geometry" />
+          <mxGeometry x="1087.7" y="349.03000000000003" width="127.3" height="68.31" as="geometry" />
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-67" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gtn5RmGmdPiWdwUuMkL7-7" target="iEysgFRMbrWrRHz_KQDW-59" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -291,20 +291,20 @@
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-77" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="iEysgFRMbrWrRHz_KQDW-59" target="iEysgFRMbrWrRHz_KQDW-44" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1045.159420289855" y="390.70938215102973" as="sourcePoint" />
-            <mxPoint x="1092.695652173913" y="345.2860411899313" as="targetPoint" />
+            <mxPoint x="1045.159420289855" y="418.70938215102973" as="sourcePoint" />
+            <mxPoint x="1301.855072463769" y="355.1167048054922" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-79" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="iEysgFRMbrWrRHz_KQDW-60" target="iEysgFRMbrWrRHz_KQDW-44" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1197.2753623188405" y="222.64302059496566" as="sourcePoint" />
-            <mxPoint x="1311.3623188405797" y="295.3203661327231" as="targetPoint" />
+            <mxPoint x="1197.2753623188405" y="250.64302059496566" as="sourcePoint" />
+            <mxPoint x="1301.855072463769" y="355.1167048054922" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-80" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="iEysgFRMbrWrRHz_KQDW-62" target="iEysgFRMbrWrRHz_KQDW-44" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1197.2753623188405" y="308.9473684210526" as="sourcePoint" />
-            <mxPoint x="1311.3623188405797" y="295.3203661327231" as="targetPoint" />
+            <mxPoint x="1197.2753623188405" y="336.9473684210526" as="sourcePoint" />
+            <mxPoint x="1301.855072463769" y="355.1167048054922" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="iEysgFRMbrWrRHz_KQDW-82" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gtn5RmGmdPiWdwUuMkL7-7" target="iEysgFRMbrWrRHz_KQDW-42" edge="1">
@@ -473,7 +473,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-9" value="management skills training" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF8000;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="1087.7" y="395.08" width="127.3" height="68.31" as="geometry" />
+          <mxGeometry x="1087.7" y="423.08" width="127.3" height="68.31" as="geometry" />
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-8" target="WlcWbEiDM5031LRk2Nps-9">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -489,8 +489,8 @@
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-12" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="WlcWbEiDM5031LRk2Nps-9" target="iEysgFRMbrWrRHz_KQDW-44">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1215" y="399.79" as="sourcePoint" />
-            <mxPoint x="1265" y="349.79" as="targetPoint" />
+            <mxPoint x="1215" y="427.79" as="sourcePoint" />
+            <mxPoint x="1301.855072463769" y="355.1167048054922" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-13" value="food &quot;self-sufficiency&quot; vision" style="ellipse;whiteSpace=wrap;html=1;shadow=1;strokeColor=#FFFF33;" vertex="1" parent="1">
@@ -512,7 +512,7 @@
           <mxGeometry x="1742.8840579710145" y="747.4349243662516" width="66.55072463768116" height="38.22639602959969" as="geometry" />
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-30" value="milling costs" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF8000;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="1092.3600000000001" y="254.64" width="110" height="58.31" as="geometry" />
+          <mxGeometry x="1092.3600000000001" y="282.64" width="110" height="58.31" as="geometry" />
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-31" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gtn5RmGmdPiWdwUuMkL7-7" target="WlcWbEiDM5031LRk2Nps-30">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -522,8 +522,8 @@
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="WlcWbEiDM5031LRk2Nps-30" target="iEysgFRMbrWrRHz_KQDW-44">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="960" y="440" as="sourcePoint" />
-            <mxPoint x="1010" y="390" as="targetPoint" />
+            <mxPoint x="960" y="468" as="sourcePoint" />
+            <mxPoint x="1301.855072463769" y="355.1167048054922" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
