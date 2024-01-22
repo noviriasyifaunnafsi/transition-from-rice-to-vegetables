@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-22T10:04:56.318Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="TxZIAjcxFe3zmAhF0vGB" version="22.1.20" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-22T10:06:19.022Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="Cw0moyISvRsXcEJwMuEJ" version="22.1.20" type="github">
   <diagram id="de_amEsHy38tS3pp2vvq" name="Page-4">
     <mxGraphModel dx="1972" dy="918" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -36,14 +36,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="gtn5RmGmdPiWdwUuMkL7-7" value="grow rice" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#808080;shadow=1;fillColor=#CCCCCC;" parent="1" vertex="1">
-          <mxGeometry x="836" y="308.9473684210526" width="76.05797101449275" height="63.59267734553775" as="geometry" />
-        </mxCell>
         <mxCell id="gtn5RmGmdPiWdwUuMkL7-8" value="grow vegetables" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#808080;shadow=1;fillColor=#CCCCCC;" parent="1" vertex="1">
-          <mxGeometry x="836" y="470.0020594965675" width="76.05797101449275" height="63.59267734553775" as="geometry" />
+          <mxGeometry x="849.1899999999999" y="399.79205949656745" width="76.05797101449275" height="63.59267734553775" as="geometry" />
         </mxCell>
         <mxCell id="gtn5RmGmdPiWdwUuMkL7-20" value="crop rotation (rice and vegetables)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#808080;shadow=1;fillColor=#CCCCCC;" parent="1" vertex="1">
-          <mxGeometry x="840" y="659.9990846681922" width="80.81159420289855" height="72.67734553775743" as="geometry" />
+          <mxGeometry x="849.19" y="539.9990846681922" width="80.81159420289855" height="72.67734553775743" as="geometry" />
         </mxCell>
         <mxCell id="gtn5RmGmdPiWdwUuMkL7-23" value="consumers" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CCFF99;" parent="1" vertex="1">
           <mxGeometry x="322.6086956521739" y="363.0011441647597" width="76.05797101449275" height="63.59267734553775" as="geometry" />
@@ -364,7 +361,7 @@
         <mxCell id="iEysgFRMbrWrRHz_KQDW-91" value="crop failure" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF3333;shadow=1;" parent="1" vertex="1">
           <mxGeometry x="600" y="722.0699999999999" width="86.59" height="63.59" as="geometry" />
         </mxCell>
-        <mxCell id="iEysgFRMbrWrRHz_KQDW-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
+        <mxCell id="iEysgFRMbrWrRHz_KQDW-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1" source="gtn5RmGmdPiWdwUuMkL7-7">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="865.9478260869565" y="293.66695652173934" as="sourcePoint" />
             <mxPoint x="865.9478260869565" y="293.66695652173934" as="targetPoint" />
@@ -443,7 +440,7 @@
           <mxGeometry x="176.94608695652164" y="79.41604564771615" width="66.55072463768116" height="38.22639602959969" as="geometry" />
         </mxCell>
         <mxCell id="ygxcdJTt3O7zTpUEZf1P-42" value="water shortage" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF3333;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="721.91" y="780" width="94" height="65.9" as="geometry" />
+          <mxGeometry x="746" y="730" width="94" height="65.9" as="geometry" />
         </mxCell>
         <mxCell id="ygxcdJTt3O7zTpUEZf1P-43" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ygxcdJTt3O7zTpUEZf1P-42" target="iEysgFRMbrWrRHz_KQDW-40" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -533,7 +530,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-36" value="very low price from middleman" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF3333;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="929.9999999999999" y="780" width="100" height="70" as="geometry" />
+          <mxGeometry x="929.9999999999999" y="754.55" width="100" height="70" as="geometry" />
         </mxCell>
         <mxCell id="WlcWbEiDM5031LRk2Nps-37" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="WlcWbEiDM5031LRk2Nps-36" target="iEysgFRMbrWrRHz_KQDW-42">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -582,6 +579,15 @@
             <mxPoint x="1010" y="470" as="sourcePoint" />
             <mxPoint x="1060" y="420" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="WlcWbEiDM5031LRk2Nps-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="gtn5RmGmdPiWdwUuMkL7-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="865.9478260869565" y="293.66695652173934" as="sourcePoint" />
+            <mxPoint x="865.9478260869565" y="293.66695652173934" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gtn5RmGmdPiWdwUuMkL7-7" value="grow rice" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#808080;shadow=1;fillColor=#CCCCCC;" parent="1" vertex="1">
+          <mxGeometry x="840" y="263.5273684210526" width="76.05797101449275" height="63.59267734553775" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
