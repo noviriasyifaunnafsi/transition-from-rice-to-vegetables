@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-22T10:06:19.022Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="Cw0moyISvRsXcEJwMuEJ" version="22.1.20" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-22T10:06:39.619Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="mB-NPcBAHbikSaE3cI5p" version="22.1.20" type="github">
   <diagram id="de_amEsHy38tS3pp2vvq" name="Page-4">
     <mxGraphModel dx="1972" dy="918" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -361,12 +361,6 @@
         <mxCell id="iEysgFRMbrWrRHz_KQDW-91" value="crop failure" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF3333;shadow=1;" parent="1" vertex="1">
           <mxGeometry x="600" y="722.0699999999999" width="86.59" height="63.59" as="geometry" />
         </mxCell>
-        <mxCell id="iEysgFRMbrWrRHz_KQDW-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1" source="gtn5RmGmdPiWdwUuMkL7-7">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="865.9478260869565" y="293.66695652173934" as="sourcePoint" />
-            <mxPoint x="865.9478260869565" y="293.66695652173934" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="ygxcdJTt3O7zTpUEZf1P-4" value="farmers" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFF33;" parent="1" vertex="1">
           <mxGeometry x="645.8550724637681" y="227.1853546910755" width="76.05797101449275" height="63.59267734553775" as="geometry" />
         </mxCell>
@@ -580,14 +574,8 @@
             <mxPoint x="1060" y="420" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WlcWbEiDM5031LRk2Nps-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="gtn5RmGmdPiWdwUuMkL7-7">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="865.9478260869565" y="293.66695652173934" as="sourcePoint" />
-            <mxPoint x="865.9478260869565" y="293.66695652173934" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="gtn5RmGmdPiWdwUuMkL7-7" value="grow rice" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#808080;shadow=1;fillColor=#CCCCCC;" parent="1" vertex="1">
-          <mxGeometry x="840" y="263.5273684210526" width="76.05797101449275" height="63.59267734553775" as="geometry" />
+          <mxGeometry x="851.57" y="263.5273684210526" width="76.05797101449275" height="63.59267734553775" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
