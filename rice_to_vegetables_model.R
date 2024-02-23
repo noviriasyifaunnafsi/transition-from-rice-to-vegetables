@@ -18,17 +18,18 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   # Estimate the benefits
   
-  ##if farmers grow rice (assuming they grow rice 3 times per year)
-  rice_income_precal <- (rice_yield * rice_price)*3 #Indonesian Rupiah (IDR)
+  ##if farmers grow rice (assuming they grow rice 2 times per year)
+  rice_income_precal <- (rice_yield * rice_price)*2 #Indonesian Rupiah (IDR)
   rice_income <- vv(rice_income_precal, n_year, var_CV=CV_value)
   
-  annual_rice_irrigation_costs <- rice_irrigation_costs * 3 #IDR/ha times 3 
+  annual_rice_irrigation_costs <- rice_irrigation_costs * 2 #IDR/ha times 2 
   cost_of_rice_water_use <- vv(annual_rice_irrigation_costs, n_year, var_CV=CV_value)
-
+  
   ###rice nutrition to health value (IDR/ha)
-  rice_nutrition_to_health_value <- vv(rice_nutrition_to_health_value, n_year, var_CV=CV_value)
+  rice_nutrition_to_health_value <- vv(rice_nutrition_to_health_value, n_year, var_CV=CV_value) #estimated yearly value for accessing nutrition from rice
   
   rice_total_benefit <- rice_income + cost_of_rice_water_use + rice_nutrition_to_health_value
+  
   
   ##if farmers grow vegetables 
   ##(assuming they grow 3 different vegetables per year)
@@ -72,8 +73,8 @@ transition_rice_to_vegetables <- function(x, varnames){
 
   
   # Estimate the cost
-  ##if farmers grow rice (assuming they grow rice 3 times per year)
-  rice_costs_precal <- (rice_farming_input_costs + rice_labor_costs + rice_machinery_costs)*3 +
+  ##if farmers grow rice (assuming they grow rice 2 times per year)
+  rice_costs_precal <- (rice_farming_input_costs + rice_labor_costs + rice_machinery_costs)*2 +
     warehouse_establishment_costs + warehouse_maintenance_costs
   rice_total_costs <- vv(rice_costs_precal, n_year,var_CV=CV_value)
   
