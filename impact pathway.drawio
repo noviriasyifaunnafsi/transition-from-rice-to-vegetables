@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-02-23T14:46:45.514Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0" etag="JpuJmj8vp_NNjPgDzVLw" version="23.1.6" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2024-02-23T14:49:07.083Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0" etag="Ja_6BFk_KNm-aq-gMSo9" version="23.1.6" type="github" pages="3">
   <diagram id="de_amEsHy38tS3pp2vvq" name="Page-4">
     <mxGraphModel dx="1629" dy="1020" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -581,7 +581,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Copy of Page-4" id="zNqQQqi2MiiweWQfvLER">
-    <mxGraphModel dx="1466" dy="918" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1629" dy="1020" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-0" />
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-1" parent="TOT6hvzVM-FDiEV-l5mB-0" />
@@ -735,14 +735,8 @@
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-36" value="total costs" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF8000;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
           <mxGeometry x="1387.6850724637682" y="250.10036613272308" width="114.08695652173914" height="63.59267734553775" as="geometry" />
         </mxCell>
-        <mxCell id="TOT6hvzVM-FDiEV-l5mB-37" value="economic outcomes" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
-          <mxGeometry x="1609.9972463768117" y="315.99647597254005" width="114.08695652173914" height="63.59267734553775" as="geometry" />
-        </mxCell>
-        <mxCell id="TOT6hvzVM-FDiEV-l5mB-38" value="social outcomes" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
-          <mxGeometry x="1609.9972463768117" y="388.67382151029744" width="114.08695652173914" height="63.59267734553775" as="geometry" />
-        </mxCell>
-        <mxCell id="TOT6hvzVM-FDiEV-l5mB-39" value="ecological outcomes" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
-          <mxGeometry x="1609.9972463768117" y="461.3511670480549" width="114.08695652173914" height="63.59267734553775" as="geometry" />
+        <mxCell id="TOT6hvzVM-FDiEV-l5mB-37" value="Outcomes" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
+          <mxGeometry x="1579.9972463768117" y="392.99647597254005" width="114.08695652173914" height="63.59267734553775" as="geometry" />
         </mxCell>
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-40" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#0000FF;" edge="1" parent="TOT6hvzVM-FDiEV-l5mB-1" source="TOT6hvzVM-FDiEV-l5mB-34" target="TOT6hvzVM-FDiEV-l5mB-35">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -768,34 +762,10 @@
             <mxPoint x="1758.2028985507247" y="505.2711670480549" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="TOT6hvzVM-FDiEV-l5mB-44" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="TOT6hvzVM-FDiEV-l5mB-1" source="TOT6hvzVM-FDiEV-l5mB-35" target="TOT6hvzVM-FDiEV-l5mB-38">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1606.0869565217392" y="459.8478260869565" as="sourcePoint" />
-            <mxPoint x="1729.68115942029" y="438.04462242562926" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="TOT6hvzVM-FDiEV-l5mB-45" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="TOT6hvzVM-FDiEV-l5mB-1" source="TOT6hvzVM-FDiEV-l5mB-35" target="TOT6hvzVM-FDiEV-l5mB-39">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1634.608695652174" y="478.01716247139586" as="sourcePoint" />
-            <mxPoint x="1758.2028985507247" y="456.2139588100686" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-46" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="TOT6hvzVM-FDiEV-l5mB-1" source="TOT6hvzVM-FDiEV-l5mB-36" target="TOT6hvzVM-FDiEV-l5mB-37">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1644.1159420289855" y="487.10183066361554" as="sourcePoint" />
             <mxPoint x="1739.1884057971015" y="405.3398169336384" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="TOT6hvzVM-FDiEV-l5mB-47" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="TOT6hvzVM-FDiEV-l5mB-1" source="TOT6hvzVM-FDiEV-l5mB-36" target="TOT6hvzVM-FDiEV-l5mB-38">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1606.0869565217392" y="364.4588100686499" as="sourcePoint" />
-            <mxPoint x="1748.695652173913" y="414.4244851258581" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="TOT6hvzVM-FDiEV-l5mB-48" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="TOT6hvzVM-FDiEV-l5mB-1" source="TOT6hvzVM-FDiEV-l5mB-36" target="TOT6hvzVM-FDiEV-l5mB-39">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1615.5942028985507" y="373.54347826086956" as="sourcePoint" />
-            <mxPoint x="1758.2028985507247" y="423.5091533180778" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-49" value="production costs (input, labor, equipment, machinery)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FF8000;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
@@ -1217,6 +1187,15 @@
         </mxCell>
         <mxCell id="pT3VkXtJ7PZh3djoIVpF-25" value="Estimated costs" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=7;" vertex="1" parent="pT3VkXtJ7PZh3djoIVpF-26">
           <mxGeometry x="198.1099999999999" y="27" width="70" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="pT3VkXtJ7PZh3djoIVpF-29" value="economic outcomes" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
+          <mxGeometry x="1879.9972463768117" y="313.69647597254004" width="114.08695652173914" height="63.59267734553775" as="geometry" />
+        </mxCell>
+        <mxCell id="pT3VkXtJ7PZh3djoIVpF-30" value="social outcomes" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
+          <mxGeometry x="1879.9972463768117" y="386.37382151029743" width="114.08695652173914" height="63.59267734553775" as="geometry" />
+        </mxCell>
+        <mxCell id="pT3VkXtJ7PZh3djoIVpF-31" value="ecological outcomes" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
+          <mxGeometry x="1879.9972463768117" y="459.0511670480549" width="114.08695652173914" height="63.59267734553775" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
