@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-02-23T15:40:10.440Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0" etag="Tdq8AKeMKiOPgQ8ML9kh" version="23.1.6" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2024-02-23T15:41:28.755Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0" etag="XMeAJAkm0gzlMs5o56kg" version="23.1.6" type="github" pages="3">
   <diagram id="de_amEsHy38tS3pp2vvq" name="Page-4">
     <mxGraphModel dx="1629" dy="1020" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -580,13 +580,13 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram name="Copy of Page-4" id="zNqQQqi2MiiweWQfvLER">
-    <mxGraphModel dx="772" dy="483" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+  <diagram name="causal model" id="zNqQQqi2MiiweWQfvLER">
+    <mxGraphModel dx="1629" dy="1020" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-0" />
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-1" parent="TOT6hvzVM-FDiEV-l5mB-0" />
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-2" value="&lt;h1&gt;Causal model of the transition from rice to vegetables&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
-          <mxGeometry x="460" y="40" width="1120" height="50" as="geometry" />
+          <mxGeometry x="366.35" y="40" width="1120" height="50" as="geometry" />
         </mxCell>
         <mxCell id="TOT6hvzVM-FDiEV-l5mB-3" value="government/&lt;br&gt;politician" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CCFF99;" vertex="1" parent="TOT6hvzVM-FDiEV-l5mB-1">
           <mxGeometry x="313.1014492753623" y="100" width="95.07246376811594" height="63.59267734553775" as="geometry" />
@@ -1200,8 +1200,8 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram name="Copy of Copy of Page-4" id="7gIj8rCU6qqwHBkcmRSf">
-    <mxGraphModel dx="1047" dy="656" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+  <diagram name="conceptual model" id="7gIj8rCU6qqwHBkcmRSf">
+    <mxGraphModel dx="1466" dy="918" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="scMmxXvHC7w_EqXfaY6t-0" />
         <mxCell id="scMmxXvHC7w_EqXfaY6t-1" parent="scMmxXvHC7w_EqXfaY6t-0" />
