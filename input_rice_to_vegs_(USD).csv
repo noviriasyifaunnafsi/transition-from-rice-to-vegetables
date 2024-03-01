@@ -1,0 +1,63 @@
+Description;label;variable;distribution;lower;median;upper
+;Number of years;n_year;const;15;;15
+;Discount rate;discount_rate;posnorm;5;;10
+;Coefficient of variation for switching rice to vegetables (%);CV_value;tnorm_0_1;0.1;;0.4
+;Inflation rate;inflation_rate;posnorm;5;;10
+;Rice yield (kg/ha);rice_yield;posnorm;3000;;6000
+;Potato yield (kg/ha);potato_yield;posnorm;10000;;20000
+;Shallot yield (kg/ha);shallot_yield;posnorm;6000;;12000
+;Cabbage yield (kg/ha);cabbage_yield;posnorm;17000;;34000
+;Chili yield (kg/ha);chili_yield;posnorm;5500;;11000
+;Tomato yield;tomato_yield;posnorm;10000;;20000
+;Rice price (IDR/kg);rice_price;posnorm;0.2;;0.4
+;Potato price (IDR/kg);potato_price;posnorm;0.3;;1
+;Shallot price (IDR/kg);shallot_price;posnorm;0.6;;3
+;Cabbage price (IDR/kg);cabbage_price;posnorm;0.06;;0.5
+;Chili price (IDR/kg);chili_price;posnorm;0.3;;3
+;Tomato price (IDR/kg);tomato_price;posnorm;0.2;;0.5
+;Rice water use (m3/ha);rice_water_use;posnorm;3000;;6000
+;Vegetables water use (m3/ha);vegetables_water_use;posnorm;1000;;2500
+;Value of water production from growing rice (IDR/m3);rice_water_value;posnorm;0.02;;0.1
+;Value of water production from growing vegetables (IDR/m3);vegetables_water_value;posnorm;0.08;;0.15
+;Estimated yearly value for accessing nutrition from growing rice (IDR/ha);rice_nutrition_to_health_value;posnorm;32;;64
+;Estimated yearly value for accessing nutrition from growing vegetables (IDR/ha);vegetables_nutrition_to_health_value;posnorm;64;;128
+;Rice farming input costs (seed, fertilizer, pesticides, etc.) (IDR/ha);rice_farming_input_costs;posnorm;640;;960
+;Rice labor costs (IDR/ha);rice_labor_costs;posnorm;256;;449
+;Rice machinery costs (IDR/ha);rice_machinery_costs;posnorm;96;;160
+;Rice irrigation cost (IDR/ha);rice_irrigation_costs;posnorm;64;;128
+;Potato farming input costs (seed, fertilizer, pesticides) (IDR/ha);potato_farming_input_costs;posnorm;3846;;5128
+;Potato labor costs (IDR/ha);potato_labor_costs;posnorm;641;;962
+;Potato machinery costs (IDR/ha);potato_machinery_costs;posnorm;96;;160
+;Shallot farming input costs (seed, fertilizer, pesticides) (IDR/ha);shallot_farming_input_costs;posnorm;2244;;3526
+;Shallot labor costs (IDR/ha);shallot_labor_costs;posnorm;256;;513
+;Shallot machinery costs (IDR/ha);shallot_machinery_costs;posnorm;96;;160
+;Cabbage farming input costs (seed, fertilizer, pesticides) (IDR/ha);cabbage_farming_input_costs;posnorm;1154;;1603
+;Cabbage labor costs (IDR/ha);cabbage_labor_costs;posnorm;256;;513
+;Cabbage machinery costs (IDR/ha);cabbage_machinery_costs;posnorm;96;;160
+;Tomato farming input costs (seed, fertilizer, pesticides, mulch, etc) (IDR/ha);tomato_farming_input_costs;posnorm;1923;;3205
+;Tomato labor costs (IDR/ha);tomato_labor_costs;posnorm;641;;962
+;Tomato machinery costs (IDR/ha);tomato_machinery_costs;posnorm;96;;160
+;Chili farming input costs (seed, fertilizer, pesticides, mulch, etc) (IDR/ha);chili_farming_input_costs;posnorm;2564;;3525
+;Chili labor costs (IDR/ha);chili_labor_costs;posnorm;641;;962
+;Chili machinery costs (IDR/ha);chili_machinery_costs;posnorm;96;;160
+;Vegetables farming equimpent (sprayer, sprinkler, hoe, etc.) (IDR/ha);vegetables_farming_equipment_costs;posnorm;6.4;;64
+;Irrigation costs for watering vegetables (IDR/ha);vegetables_irrigation_costs;posnorm;64;;192
+;Warehouse establishment costs for storing the harvests (IDR/ha);warehouse_establishment_costs;posnorm;64;;256
+;Warehouse maintenance costs for storing the harvests (IDR/ha);warehouse_maintenance_costs;posnorm;6.4;;26
+;Trainer cost for farm management skills training (IDR/year);trainer_management_costs;posnorm;128;;513
+;Training cost for farm management skills training (IDR/year);training_management_costs;posnorm;320;;962
+;Monitoring and evaluation cost for farm management skills for farmers (IDR/year);monitoring_and_evaluation_costs;posnorm;64;;513
+;Risk of crop failure in rice;risk_crop_failure_rice;tnorm_0_1;0.15;;0.3
+;Risk of crop failure in vegetables;risk_crop_failure_vegetables;tnorm_0_1;0.2;;0.4
+;Risk of crop failure in crop rotation;risk_crop_failure_crop_rotation;tnorm_0_1;0.15;;0.4
+;Risk of water shortage in rice;risk_water_shortage_rice;tnorm_0_1;0.1;;0.3
+;Risk of water shortage in vegetables;risk_water_shortage_vegetables;tnorm_0_1;0.15;;0.4
+;Risk of water shortage in crop rotation;risk_water_shortage_crop_rotation;tnorm_0_1;0.1;;0.4
+;Risk of market price fluctuation in rice;risk_price_fluctuation_rice;tnorm_0_1;0.1;;0.3
+;Risk of market price fluctuation in vegetables;risk_price_fluctuation_vegetables;tnorm_0_1;0.2;;0.4
+;Risk of seasonal variability in rice;risk_seasonal_variability_rice;tnorm_0_1;0.2;;0.5
+;Risk of seasonal variability in vegetables;risk_seasonal_variability_vegetables;tnorm_0_1;0.25;;0.6
+;Risk of farming input shortage in rice;risk_farming_input_shortage_rice;tnorm_0_1;0.15;;0.4
+;Risk of farming input shortage in vegetables;risk_farming_input_shortage_vegetables;tnorm_0_1;0.2;;0.45
+;Risk of labor shortage in rice;risk_labor_shortage_rice;tnorm_0_1;0.2;;0.5
+;Risk of labor shortage in vegetables;risk_labor_shortage_vegetables;tnorm_0_1;0.25;;0.55
