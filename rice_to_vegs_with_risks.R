@@ -72,14 +72,14 @@ transition_rice_to_vegetables <- function(x, varnames){
   }
   
   # calculating the establishment costs that will be paid only for the first year of implementation
-  maintenance_vegetables_cost <- rep(0, n_year)
+  establishment_vegetables_cost <- rep(0, n_year)
   
   if (implementation_transition_to_vegetables){
-    maintenance_vegetables_cost <-
-      maintenance_vegetables_cost + vv(training_costs, 
+    establishment_vegetables_cost <-
+      establishment_vegetables_cost + vv(training_costs, 
                                        var_CV=CV_value, n_year)
     
-    intervention_vegetable_cost <- maintenance_vegetables_cost
+    intervention_vegetable_cost <- establishment_vegetables_cost
     
     #intervention cost for first year 
     intervention_vegetable_cost[1] <- cost_implementation_vegetables 
@@ -128,14 +128,14 @@ transition_rice_to_vegetables <- function(x, varnames){
   }
   
   # calculating the establishment costs, initializing the array with 0 costs for the first year:
-  maintenance_crop_rotation_cost <- rep(0, n_year)
+  establishment_crop_rotation_cost <- rep(0, n_year)
   
   if (implementation_transition_to_crop_rotation){
-    maintenance_crop_rotation_cost <-
-      maintenance_crop_rotation_cost + vv(training_costs, 
+    establishment_crop_rotation_cost <-
+      establishment_crop_rotation_cost + vv(training_costs, 
                                        var_CV=CV_value, n_year)
     
-    intervention_crop_rotation_cost <- maintenance_crop_rotation_cost
+    intervention_crop_rotation_cost <- establishment_crop_rotation_cost
     
     #intervention cost for first year 
     intervention_crop_rotation_cost[1] <- cost_implementation_crop_rotation 

@@ -46,15 +46,24 @@ Description;label;variable;distribution;lower;median;upper
 ;Warehouse maintenance costs for storing the harvests (IDR/ha);warehouse_maintenance_costs;posnorm;6.4;;26
 ;Trainer cost for farm management skills training (IDR/year);trainer_management_costs;posnorm;128;;513
 ;Training cost for farm management skills training (IDR/year);training_management_costs;posnorm;320;;962
-;Monitoring and evaluation cost for farm management skills for farmers (IDR/year);monitoring_and_evaluation_costs;posnorm;64;;513
+;Monitoring and evaluation cost for contract farming (IDR/year/ha);monitoring_and_evaluation_costs;posnorm;6400;;12000
+;Implementation vegetables;implementation_vegetables;tnorm_0_1;0.1;;0.5
+;Implementation transition to vegetables;implementation_transition_to_vegetables;tnorm_0_1;0.2;;0.7
+;Implementation crop rotation;implementation_crop_rotation;tnorm_0_1;0.1;;0.5
+;Implementation transition to crop rotation;implementation_transition_to_crop_rotation;tnorm_0_1;0.1;;0.5
 ;Risk of crop failure in rice;risk_crop_failure_rice;tnorm_0_1;0.15;;0.3
 ;Risk of crop failure in vegetables;risk_crop_failure_vegetables;tnorm_0_1;0.2;;0.4
 ;Risk of crop failure in crop rotation;risk_crop_failure_crop_rotation;tnorm_0_1;0.15;;0.4
+;Risk of crop failure in rice (with contract farming);risk_crop_failure_rice_cf;tnorm_0_1;0.1;;0.2
+;Risk of crop failure in vegetables (with contract farming);risk_crop_failure_vegetables_cf;tnorm_0_1;0.15;;0.3
+;Risk of crop failure in crop rotation (with contract farming);risk_crop_failure_crop_rotation_cf;tnorm_0_1;0.1;;0.3
 ;Risk of water shortage in rice;risk_water_shortage_rice;tnorm_0_1;0.1;;0.3
 ;Risk of water shortage in vegetables;risk_water_shortage_vegetables;tnorm_0_1;0.15;;0.4
 ;Risk of water shortage in crop rotation;risk_water_shortage_crop_rotation;tnorm_0_1;0.1;;0.4
 ;Risk of market price fluctuation in rice;risk_price_fluctuation_rice;tnorm_0_1;0.1;;0.3
 ;Risk of market price fluctuation in vegetables;risk_price_fluctuation_vegetables;tnorm_0_1;0.2;;0.4
+;Risk of market price fluctuation in rice (with contract farming);risk_price_fluctuation_rice_cf;tnorm_0_1;0.05;;0.1
+;Risk of market price fluctuation in vegetables (with contract farming);risk_price_fluctuation_vegetables_cf;tnorm_0_1;0.1;;0.2
 ;Risk of seasonal variability in rice;risk_seasonal_variability_rice;tnorm_0_1;0.2;;0.5
 ;Risk of seasonal variability in vegetables;risk_seasonal_variability_vegetables;tnorm_0_1;0.25;;0.6
 ;Risk of farming input shortage in rice;risk_farming_input_shortage_rice;tnorm_0_1;0.15;;0.4
