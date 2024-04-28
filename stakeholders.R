@@ -5,7 +5,7 @@ library(ggrepel)
 install.packages("ggthemes")
 library(ggthemes)
 
-stakeholder <- read.csv("stakeholders_in_transition.csv")
+stakeholder <- read.csv("stakeholders.csv")
 
 ggplot(data = stakeholder, aes(x = Experience, 
                                y = Availability,
