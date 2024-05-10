@@ -1,0 +1,51 @@
+Description,label,variable,distribution,lower,median,upper
+,Number of years,n_year,const,15,,15
+,Discount rate,discount_rate,posnorm,5,,10
+,Coefficient of variation for switching rice to vegetables (%),CV_value,tnorm_0_1,0.1,,0.4
+,Inflation rate,inflation_rate,posnorm,5,,10
+,Rice yield (kg/ha),rice_yield,posnorm,4000,,5000
+,Chinese mustard green yield (kg/ha),chinese_mustard_green_yield,posnorm,500,,10000
+,Green bean yield (kg/ha),green_bean_yield,posnorm,400,,15000
+,Cabbage yield (kg/ha),cabbage_yield,posnorm,15000,,35000
+,Chili yield (kg/ha),chili_yield,posnorm,5000,,20000
+,Tomato yield (kg/ha),tomato_yield,posnorm,500,,20000
+,Spring onion yield (kg/ha),spring_onion_yield,posnorm,500,,12000
+,Rice price (IDR/kg),rice_price,posnorm,3000,,6000
+,Chinese mustard green price (IDR/kg),chinese_mustard_green_price,posnorm,5000,,15000
+,Green bean price (IDR/kg),green_bean_price,posnorm,4000,,8000
+,Cabbage price (IDR/kg),cabbage_price,posnorm,1500,,7000
+,Chili price (IDR/kg),chili_price,posnorm,2500,,40000
+,Tomato price (IDR/kg),tomato_price,posnorm,4000,,20000
+,Spring onion price (IDR/kg),spring_onion_price,posnorm,2000,,20000
+,Rice water use (m3/ha),rice_water_use,posnorm,3000,,6000
+,Vegetables water use (m3/ha),vegetables_water_use,posnorm,1000,,2500
+,Value of water production from growing rice (IDR/m3),rice_water_value,posnorm,300,,1600
+,Value of water production from growing vegetables (IDR/m3),vegetables_water_value,posnorm,1200,,2300
+,Estimated yearly value for accessing nutrition from growing rice (IDR/ha),rice_nutrition_to_health_value,posnorm,500000,,1000000
+,Estimated yearly value for accessing nutrition from growing vegetables (IDR/ha),vegetables_nutrition_to_health_value,posnorm,1000000,,2000000
+,Rice farming input costs (IDR/ha),rice_farming_input_costs,posnorm,5000000,,7000000
+,Rice labor costs (IDR/ha),rice_labor_costs,posnorm,500000,,2000000
+,Rice machinery costs (IDR/ha),rice_machinery_costs,posnorm,2000000,,5000000
+,Vegetable farming input costs (IDR/ha),vegetables_farming_input_costs,posnorm,20000000,,90000000
+,Vegetable equipment costs (IDR/ha),vegetables_equipment_costs,posnorm,5000000,,20000000
+,Vegetable machinery costs (IDR/ha),vegetables_machinery_costs,posnorm,3000000,,6000000
+,Vegetable labor costs (IDR/ha),vegetables_labor_costs,posnorm,10000000,,30000000
+,Vegetable irrigation costs (IDR/ha),vegetables_irrigation_costs,posnorm,12000000,,57000000
+,Irrigation maintenance costs to be paid every season of rice to farmers' group or P3A (IDR/year),irrigation_maintenance_costs,posnorm,20000,,100000
+,Implementation vegetables,implementation_vegetables,tnorm_0_1,0.1,,0.5
+,Implementation transition to vegetables,implementation_transition_to_vegetables,tnorm_0_1,0.2,,0.7
+,Implementation rice and vegetables,implementation_rice_and_vegetables,tnorm_0_1,0.2,,0.8
+,Risk of fluctuating price in rice,risk_price_fluctuation_rice,tnorm_0_1,0.1,,0.3
+,Risk of fluctuating price in vegetables,risk_price_fluctuation_vegetables,tnorm_0_1,0.2,,0.6
+,Risk of financial (lack of capital to grow rice),risk_capital_rice,tnorm_0_1,0.05,,0.2
+,Risk of financial (lack of capital to keep growing vegetables),risk_capital_vegetables,tnorm_0_1,0.4,,0.8
+,Risk of financial (lack of capital to grow both rice and vegetables),risk_capital_rice_vegetables,tnorm_0_1,0.1,,0.7
+,Risk of crop failure due to climate and weather in rice,risk_failure_climate_weather_rice,tnorm_0_1,0.05,,0.15
+,Risk of crop failure due to climate and weather in vegetables,risk_failure_climate_weather_vegetables,tnorm_0_1,0.05,,0.2
+,Risk of crop failure due to pest and disease in rice,risk_failure_pest_disease_rice,tnorm_0_1,0.05,,0.3
+,Risk of crop failure due to pest and disease in vegetables,risk_failure_pest_disease_vegetables,tnorm_0_1,0.2,,0.4
+,Risk of water shortage in rice,risk_water_shortage_rice,tnorm_0_1,0.1,,0.6
+,Risk of water shortage in vegetables,risk_water_shortage_vegetables,tnorm_0_1,0.1,,0.4
+,Risk of water shortage both rice and vegetables,risk_water_shortage_rice_vegetables,tnorm_0_1,0.1,,0.6
+,Risk of labor shortage in rice,risk_labor_shortage_rice,tnorm_0_1,0.05,,0.1
+,Risk of labor shortage in vegetables,risk_labor_shortage_vegetables,tnorm_0_1,0.1,,0.4
