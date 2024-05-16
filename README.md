@@ -27,7 +27,7 @@ The following shows the result from each option.
 
 #### Decision option 2: Growing Vegetables
 
-![](Images/vegetables.png)
+![](Images/vegetables.PNG)
 
 #### Decision option 3: Growing both rice and vegetables
 
