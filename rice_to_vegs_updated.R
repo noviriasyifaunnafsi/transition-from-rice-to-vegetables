@@ -4,7 +4,7 @@ library(gtExtras)
 install.packages("svglite")
 library(svglite)
 
-input_estimates <- read.csv("input_rice_to_vegs_(USD).csv", sep = ",")
+input_estimates <- read.csv("input_rice_to_vegs_usd.csv", sep = ",")
 
 make_variables <- function(est,n=1)
 { x<-random(rho=est, n=n)
@@ -274,7 +274,7 @@ transition_rice_to_vegetables <- function(x, varnames){
 
 
 # Run the Monte Carlo simulation using the model function
-input_estimates <- read.csv("input_rice_to_vegs_(USD).csv", sep = ",")
+input_estimates <- read.csv("input_rice_to_vegs_usd.csv", sep = ",")
 
 TRV_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
                                   model_function = transition_rice_to_vegetables,
