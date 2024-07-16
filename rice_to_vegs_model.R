@@ -1142,10 +1142,12 @@ compound_figures_cashflow_1 <- (cashflow_rice | cashflow_vegetables) /
   (cashflow_rice_farming | cashflow_vegetables_farming) / 
   (cashflow_rice_compost | cashflow_vegetable_compost)
   
-  
 compound_figures_cashflow_2 <-  (cashflow_vegetable_processed | cashflow_vegetable_processed) /
   (cashflow_rice_ecotourism | cashflow_vegetable_ecotourism) /
   (cashflow_rice_health | cashflow_vegetable_health)
+
+compound_figures_cashflow_3 <- (cashflow_rice | cashflow_vegetables)
+
 
 
 # Projection to Latent Structures (PLS) analysis ####
@@ -1153,13 +1155,15 @@ compound_figures_cashflow_2 <-  (cashflow_vegetable_processed | cashflow_vegetab
 # Plot PLS rice
 pls_result_rice <- plsr.mcSimulation(object = TRV_mc_simulation,
                                      resultName = names(TRV_mc_simulation$y)[1], ncomp = 1)
-plot_pls_rice <- plot_pls(pls_result_rice, threshold = 0.5, base_size = 10)+
+plot_pls_rice <- plot_pls(pls_result_rice, threshold = 0.5, base_size = 10, 
+                          pos_color = "skyblue", neg_color = "firebrick3")+
   labs(title = "PLS Rice", size = 8)
 
 # Plot PLS vegetables
 pls_result_vegetables <- plsr.mcSimulation(object = TRV_mc_simulation,
                                            resultName = names(TRV_mc_simulation$y)[2], ncomp = 1)
-plot_pls_vegetables <- plot_pls(pls_result_vegetables, threshold = 0.5, base_size = 10)+
+plot_pls_vegetables <- plot_pls(pls_result_vegetables, threshold = 0.5, base_size = 10,
+                                pos_color = "seagreen2", neg_color = "firebrick3")+
   labs(title = "PLS Vegetables", size = 8)
 
 
@@ -1234,9 +1238,10 @@ compound_figures_PLS_2 <- (plot_pls_rice_compost | plot_pls_vegetables_compost) 
   (plot_pls_vegetables_processed | plot_pls_vegetables_processed)
   
 
-  compound_figures_PLS_3 <- (plot_pls_rice_ecotourism | plot_pls_vegetables_ecotourism) /
+compound_figures_PLS_3 <- (plot_pls_rice_ecotourism | plot_pls_vegetables_ecotourism) /
   (plot_pls_rice_health | plot_pls_vegetables_health)
 
+compound_figures_PLS_4 <- (plot_pls_rice | plot_pls_vegetables) 
 
 
 # VoI analysis ####
@@ -1249,37 +1254,32 @@ plot_evpi_vegetables <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetables")
 plot_evpi_rice_farming <- plot_evpi(evpi_TRV, decision_vars = "NPV_rice_farming")
 plot_evpi_vegetables_farming <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetables_farming")
 plot_evpi_rice_compost <- plot_evpi(evpi_TRV, decision_vars = "NPV_rice_compost")
-plot_evpi_vegetables_compost <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetable_compost")
+plot_evpi_vegetables_compost <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetables_compost")
 plot_evpi_rice_processed <- plot_evpi(evpi_TRV, decision_vars = "NPV_rice_processed")
-plot_evpi_vegetables_processed <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetable_processed")
+plot_evpi_vegetables_processed <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetables_processed")
 plot_evpi_rice_ecotourism <- plot_evpi(evpi_TRV, decision_vars = "NPV_rice_ecotourism")
-plot_evpi_vegetables_ecotourism <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetable_ecotourism")
-plot_evpi_rice_health <- plot_evpi(evpi_TRV, decision_vars = "NPV_rice_farming_health")
-plot_evpi_vegetables_health <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetable_health")
+plot_evpi_vegetables_ecotourism <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetables_ecotourism")
+plot_evpi_rice_health <- plot_evpi(evpi_TRV, decision_vars = "NPV_rice_health")
+plot_evpi_vegetables_health <- plot_evpi(evpi_TRV, decision_vars = "NPV_vegetables_health")
 
 # Compound EVPI figures
-compound_figures_evpi <- (plot_evpi_rice | plot_evpi_vegetables) / 
-  (plot_evpi_rice_farming | plot_evpi_vegetables_farming) /
-  (plot_evpi_rice_compost | plot_evpi_vegetables_compost) /
+compound_figures_evpi <- (plot_evpi_rice | plot_evpi_rice_farming) / 
   (plot_evpi_vegetables_processed | plot_evpi_vegetables_processed)/
-  (plot_evpi_rice_ecotourism | plot_evpi_vegetables_ecotourism) /
-  (plot_evpi_rice_health | plot_evpi_vegetables_health)
+  (plot_evpi_rice_ecotourism | plot_evpi_vegetables_ecotourism)
 
 
-
-
-# compound figure ####
+# Compound figure ####
 compound_figure_rice <- compound_figure(mcSimulation_object = TRV_mc_simulation, 
                                         input_table = input_estimates, plsrResults = pls_result_rice, 
                                         EVPIresults = evpi_TRV, decision_var_name = "NPV_rice", 
                                         cashflow_var_name = "cashflow_rice", 
-                                        base_size = 7)
+                                        base_size = 8)
 
 compound_figure_vegetables <- compound_figure(mcSimulation_object = TRV_mc_simulation,
                                               input_table = input_estimates, plsrResults = pls_result_vegetables, 
                                               EVPIresults = evpi_TRV, decision_var_name = "NPV_vegetables", 
                                               cashflow_var_name = "cashflow_vegetables",
-                                              base_size = 7)
+                                              base_size = 8)
 
 compound_figure_rice_farming <- compound_figure(mcSimulation_object = TRV_mc_simulation, 
                                         input_table = input_estimates, plsrResults = pls_result_rice, 
@@ -1340,3 +1340,7 @@ compound_figure_vegetables_health <- compound_figure(mcSimulation_object = TRV_m
                                               EVPIresults = evpi_TRV, decision_var_name = "NPV_vegetable_health", 
                                               cashflow_var_name = "cashflow_vegetable_health", 
                                               base_size = 7)
+
+compound_figure_cashflow_pls <- (cashflow_rice | cashflow_vegetables) /
+  (plot_pls_rice | plot_pls_vegetables)
+  
