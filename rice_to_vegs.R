@@ -948,17 +948,7 @@ transition_rice_to_vegetables <- function(x, varnames){
               NPV_rice_health = NPV_rice_health,
               NPV_vegetables_health = NPV_vegetables_health,
               cashflow_rice = rice_result,
-              cashflow_vegetables = vegetable_result,
-              cashflow_rice_farming = rice_farming_income,
-              cashflow_vegetables_farming = vegetable_farming_income,
-              cashflow_rice_compost = rice_compost_income,
-              cashflow_vegetable_compost = vegetable_compost_income,
-              cashflow_rice_processed = rice_processed_income,
-              cashflow_vegetable_processed = vegetable_processed_income,
-              cashflow_rice_ecotourism = rice_ecotourism_income,
-              cashflow_vegetable_ecotourism = vegetable_ecotourism_income,
-              cashflow_rice_health = rice_health_benefit,
-              cashflow_vegetable_health = vegetable_health_benefit))
+              cashflow_vegetables = vegetable_result))
 }
 
 
@@ -1098,15 +1088,15 @@ compound_figures_evpi <- (plot_evpi_rice | plot_evpi_vegetables)
 
 
 
-# compound figure ####
+# Compound figure ####
 compound_figure_rice <- compound_figure(mcSimulation_object = TRV_mc_simulation, 
                                         input_table = input_estimates, plsrResults = pls_result_rice, 
                                         EVPIresults = evpi_TRV, decision_var_name = "NPV_rice", 
                                         cashflow_var_name = "cashflow_rice", 
-                                        base_size = 7)
+                                        base_size = 8)
 
 compound_figure_vegetables <- compound_figure(mcSimulation_object = TRV_mc_simulation, 
                                               input_table = input_estimates, plsrResults = pls_result_vegetables, 
                                               EVPIresults = evpi_TRV, decision_var_name = "NPV_vegetables", 
                                               cashflow_var_name = "cashflow_vegetables", 
-                                              base_size = 7)
+                                              base_size = 8)
