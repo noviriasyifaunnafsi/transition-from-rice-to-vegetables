@@ -13,14 +13,18 @@ output:
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 ```
 
+[github repository](https://github.com/noviriasyifaunnafsi/transition-from-rice-to-vegetables)
+
 # Methodology
 
 ## Study Site
 
 This study was conducted from April to May 2024 in West Sinjai district of Sinjai Regency, South Sulawesi Province, Indonesia, located between 5°2'56" - 5°21'16" South Latitude and 119°56'30" - 120°25'33" East Longitude. Sinjai Regency is characterized by diverse geographical features, including mountainous areas that are most located in Western part of Sinjai. This area is known to have significant potential for agricultural production in South Sulawesi, including rice and vegetable crops. 
 
-![Map of West Sinjai](Images/sinjai_map.png)
+![Map of West Sinjai](Images/sinjai_map.png){width=50%}
 
+
+![](Images/sinjai_map.png){width=80%}
 
 ## Data Source
 
@@ -119,7 +123,7 @@ Furthermore, capital for vegetable cultivation has also become an issue for farm
 
 wholesalers, retailers, or selling it themselves. Farmers often have the option to sell their vegetables directly in the fields to retailers who then resell the products in local markets or nearby regions. Many farmers find it convenient to sell their vegetables directly to retailers who visit their fields to purchase produces. These retailers often transport the vegetables to local markets or nearby areas for resale to consumers. This direct transaction allows farmers to quickly sell their products without the need for intermediaries. There are also wholesalers who purchase vegetables from local farmers and resell them to other retailers in other areas within the same province (Sulawesi) and different provinces (Kalimantan and Nusa Tenggara). The wholesalers and retailers are often women with husbands working as farmers. The prices paid to farmers are typically determined by wholesalers and retailers based on the prevailing market rates. However, in situations where the supply is limited, farmers may have more control over pricing. 
 
-![Vegetable Supply Chain in West Sinjai](Images/vegetables_supply_chain.png)
+![Vegetable Supply Chain in West Sinjai](Images/vegetables_supply_chain.png){width=50%}
 
 
 
