@@ -1061,13 +1061,15 @@ compound_figures_cashflow <- (cashflow_rice | cashflow_vegetables)
 # Plot PLS rice
 pls_result_rice <- plsr.mcSimulation(object = TRV_mc_simulation,
                                      resultName = names(TRV_mc_simulation$y)[1], ncomp = 1)
-plot_pls_rice <- plot_pls(pls_result_rice, threshold = 0.5, base_size = 10)+
+plot_pls_rice <- plot_pls(pls_result_rice, threshold = 0.5, base_size = 10,
+                          pos_color = "skyblue", neg_color = "firebrick3")+
   labs(title = "PLS Rice", size = 8)
 
 # Plot PLS vegetables
 pls_result_vegetables <- plsr.mcSimulation(object = TRV_mc_simulation,
                                            resultName = names(TRV_mc_simulation$y)[2], ncomp = 1)
-plot_pls_vegetables <- plot_pls(pls_result_vegetables, threshold = 0.5, base_size = 10)+
+plot_pls_vegetables <- plot_pls(pls_result_vegetables, threshold = 0.5, base_size = 10,
+                                pos_color = "seagreen2", neg_color = "firebrick3")+
   labs(title = "PLS Vegetables", size = 8)
 
 # Compund PLS figures
