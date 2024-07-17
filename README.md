@@ -36,12 +36,16 @@ The following shows the distribution plot of the decision options.
 
 ###### _Note: this is still need to be updated_
 
+#### NPV distribution plot of rice and vegetable systems
 ![](Images/plots/NPV_rice_vegetables.png)
 
+#### NPV distribution plot of all benefits
 ![](Images/plots/NPV_distribution_plot.png)
 
+#### Cashflow and PLS plots of rice and vegetable systems
 ![](Images/plots/cashflow_pls_plots.png)
 
+#### EVPI plots
 ![](Images/plots/EVPI_plot.png)
 
 ###### _To be updated..._
