@@ -29,7 +29,7 @@ A total of 48 respondents have been interviewed, starting with farmers engaged i
 ### Conceptual model
 The following is the updated conceptual model after gathering information from relevant stakeholders.
 
-![](images/240715_conceptual_model.drawio.png)
+![](Images/240715_conceptual_model.drawio.png)
 
 
 # 4. Results and Discussion
