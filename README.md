@@ -35,7 +35,7 @@ The following is the updated conceptual model after gathering information from r
 # 4. Results and Discussion
 The following shows the distribution plot of the decision options.
 
-_Still need to be updated~~~_
+_To be updated..._
 
 
 # Conclusion
