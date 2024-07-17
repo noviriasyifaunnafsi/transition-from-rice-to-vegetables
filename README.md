@@ -14,19 +14,19 @@ This study aims to achieve the following objectives:
 3.	Provide recommendations for farmers and decision-makers in deciding better agricultural practices between rice and vegetable crops production.
 
 ### 3. Material and methods
-##### Overview of methodological approach
+#### a. Overview of methodological approach
 This study employs a comprehensive methodology to explore the transition from rice to vegetable cultivation in West Sinjai, Sinjai Regency, South Sulawesi Province, Indonesia. The approach integrates decision analysis, qualitative fieldwork, and stakeholder assessment. The process is structured into several key phases: model development, identification of input variables, model parameterization, data collection through qualitative interviews, and iterative model refinement. This integrated approach ensures that the analysis is robust and grounded in empirical observations.
 
 ![](Images/Methods.drawio.png)
 
-##### Data collection
+#### b. Data collection
 This study was conducted from April to May 2024 in West Sinjai district of Sinjai Regency, South Sulawesi Province, Indonesia, located between 5°2’56” - 5°21’16” South Latitude and 119°56’30” - 120°25’33” East Longitude. Sinjai Regency is characterized by diverse geographical features, including mountainous areas that are mostly located in the Western part of Sinjai. This area is known to have significant potential for agricultural production in South Sulawesi, including rice and vegetable crops.
 
 ![](Images/sinjai_map.PNG)
 
 A total of 48 respondents have been interviewed, starting with farmers engaged in transitioning from rice to vegetable cultivation and expanding to other stakeholders through referrals, including wholesalers, retailers, agricultural extension workers, researcher, and government representatives. The respondents were selected using a snowball sampling approach as it is effective and efficient in accessing key informants and building trust within the community (Cohen & Arieli, 2011) ###, The initial respondent is identified with the criteria that meet with the topic of study (Bhattacherjee etal., n.d.). Initially, targeting farmers engaged in crop-shifting practices. Additional respondents were identified through referrals from initial interviewees and recommendations from agricultural extension workers. The interview was conducted with a semi-structured technique. Preset questions related to the topic have been prepared, with free additional questions following up to the preset question. Key points such as motivations, benefits, costs, challenges, and proposed solutions were gathered during the interviews.
 
-##### Conceptual model
+#### c. Conceptual model
 The following is the updated conceptual model after gathering information from relevant stakeholders.
 
 ![](Images/240715_conceptual_model.drawio.png)
