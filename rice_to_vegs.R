@@ -147,6 +147,28 @@ transition_rice_to_vegetables <- function(x, varnames){
   # 50 mio (USD 625 to 3125)
   
   # event-1, farmers get loan from bank, so they need to pay annual interest
+  # this can be add up to their first year composting cost
+  
+  rice_compost_first_year_get_bank_loan <- if(first_year_composting_cost == range_loan_for_farmers) {
+    rice_compost_first_year_get_bank_loan = TRUE
+  } else {
+    rice_compost_first_year_get_bank_loan = FALSE
+  }
+  
+  rice_compost_cost_first_year_if_get_bank_loan <- if(rice_compost_first_year_get_bank_loan == TRUE) {
+    first_year_composting_cost + (first_year_composting_cost * annual_bank_interest)
+  } else {
+    first_year_composting_cost = first_year_composting_cost
+  }
+  
+  rice_compost_first_year_cost_with_bank_loan <- chance_event(chance_production_risk,
+                                                   value_if = rice_compost_cost_first_year_if_get_bank_loan,
+                                                   value_if_not = first_year_composting_cost,
+                                                   n = n_year,
+                                                   CV_if = 10,
+                                                   CV_if_not = CV_value)
+  
+  # event-2, farmers get loan from bank, so they need to pay annual interest
   # this can be add up to their composting cost
   
   rice_compost_get_bank_loan <- if(rice_compost_cost_precal == range_loan_for_farmers) {
@@ -171,7 +193,7 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   
   # annual rice compost cost after considering production and financial risk
-  rice_compost_cost_if_get_bank_loan[1] <- rice_compost_cost_if_get_bank_loan[1] + first_year_composting_cost
+  rice_compost_cost_if_get_bank_loan[1] <- rice_compost_cost_if_get_bank_loan[1] + rice_compost_first_year_cost_with_bank_loan
   
   final_rice_compost_cost <- vv(rice_compost_cost_if_get_bank_loan, n_year, var_CV=CV_value,
                                 relative_trend = inflation_rate)
@@ -499,6 +521,29 @@ transition_rice_to_vegetables <- function(x, varnames){
   # 50 mio (USD 625 to 3125)
   
   # event-1, farmers get loan from bank, so they need to pay annual interest
+  # this can be add up to their first year composting cost
+  
+  vegetable_compost_first_year_get_bank_loan <- if(first_year_composting_cost == range_loan_for_farmers) {
+    vegetable_compost_first_year_get_bank_loan = TRUE
+  } else {
+    rice_compost_first_year_get_bank_loan = FALSE
+  }
+  
+  vegetable_compost_cost_first_year_if_get_bank_loan <- if(vegetable_compost_first_year_get_bank_loan == TRUE) {
+    first_year_composting_cost + (first_year_composting_cost * annual_bank_interest)
+  } else {
+    first_year_composting_cost = first_year_composting_cost
+  }
+  
+  vegetable_compost_first_year_cost_with_bank_loan <- chance_event(chance_production_risk,
+                                                              value_if = vegetable_compost_cost_first_year_if_get_bank_loan,
+                                                              value_if_not = first_year_composting_cost,
+                                                              n = n_year,
+                                                              CV_if = 10,
+                                                              CV_if_not = CV_value)
+  
+  
+  # event-2, farmers get loan from bank, so they need to pay annual interest
   # this can be add up to their composting cost
   
   vegetable_compost_get_bank_loan <- if(vegetable_compost_cost_precal == range_loan_for_farmers) {
@@ -523,7 +568,7 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   
   # annual vegetable compost cost after considering production and financial risk
-  vegetable_compost_cost_if_get_bank_loan[1] <- vegetable_compost_cost_if_get_bank_loan[1] + first_year_composting_cost
+  vegetable_compost_cost_if_get_bank_loan[1] <- vegetable_compost_cost_if_get_bank_loan[1] + vegetable_compost_first_year_cost_with_bank_loan
   
   final_vegetable_compost_cost <- vv(vegetable_compost_cost_if_get_bank_loan, n_year, var_CV=CV_value,
                                      relative_trend = inflation_rate)
