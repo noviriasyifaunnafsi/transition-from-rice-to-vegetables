@@ -162,40 +162,42 @@ transition_rice_to_vegetables <- function(x, varnames){
   }
   
   rice_compost_first_year_cost_with_bank_loan <- chance_event(chance_production_risk,
-                                                   value_if = rice_compost_cost_first_year_if_get_bank_loan,
-                                                   value_if_not = first_year_composting_cost,
-                                                   n = n_year,
-                                                   CV_if = 10,
-                                                   CV_if_not = CV_value)
+                                                              value_if = rice_compost_cost_first_year_if_get_bank_loan,
+                                                              value_if_not = first_year_composting_cost,
+                                                              n = n_year,
+                                                              CV_if = 10,
+                                                              CV_if_not = CV_value)
   
   # event-2, farmers get loan from bank, so they need to pay annual interest
   # this can be add up to their composting cost
   
-  rice_compost_get_bank_loan <- if(rice_compost_cost_precal == range_loan_for_farmers) {
+  rice_compost_get_bank_loan <- if(annual_rice_compost_cost == range_loan_for_farmers) {
     rice_farmer_compost_get_bank_loan = TRUE
   } else {
     rice_farmer_compost_get_bank_loan = FALSE
   }
   
   rice_compost_cost_if_get_bank_loan <- if(rice_compost_get_bank_loan == TRUE) {
-    rice_compost_cost + (rice_compost_cost * annual_bank_interest)
+    annual_rice_compost_cost + (annual_rice_compost_cost * annual_bank_interest)
   } else {
-    rice_compost_cost = rice_compost_cost
+    annual_rice_compost_cost = annual_rice_compost_cost
   }
   
-  rice_compost_cost_with_bank_loan <- chance_event(chance_production_risk,
-                                                   value_if = rice_compost_cost_if_get_bank_loan,
-                                                   value_if_not = rice_compost_cost,
-                                                   n = n_year,
-                                                   CV_if = 10,
-                                                   CV_if_not = CV_value)
+  rice_compost_cost_if_with_bank_loan <- chance_event(chance_production_risk,
+                                                      value_if = rice_compost_cost_if_get_bank_loan,
+                                                      value_if_not = annual_rice_compost_cost,
+                                                      n = n_year,
+                                                      CV_if = 10,
+                                                      CV_if_not = CV_value)
   
   
   
   # annual rice compost cost after considering production and financial risk
-  rice_compost_cost_if_get_bank_loan[1] <- rice_compost_cost_if_get_bank_loan[1] + rice_compost_first_year_cost_with_bank_loan
+  rice_compost_cost_with_bank_loan <- rice_compost_cost_if_with_bank_loan 
   
-  final_rice_compost_cost <- vv(rice_compost_cost_if_get_bank_loan, n_year, var_CV=CV_value,
+  rice_compost_cost_with_bank_loan[1] <- rice_compost_cost_with_bank_loan[1] + rice_compost_first_year_cost_with_bank_loan
+  
+  final_rice_compost_cost <- vv(rice_compost_cost_with_bank_loan, n_year, var_CV=CV_value,
                                 relative_trend = inflation_rate)
   
   
@@ -526,7 +528,7 @@ transition_rice_to_vegetables <- function(x, varnames){
   vegetable_compost_first_year_get_bank_loan <- if(first_year_composting_cost == range_loan_for_farmers) {
     vegetable_compost_first_year_get_bank_loan = TRUE
   } else {
-    rice_compost_first_year_get_bank_loan = FALSE
+    vegetable_compost_first_year_get_bank_loan = FALSE
   }
   
   vegetable_compost_cost_first_year_if_get_bank_loan <- if(vegetable_compost_first_year_get_bank_loan == TRUE) {
@@ -536,42 +538,41 @@ transition_rice_to_vegetables <- function(x, varnames){
   }
   
   vegetable_compost_first_year_cost_with_bank_loan <- chance_event(chance_production_risk,
-                                                              value_if = vegetable_compost_cost_first_year_if_get_bank_loan,
-                                                              value_if_not = first_year_composting_cost,
-                                                              n = n_year,
-                                                              CV_if = 10,
-                                                              CV_if_not = CV_value)
-  
+                                                                   value_if = vegetable_compost_cost_first_year_if_get_bank_loan,
+                                                                   value_if_not = first_year_composting_cost,
+                                                                   n = n_year,
+                                                                   CV_if = 10,
+                                                                   CV_if_not = CV_value)
   
   # event-2, farmers get loan from bank, so they need to pay annual interest
   # this can be add up to their composting cost
   
-  vegetable_compost_get_bank_loan <- if(vegetable_compost_cost_precal == range_loan_for_farmers) {
+  vegetable_compost_get_bank_loan <- if(annual_vegetable_compost_cost == range_loan_for_farmers) {
     vegetable_compost_get_bank_loan = TRUE
   } else {
     vegetable_compost_get_bank_loan = FALSE
   }
   
   vegetable_compost_cost_if_get_bank_loan <- if(vegetable_compost_get_bank_loan == TRUE) {
-    vegetable_compost_cost + (vegetable_compost_cost * annual_bank_interest)
+    annual_vegetable_compost_cost + (annual_vegetable_compost_cost * annual_bank_interest)
   } else {
-    vegetable_compost_cost = vegetable_compost_cost
+    annual_vegetable_compost_cost = annual_vegetable_compost_cost
   }
   
-  vegetable_compost_cost_with_bank_loan <- chance_event(chance_production_risk,
-                                                        value_if = vegetable_compost_cost_if_get_bank_loan,
-                                                        value_if_not = vegetable_compost_cost,
-                                                        n = n_year,
-                                                        CV_if = 10,
-                                                        CV_if_not = CV_value)
-  
+  vegetable_compost_cost_if_with_bank_loan <- chance_event(chance_production_risk,
+                                                           value_if = vegetable_compost_cost_if_get_bank_loan,
+                                                           value_if_not = annual_vegetable_compost_cost,
+                                                           n = n_year,
+                                                           CV_if = 10,
+                                                           CV_if_not = CV_value)
   
   
   # annual vegetable compost cost after considering production and financial risk
-  vegetable_compost_cost_if_get_bank_loan[1] <- vegetable_compost_cost_if_get_bank_loan[1] + vegetable_compost_first_year_cost_with_bank_loan
+  vegetable_compost_cost_if_with_bank_loan[1] <- vegetable_compost_cost_if_get_bank_loan[1] + vegetable_compost_first_year_cost_with_bank_loan
   
   final_vegetable_compost_cost <- vv(vegetable_compost_cost_if_get_bank_loan, n_year, var_CV=CV_value,
                                      relative_trend = inflation_rate)
+  
   
   
   #### Processed vegetables product cost ####

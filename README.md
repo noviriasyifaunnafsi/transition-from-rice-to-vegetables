@@ -20,9 +20,13 @@ This study aims to achieve the following objectives:
 ### Overview of methodological approach
 This study employs a comprehensive methodology to explore the transition from rice to vegetable cultivation in West Sinjai, Sinjai Regency, South Sulawesi Province, Indonesia. The approach integrates decision analysis, qualitative fieldwork, and stakeholder assessment. The process is structured into several key phases: model development, identification of input variables, model parameterization, data collection through qualitative interviews, and iterative model refinement. This integrated approach ensures that the analysis is robust and grounded in empirical observations.
 
+<<<<<<< HEAD
 
 ![](images\Methods.drawio.png)
 
+=======
+![](Images/Methods.drawio.png)
+>>>>>>> 3b777a3fc7fac1fc6e4b3b336fde575c839b9f71
 
 ### Data collection
 This study was conducted from April to May 2024 in West Sinjai district of Sinjai Regency, South Sulawesi Province, Indonesia, located between 5°2’56” - 5°21’16” South Latitude and 119°56’30” - 120°25’33” East Longitude. Sinjai Regency is characterized by diverse geographical features, including mountainous areas that are mostly located in the Western part of Sinjai. This area is known to have significant potential for agricultural production in South Sulawesi, including rice and vegetable crops.
@@ -34,7 +38,12 @@ A total of 48 respondents have been interviewed, starting with farmers engaged i
 ### Conceptual model
 The following is the updated conceptual model after gathering information from relevant stakeholders.
 
+<<<<<<< HEAD
 ![](images/240715_conceptual_model.drawio.png)
+=======
+![](Images/240715_conceptual_model.drawio.png)
+
+>>>>>>> 3b777a3fc7fac1fc6e4b3b336fde575c839b9f71
 
 # 4. Results and Discussion
 The following shows the distribution plot of the decision options.
