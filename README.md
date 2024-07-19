@@ -60,7 +60,10 @@ The following shows the distribution plot of the decision options.
 
 _To be updated...._
 
+### 6. References
+
+_To be updated...._
+
 ### 6. Annex
 ![](Images/annex_1.png)
-
 ![](Images/annex_2.png)
