@@ -63,7 +63,10 @@ _To be updated...._
 
 _To be updated...._
 
-### 6. Annex
+### 7. Annex
+The following pictures show the documentation during interviewing stakeholders at the study site.
 ![](Images/annex_1.png)
 
 ![](Images/annex_2.png)
+
+_To be updated...._
