@@ -59,3 +59,8 @@ The following shows the distribution plot of the decision options.
 ### 5. Conclusion
 
 _To be updated...._
+
+### 6. Annex
+![](Images/annex_1.png)
+
+![](Image/annex_2.png)
