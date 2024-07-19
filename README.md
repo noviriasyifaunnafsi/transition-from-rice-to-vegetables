@@ -63,4 +63,4 @@ _To be updated...._
 ### 6. Annex
 ![](Images/annex_1.png)
 
-![](Image/annex_2.png)
+![](Images/annex_2.png)
