@@ -15,7 +15,6 @@ This study aims to achieve the following objectives:
 
 ### 3. Material and Methods
 #### A. Overview of Methodological Approach
->>>>>>> f9e4848c753802a1a73cca0e0c81ac01950151be
 This study employs a comprehensive methodology to explore the transition from rice to vegetable cultivation in West Sinjai, Sinjai Regency, South Sulawesi Province, Indonesia. The approach integrates decision analysis, qualitative fieldwork, and stakeholder assessment. The process is structured into several key phases: model development, identification of input variables, model parameterization, data collection through qualitative interviews, and iterative model refinement. This integrated approach ensures that the analysis is robust and grounded in empirical observations.
 
 ![](Images/Methods.drawio.png)
