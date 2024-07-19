@@ -38,7 +38,7 @@ The refined model was employed to conduct a comprehensive decision analysis usin
 The values for the input variables used in the model were estimated from field data gathered through interviews with stakeholders, experts' knowledge, calibration, literature review, and personal judgment. The input variables comprised benefit variables and cost variables. 
 
 ### 4. Results and Discussion
-###### _Note: this part is still need to be updated_
+#### _Note: this part is still need to be updated_
 
 The following shows the distribution plot of the decision options.
 #### NPV distribution plot of rice and vegetable systems
@@ -53,7 +53,7 @@ The following shows the distribution plot of the decision options.
 #### EVPI plots
 ![](Images/plots/EVPI_plot.png)
 
-###### _To be updated..._
+#### _To be updated..._
 
 ### 5. Conclusion
 
