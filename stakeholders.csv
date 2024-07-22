@@ -1,13 +1,13 @@
 stakeholders;position;Gender;official_role;decision_role;Expertise;Experience;Availability;Interest;Relevance;Influence;Attitude
-Farmers who have been transitioning their cultivation practices from rice to vegetables;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;5;5;4;Positive
-Farmers who are actively cultivate both rice and vegetables;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;4;5;4;Positive
-Farmers who have been only growing vegetables since they began farming;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;5;5;5;Positive
-Farmers who are actively cultivate rice without vegetables;Farmer;Male;NA;Decision-maker for their own field;Farming;3;2.5;3;3;2;Positive
-Farmers who also been working as wholesaler and retailer;Farmer;Male;NA;Decision-maker for their own field;Farming;5;4;5;5;5;Positive
+Farmers who have shifted their cultivation from rice to vegetables;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;5;5;4;Positive
+Farmers who cultivate both rice and vegetables;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;4;5;4;Positive
+Farmers who cultivate vegetables since they began farming;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;5;5;5;Positive
+Farmers who cultivate rice only;Farmer;Male;NA;Decision-maker for their own field;Farming;3;2.5;3;3;2;Positive
+Farmers who also work as wholesaler and retailer;Farmer;Male;NA;Decision-maker for their own field;Farming;5;4;5;5;5;Positive
 Local farmers group;Head;Male;Represents local farmers;Participates in farmers' decision-making;Knowledge of local agricultural condition;5;4;4;5;4;Positive
 Association of farmers group;Member;Male;Represents local farmers group;Participates in farmers' decision-making;Coordination with official agencies;4;4;4;5;3;Positive
 Women farmers group;Head;Female;Represents women farmers;Participates in farmers' decision-making;Knowledge of local agricultural condition and production management;4;5;5;5;4;Positive
-Association of water users of farmer group;Head;Male;Management of water use among farmers within the same village;Participates in farmers' decision-making;Knowledge of local water condition and coordination;3.5;2.5;3;3;2.5;Positive
+Association of water users of farmer group;Head;Male;Management of water use among farmers within the same village;Participates in farmers' decision-making;Knowledge of local agricultural condition;3.5;2.5;3;3;2.5;Positive
 Local wholesaler;Vegetable wholesaler;Mixed;Collect farmers produce and sell to other wholesalers/retailers;Influence market;Market trends and demands;3;4;5;5;4;Positive
 Local retailer;Vegetable retailer;Female;Sells produce to consumers;Influence market and consumer choices;Market trends and demands;3;3;4;4;3;Positive
 Outside retailer;Retailer in other areas;Mixed;Sells produce to consumers;Influence market and consumer choices;Market trends and demands;3;3;3;3;2.5;Neutral
@@ -16,11 +16,11 @@ Agricultural extension worker agency in West Sinjai;Head and staff;Mixed;Oversee
 Agricultural agency of Sinjai Regency;Head of the food crops and horticulture sector;Male;Sets agricultural policies related to food crops and horticulture in Sinjai regency;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;3;3;3;2;Neutral
 Agricultural agency of South Sulawesi Province;Head of the food crops sector;Male;Sets agricultural policies related to food crops and horticulture in South Sulawesi Province and implements the policies and regulations by the ministry of agriculture;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;2;2;3;2;Neutral
 Agricultural agency of South Sulawesi Province;Head of the horticulture sector;Male;Sets agricultural policies related to food crops and horticulture in South Sulawesi Province and implements the policies and regulations by the ministry of agriculture;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;2;2;3;2;Neutral
-Research institute/University;Lecturer at the agricultural faculty of Hasanuddin University;Female;Research and study;Technical support in sharing knowledge about vegetable farming practices with farmers;Education and policy advocacy;3.5;3;3;3;2;Positive
+Research institute/University;Lecturer at the agricultural faculty of Hasanuddin University;Female;Research and study;Research and study;Education and policy advocacy;2.5;2.5;3;2.5;1.5;Positive
 Bank;Staff;Male;Manage micro credit program (Kredit Usaha Rakyat/KUR) for smallholder farmers;Capital assistance;Financial;3;2;2.5;2.5;2.5;Positive
-Vegetable trading company;Director;Male;Purchase vegetable from farmers;Influence farmers' decision making in growing crops with contract farming;Food/vegetable processing and trading;2.5;2;3.5;3;3;Positive
-Food processing company;NA;None;Purchase vegetable from farmers;Influence farmers' decision making in growing crops with contract farming;Food/vegetable processing and trading;2.5;2;3.5;3;3;No information
+Vegetable trading company;Director;Male;Purchase vegetable from farmers;Influence farmers' decision making in growing crops with contract farming;Food/vegetable processing and trading;2.5;2;3.5;3;3.5;Positive
+Food processing company;NA;None;Purchase vegetable from farmers;Influence farmers' decision making in growing crops with contract farming;Food/vegetable processing and trading;2.5;2;3.5;3;3.5;No information
 Regional legislative council;NA;None;Legislation-budgeting-supervising;Budgeting;Policy-making and budgeting;2;1.5;2;2.5;2;No information
 Ministry of agriculture Indonesia;NA;None;Agricultural policy-maker in Indonesia;Policy regulation;Policy-making and regulatory expertise;2;1;1.5;2;2.5;No information
 Ministry of trade Indonesia;NA;None;Trade policy-maker in Indonesia;Policy and price regulation;Policy-making and regulatory expertise;1;1;1;1.5;1;No information
-Ministry of public works;NA;None;Infrastructure development and policy-maker in Indonesia;Policy and infrastructure development;Policy-making and regulatory expertise especially in building irrigation facilities;1;1;1.5;2;1;No information
+Ministry of public works;NA;None;Infrastructure development and policy-maker in Indonesia;Policy-making and regulatory expertise especially in building irrigation facilities;Policy and infrastructure development;1;1;1.5;2;1;No information

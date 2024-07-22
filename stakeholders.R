@@ -30,20 +30,20 @@ expertplot<-ggplot(data = stakeholder, aes(x=Experience, y=Availability,
         legend.text = element_text(size = 11),
         plot.title = element_text(size=rel(1.7)),
         plot.title.position = "plot",
-        panel.background = element_rect(fill = "lightyellow"),
+        panel.background = element_rect(fill = "honeydew"),
         panel.grid.minor = element_line(colour = "lightgrey"),
         # panel.border = element_rect(linetype = "solid", fill = NA),
         panel.ontop = FALSE,
         strip.background = element_rect(colour = "black", fill = "white"))+
 
   # Create line to categorize stakeholders
-  geom_hline(yintercept=2.5, color="yellow", size=0.5)+
-  geom_vline(xintercept=2.5, color="yellow", size=0.5)+
+  geom_hline(yintercept=2.5, color="seagreen1", size=0.5)+
+  geom_vline(xintercept=2.5, color="seagreen1", size=0.5)+
 
   # Show all names of overlapped values
   # https://ggrepel.slowkow.com/articles/examples.html
   
-  geom_text_repel(box.padding = 0.5, max.overlaps = Inf, size=4)+
+  geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size=4)+
   annotate("text", label = "Potential core experts",
     x = 4.5, y = 3.3, size = 5, colour = "grey")+
   annotate("text", label = "Resource persons",
@@ -52,33 +52,9 @@ expertplot<-ggplot(data = stakeholder, aes(x=Experience, y=Availability,
 plot(expertplot)
 
   # save the plot
-  ggsave("expertplot.png", dpi=400, height=7, width = 15)
- 
-  ggsave("expertplot1.png", dpi=400, height=7, width = 15)
+  ggsave("expertplot.png", dpi=300, height=12, width = 15)
   
-  ggsave("expertplot2.png", dpi=400, height=7, width = 15)
-  
-  ggsave("expertplot3.png", dpi=400, height=7, width = 15)
-  
-  ggsave("expertplot4.png", dpi=400, height=7, width = 15)
-  
-  ggsave("expertplot5.png", dpi=400, height=8, width = 15)
-  
-  ggsave("expertplot6.png", dpi=400, height=8, width = 15)
-  
-  ggsave("expertplot7.png", dpi=400, height=10, width = 15)
-  
-  ggsave("expertplot8.png", dpi=400, height=10, width = 15)
-  
-  ggsave("expertplot9.png", dpi=400, height=10, width = 15)
-  
-  ggsave("expertplot10.png", dpi=400, height=8, width = 13)
-  
-  ggsave("expertplot11.png", dpi=300, height=9, width = 19)
-  
-  ggsave("expertplot12.png", dpi=300, height=12, width = 15)
-
-  
+    
   #2. Stakeholder power and interest analysis
 
   stakeholder_power_interest<-ggplot(data = stakeholder, aes(x=Interest, y=Influence, 
@@ -105,10 +81,10 @@ plot(expertplot)
     
     theme(plot.margin = unit(c(1,1,1,1), "cm"),
                 legend.position = "right",
-                legend.text = element_text(size = 12),
+                legend.text = element_text(size = 10),
                 plot.title = element_text(size=rel(1.7)),
                 plot.title.position = "plot",
-                panel.background = element_rect(fill = "lightyellow"),
+                panel.background = element_rect(fill = "honeydew"),
                 panel.ontop = FALSE,
                 strip.background = element_rect(colour = "black", fill = "white"))+
     
@@ -130,8 +106,4 @@ plot(expertplot)
              x = 1.0, y = -0.5, size = 3.8, colour = "darkgrey")
   
   ggsave("stakeholders_power_interest.png", dpi=400, height=7, width = 8)
-  
-  ggsave("stakeholders_power_interest1.png", dpi=400, height=7, width = 8)
-  
-  ggsave("stakeholders_power_interest2.png", dpi=400, height=7, width = 8)
   
