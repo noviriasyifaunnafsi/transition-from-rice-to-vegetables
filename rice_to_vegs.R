@@ -14,6 +14,13 @@ make_variables(as.estimate(input_estimates))
 
 transition_rice_to_vegetables <- function(x, varnames){
   
+
+# 3 scenarios consider in this model
+  
+  # Scenario 1: Farmers bear all the establishment costs for composting, processing products, and agrotourism
+  # Scenario 2: Farmers bear all the establishment costs for composting, processing products, and agrotourism but with bank loan
+  # Scenario 3: Farmers don't bear all the establishment costs for composting, processing products, and agrotourism. Consider that the costs 
+  # will be provided by government or others?
   
   # Rice system ####
   
@@ -55,6 +62,7 @@ transition_rice_to_vegetables <- function(x, varnames){
   # then, they might get loan from bank with micro-credit program (KUR)
   # we can consider that farmer who own 1 ha of field can get loan from IDR 10 mio to
   # 50 mio (USD 625 to 3125)
+
   
   # event-2, farmers get loan from bank, so they need to pay annual interest
   # this can be add up to their farming cost
@@ -78,6 +86,8 @@ transition_rice_to_vegetables <- function(x, varnames){
                                                    n = n_year,
                                                    CV_if = 10,
                                                    CV_if_not = CV_value)
+
+
   
   # event-3, farmers get loan from bank, so they need to pay annual interest
   # this can be add up to their farming cost
@@ -145,7 +155,9 @@ transition_rice_to_vegetables <- function(x, varnames){
   # So they might get loan from bank with micro-credit program (KUR)
   # we can consider that farmer who own 1 ha of field can get loan from IDR 10 mio to
   # 50 mio (USD 625 to 3125)
-  
+
+
+  # Scenario 1: Farmers bear all the establishment costs for composting, processing products, and agrotourism
   # event-1, farmers get loan from bank, so they need to pay annual interest
   # this can be add up to their first year composting cost
   
@@ -344,14 +356,16 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   
   ### Health outcomes from rice field benefits ####
+
+  # no benefits hehehe
   
   # We can assume that the benefit by consuming rice can reduce hospital
   # or medication bills
   
   # annual health saving costs from consuming rice
-  rice_nutrition_health_benefit <- vv(health_cost_savings_from_rice,
-                                      n_year, var_CV=CV_value,
-                                      relative_trend = inflation_rate)
+  # rice_nutrition_health_benefit <- vv(health_cost_savings_from_rice,
+  #                                    n_year, var_CV=CV_value,
+  #                                    relative_trend = inflation_rate)
   
   
   ## Rice system outcomes #### 
@@ -359,19 +373,31 @@ transition_rice_to_vegetables <- function(x, varnames){
   ### Calculate income of each option after considering risks
   
   # Rice farming income
-  rice_farming_income <- final_rice_farming_revenue - final_rice_farming_cost
+  # rice_farming_income <- final_rice_farming_revenue - final_rice_farming_cost
   
   # Rice compost income
-  rice_compost_income <- final_rice_compost_revenue - final_rice_farming_cost
+  # rice_compost_income <- final_rice_compost_revenue - final_rice_farming_cost
   
   # Rice processed production income
-  rice_processed_income <- processed_rice_product_revenue - processed_rice_product_cost
+  # rice_processed_income <- processed_rice_product_revenue - processed_rice_product_cost
   
   # Rice eco-tourism income 
-  rice_ecotourism_income <- rice_ecotourism_revenue - rice_ecotourism_cost
+  # rice_ecotourism_income <- rice_ecotourism_revenue - rice_ecotourism_cost
   
   # Rice health
-  rice_health_benefit <- rice_nutrition_health_benefit
+  # rice_health_benefit <- rice_nutrition_health_benefit
+  
+  
+  # Calculate total benefits from rice
+
+  total_benefits_rice <- final_rice_farming_revenue + final_rice_compost_revenue + processed_rice_product_revenue + 
+                          rice_ecotourism_revenue + rice_nutrition_health_benefit
+
+  # Calculate total costs from rice
+
+  total_costs_rice <- final_rice_farming_cost + final_rice_compost_cost + processed_rice_product_cost + 
+                          rice_ecotourism_cost + rice_nutrition_health_cost
+  
   
   #### Final result for rice ##
   
@@ -380,7 +406,10 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   rice_result <- vv(final_rice_benefits_precal, n_year, var_CV=CV_value, 
                     relative_trend = inflation_rate)
+
+
   
+
   
   
   # Vegetable system ####
@@ -671,6 +700,11 @@ transition_rice_to_vegetables <- function(x, varnames){
   # Calculate the cost with the first year establishment cost
   vegetable_ecotourism_cost[1] <- + vegetable_ecotourism_cost[1] + first_year_vegetable_ecotourism_cost
   
+
+  # Calculate total costs from vegetables
+  total_costs_vegetables <- final_vegetable_farming_cost + final_vegetable_compost_cost + final_vegetable_processing_cost + 
+                          vegetable_ecotourism_cost
+
   
   ## Vegetables benefits ####
   
@@ -885,65 +919,57 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   ### Health outcomes from vegetable field benefits ####
   
-  # We can assume that the benefit by consuming vegetables can reduce hospital
-  # or medication bills
+  # We can assume that the benefit by growing vegetables
+  # people can consume vegetables easily and cheaper
+  # which can be associated to improving nutrition
   
-  # annual health saving costs from consuming vegetables
-  vegetables_nutrition_health_benefit <- vv(health_cost_savings_from_vegetables,
+  # annual savings for purchasing vegetables
+  annual_savings_for_purchasing_vegetables <- annual_crop_yield * average_crop_price_market * annual_vegs_consumption_per_person
+  
+  vegetables_nutrition_health_benefit <- vv(annual_savings_for_purchasing_vegetables,
                                             n_year, var_CV=CV_value,
                                             relative_trend = inflation_rate)
   
   
   ## Vegetables system outcomes #### 
   
-  ### Calculate income of each option after considering risks
-  
-  # Vegetables farming income
-  vegetable_farming_income <- final_vegetable_farming_revenue - final_vegetable_farming_cost
-  
-  # Vegetables compost income
-  vegetable_compost_income <- final_vegetable_compost_revenue - final_vegetable_compost_cost
-  
-  # Vegetables processed production income
-  vegetable_processed_income <- final_vegetable_processed_revenue - final_vegetable_processing_cost
-  
-  # Vegetables eco-tourism income 
-  vegetable_ecotourism_income <- vegetables_ecotourism_revenue - vegetable_ecotourism_cost
-  
-  # Vegetables health income 
-  vegetable_health_benefit <- vegetables_nutrition_health_benefit
-  
-  
-  #### Final result for vegetables ##
-  
-  final_vegetables_benefits_precal <- vegetable_farming_income + vegetable_compost_income +
-    vegetable_processed_income + vegetable_ecotourism_income
-  
-  vegetable_result <- vv(final_vegetables_benefits_precal, n_year, var_CV=CV_value, 
-                         relative_trend = inflation_rate)
-  
-  # Calculate total benefits from rice
-
-  total_benefits_rice <- final_rice_farming_revenue + final_rice_compost_revenue + processed_rice_product_revenue + 
-                          rice_ecotourism_revenue + rice_nutrition_health_benefit
-
-  # Calculate total costs from rice
-
-  total_costs_rice <- final_rice_farming_cost + final_rice_compost_cost + processed_rice_product_cost + 
-                          rice_ecotourism_cost + rice_nutrition_health_cost
-
-
+  ### Calculate benefits from growing vegetables
   
   # Calculate total benefits from vegetables
 
   total_benefits_vegetables <- final_vegetables_farming_revenue + final_vegetables_compost_revenue + processed_vegetables_product_revenue + 
                           vegetables_ecotourism_revenue + vegetables_nutrition_health_benefit
 
+  
+  
+  # Vegetables farming income
+  # vegetable_farming_income <- final_vegetable_farming_revenue - final_vegetable_farming_cost
+  
+  # Vegetables compost income
+  # vegetable_compost_income <- final_vegetable_compost_revenue - final_vegetable_compost_cost
+  
+  # Vegetables processed production income
+  # vegetable_processed_income <- final_vegetable_processed_revenue - final_vegetable_processing_cost
+  
+  # Vegetables eco-tourism income 
+  # vegetable_ecotourism_income <- vegetables_ecotourism_revenue - vegetable_ecotourism_cost
+  
+  # Vegetables health income 
+  # vegetable_health_benefit <- vegetables_nutrition_health_benefit
+  
+  
+  #### Final result for vegetables ##
+  
+  # final_vegetables_benefits_precal <- vegetable_farming_income + vegetable_compost_income +
+  # vegetable_processed_income + vegetable_ecotourism_income
+  
+  # vegetable_result <- vv(final_vegetables_benefits_precal, n_year, var_CV=CV_value, 
+  #                       relative_trend = inflation_rate)
+  
+  
 
-  # Calculate total costs from vegetables
-
-  total_costs_vegetables <- final_vegetables_farming_cost + final_vegetables_compost_cost + processed_vegetables_product_cost + 
-                          vegetables_ecotourism_cost + vegetables_nutrition_health_cost
+  
+  
   
   
   # Calculate NPV ####
