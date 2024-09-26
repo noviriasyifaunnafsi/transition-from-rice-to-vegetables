@@ -7,6 +7,8 @@ output:
   pdf_document: default
   html_document: default
   word_document: default
+  bibliography: 
+  
 ---
 
 ```{r setup, include=FALSE}

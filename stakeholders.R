@@ -22,32 +22,32 @@ expertplot<-ggplot(data = stakeholder, aes(x=Experience, y=Availability,
                      limits = c(0, 5),
                      expand = c(0,1))+
   theme(plot.margin = unit(c(1,1,1,1), "cm"),
-        legend.title = element_text(size = 12),
+        legend.title = element_text(size = 13),
         legend.position = "right",
         # legend.justification = c("right", "top"),
         # legend.box.just = "left",
         legend.margin = margin(2,2,2,2),
-        legend.text = element_text(size = 11),
+        legend.text = element_text(size = 12),
         plot.title = element_text(size=rel(1.7)),
         plot.title.position = "plot",
         panel.background = element_rect(fill = "honeydew"),
-        panel.grid.minor = element_line(colour = "lightgrey"),
+        panel.grid.minor = element_line(colour = "white"),
         # panel.border = element_rect(linetype = "solid", fill = NA),
         panel.ontop = FALSE,
         strip.background = element_rect(colour = "black", fill = "white"))+
 
   # Create line to categorize stakeholders
-  geom_hline(yintercept=2.5, color="seagreen1", size=0.5)+
-  geom_vline(xintercept=2.5, color="seagreen1", size=0.5)+
+  geom_hline(yintercept=2.5, color="lightgrey", size=0.5)+
+  geom_vline(xintercept=2.5, color="lightgrey", size=0.5)+
 
   # Show all names of overlapped values
   # https://ggrepel.slowkow.com/articles/examples.html
   
   geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size=4)+
   annotate("text", label = "Potential core experts",
-    x = 4.5, y = 3.3, size = 5, colour = "grey")+
+    x = 4.5, y = 3.3, size = 6.5, colour = "darkgrey")+
   annotate("text", label = "Resource persons",
-           x = 4.5, y = 0.25, size = 5, colour = "grey")
+           x = 4.5, y = 0.25, size = 6.5, colour = "darkgrey")
 
 plot(expertplot)
 
@@ -89,7 +89,7 @@ plot(expertplot)
                 strip.background = element_rect(colour = "black", fill = "white"))+
     
     scale_color_manual(breaks = c("Positive", "Neutral", "No information"),
-                       values=c("darkgreen", "blue", "brown"))+
+                       values=c("darkgreen", "blue", "saddlebrown"))+
     # Create line to categorize stakeholders
     geom_hline(yintercept=2.5, color="lightgrey", size=0.5)+
     geom_vline(xintercept=2.5, color="lightgrey", size=0.5)+

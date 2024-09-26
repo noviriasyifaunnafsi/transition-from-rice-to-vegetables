@@ -19,219 +19,6 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   # Considering rice production as baseline #
   
-  ## Rice costs ####
-  
-  ### Rice farming costs ####
-  
-  # Annual rice farming cost under normal condition
-  # Assuming rice is cultivated twice per year
-  rice_farming_cost_precal <- rice_farming_input_costs + rice_machinery_costs + 
-    rice_labor_costs + irrigation_maintenance_costs  
-  
-  rice_farming_cost <- vv(rice_farming_cost_precal, n_year, var_CV=CV_value, 
-                          relative_trend = inflation_rate)
-  
-  
-  ## Chance event options on rice farming cost #
-  
-  # considering production risk (pest, disease, heavy rainfall, water shortage, etc.)
-  # so farmers need to pay higher cost for production management risk
-  # event-1, farmers need to buy more pesticides to overcome pest and disease outbreak
-  
-  rice_farming_input_costs_with_more_pesticides_precal <- rice_farming_input_costs * # farming input cost under normal condition
-    (1+portion_rice_farming_input_cost_for_pest_disease_management)
-  
-  rice_farming_input_costs_with_more_pesticides <- chance_event(chance_production_risk,
-                                                                value_if = rice_farming_input_costs_with_more_pesticides_precal,
-                                                                value_if_not = rice_farming_input_costs,
-                                                                n = n_year,
-                                                                CV_if = 10,
-                                                                CV_if_not = CV_value)
-  
-  
-  
-  # considering financial risk (lack of capital) damage on farming cost
-  # farmers may not have enough capital to purchase farming inputs
-  # then, they might get loan from bank with micro-credit program (KUR)
-  # we can consider that farmer who own 1 ha of field can get loan from IDR 10 mio to
-  # 50 mio (USD 625 to 3125)
-  
-  # event-2, farmers get loan from bank, so they need to pay annual interest
-  # this can be add up to their farming cost
-  # consider if the farming input cost is under normal condition
-  
-  rice_farmer_get_bank_loan <- if(rice_farming_cost_precal == range_loan_for_farmers) {
-    rice_farmer_get_bank_loan = TRUE
-  } else {
-    rice_farmer_get_bank_loan = FALSE
-  }
-  
-  rice_farming_cost_if_get_bank_loan <- if(rice_farmer_get_bank_loan == TRUE) {
-    rice_farming_cost + (rice_farming_cost * annual_bank_interest)
-  } else {
-    rice_farming_cost = rice_farming_cost
-  }
-  
-  rice_farming_cost_with_bank_loan <- chance_event(chance_production_risk,
-                                                   value_if = rice_farming_cost_if_get_bank_loan,
-                                                   value_if_not = rice_farming_cost,
-                                                   n = n_year,
-                                                   CV_if = 10,
-                                                   CV_if_not = CV_value)
-  
-  # event-3, farmers get loan from bank, so they need to pay annual interest
-  # this can be add up to their farming cost
-  # consider if the farming input cost is higher because farmers need to buy 
-  # more pesticides to overcome pest and disease outbreak
-  
-  rice_farming_high_input_cost_with_bank_loan_precal <- rice_farming_input_costs_with_more_pesticides_precal +
-    rice_machinery_costs + rice_labor_costs + irrigation_maintenance_costs 
-  
-  rice_farming_high_input_cost_with_bank_loan <- chance_event(chance_production_risk,
-                                                              value_if = rice_farming_high_input_cost_with_bank_loan_precal,
-                                                              value_if_not = rice_farming_cost_precal,
-                                                              n = n_year,
-                                                              CV_if = 10,
-                                                              CV_if_not = CV_value)
-  
-  
-  
-  # annual rice farming cost after considering production and financial risk
-  rice_farming_cost_with_risk_precal <- rice_farming_high_input_cost_with_bank_loan
-  
-  final_rice_farming_cost <- vv(rice_farming_cost_with_risk_precal, n_year, var_CV=CV_value,
-                                relative_trend = inflation_rate)
-  
-  
-  
-  ### Rice compost cost ####
-  
-  # Normally, most rice farmers don't utilize the rice biomass residue as compost
-  # They will just simply throw the waste away or burn it
-  
-  # Here, we can assume that what if the rice farmers utilize the rice biomass
-  # residue into compost
-  
-  # Annual cost for composting rice biomass residue
-  # First, we need to calculate the establishment cost for composting
-  # by preparing composting facility, like compost bin and equipment
-  # the cost would be paid only for the first year
-  
-  first_year_composting_cost <- compost_bin_cost + composter_equipment_cost
-  
-  # Calculate labor cost for composting
-  # Assuming that labor is mostly needed at the end of cultivation season
-  # let's say around 5 days/season. So, farmer need to hire labors to help 
-  # them at least 10 days/year.
-  # The rest work would be handle by the farmers themselves
-  
-  annual_cost_labor_rice_composting <- daily_labor_cost * 10 #10 days for hiring labor
-  
-  # Then, we calculate the annual rice biomass composting cost
-  # Which is included for the cost of labor, compost activator, and maintenance
-  rice_compost_cost_precal <- annual_cost_labor_rice_composting +
-    compost_activator_cost + composter_maintenance_cost
-  
-  rice_compost_cost <- vv(rice_compost_cost_precal, n_year, var_CV=10)
-  
-  # Calculate the cost with the first year establishment cost
-  rice_compost_cost[1] <- rice_compost_cost[1] + first_year_composting_cost 
-  
-  
-  ## Chance event options on rice compost cost ##
-  
-  # Considering financial risk (lack of capital) damage on composting rice
-  # farmers may not have enough capital to purchase composter tools and equipment
-  # So they might get loan from bank with micro-credit program (KUR)
-  # we can consider that farmer who own 1 ha of field can get loan from IDR 10 mio to
-  # 50 mio (USD 625 to 3125)
-  
-  # event-1, farmers get loan from bank, so they need to pay annual interest
-  # this can be add up to their first year composting cost
-  
-  rice_compost_first_year_get_bank_loan <- if(first_year_composting_cost == range_loan_for_farmers) {
-    rice_compost_first_year_get_bank_loan = TRUE
-  } else {
-    rice_compost_first_year_get_bank_loan = FALSE
-  }
-  
-  rice_compost_cost_first_year_if_get_bank_loan <- if(rice_compost_first_year_get_bank_loan == TRUE) {
-    first_year_composting_cost + (first_year_composting_cost * annual_bank_interest)
-  } else {
-    first_year_composting_cost = first_year_composting_cost
-  }
-  
-  rice_compost_first_year_cost_with_bank_loan <- chance_event(chance_production_risk,
-                                                              value_if = rice_compost_cost_first_year_if_get_bank_loan,
-                                                              value_if_not = first_year_composting_cost,
-                                                              n = n_year,
-                                                              CV_if = 10,
-                                                              CV_if_not = CV_value)
-  
-  # event-2, farmers get loan from bank, so they need to pay annual interest
-  # this can be add up to their composting cost
-  
-  rice_compost_get_bank_loan <- if(annual_rice_compost_cost == range_loan_for_farmers) {
-    rice_farmer_compost_get_bank_loan = TRUE
-  } else {
-    rice_farmer_compost_get_bank_loan = FALSE
-  }
-  
-  rice_compost_cost_if_get_bank_loan <- if(rice_compost_get_bank_loan == TRUE) {
-    annual_rice_compost_cost + (annual_rice_compost_cost * annual_bank_interest)
-  } else {
-    annual_rice_compost_cost = annual_rice_compost_cost
-  }
-  
-  rice_compost_cost_if_with_bank_loan <- chance_event(chance_production_risk,
-                                                      value_if = rice_compost_cost_if_get_bank_loan,
-                                                      value_if_not = annual_rice_compost_cost,
-                                                      n = n_year,
-                                                      CV_if = 10,
-                                                      CV_if_not = CV_value)
-  
-  
-  
-  # annual rice compost cost after considering production and financial risk
-  rice_compost_cost_with_bank_loan <- rice_compost_cost_if_with_bank_loan 
-  
-  rice_compost_cost_with_bank_loan[1] <- rice_compost_cost_with_bank_loan[1] + rice_compost_first_year_cost_with_bank_loan
-  
-  final_rice_compost_cost <- vv(rice_compost_cost_with_bank_loan, n_year, var_CV=CV_value,
-                                relative_trend = inflation_rate)
-  
-  
-  
-  ### Processed rice product cost ####
-  
-  # In case of rice, this is probably not feasible to process rice as other
-  # processed product. So, we can consider that the processed rice product cost
-  # as zero
-  
-  processed_rice_product_cost <- 0
-  
-  
-  ### Eco-tourism for rice field cost ####
-  
-  # First, we need to calculate the establishment cost for eco-tourism
-  # by preparing some signs to be installed in the area
-  # the cost would be paid only for the first year
-  
-  first_year_rice_ecotourism_cost <- sign_installation_cost
-  
-  # Then, we calculate the annual cost of eco-tourism for rice field
-  # Which is included for marketing and promotion
-  annual_rice_ecotourism_cost <- marketing_and_promotion_ecotourism
-  
-  rice_ecotourism_cost <- vv(annual_rice_ecotourism_cost, n_year, var_CV=10)
-  
-  # Calculate the cost with the first year establishment cost
-  rice_ecotourism_cost[1] <- rice_ecotourism_cost[1] + first_year_rice_ecotourism_cost 
-  
-  # We consider that there is no risk affect cost of rice eco-tourism cost
-  # since the cost might be not so high
-  
-  
   ## Rice benefits ####
   
   ### Rice farming benefits ####
@@ -253,28 +40,27 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   # event-1 rice yield reduction from production risks
   rice_yield_loss_with_production_risk <- rice_yield * 
-    chance_production_risk * 
-    prob_damage_production_risk_rice
+    chance_production_risk * prob_damage_production_risk_rice
   
   rice_yield_with_production_risk <- chance_event(chance_production_risk,
                                                   value_if = rice_yield_loss_with_production_risk,
-                                                            value_if_not = rice_yield,
-                                                            n = n_year,
-                                                            CV_if = 10,
-                                                            CV_if_not = CV_value)
+                                                  value_if_not = rice_yield,
+                                                  n = n_year,
+                                                  CV_if = 10,
+                                                  CV_if_not = CV_value)
   # event-2 rice yield reduction from financial risks
   rice_yield_loss_with_financial_risk <- rice_yield * 
     chance_financial_risk_rice *
     prob_damage_market_risk_rice
   
   rice_yield_with_financial_risk <- chance_event(chance_financial_risk_rice,
-                                                            value_if = rice_yield_loss_with_financial_risk,
-                                                            value_if_not = rice_yield,
-                                                            n = n_year,
-                                                            CV_if = 10,
-                                                            CV_if_not = CV_value)
-
-  # event-2 rice yield reduction from production and financial risks (joint risk)
+                                                 value_if = rice_yield_loss_with_financial_risk,
+                                                 value_if_not = rice_yield,
+                                                 n = n_year,
+                                                 CV_if = 10,
+                                                 CV_if_not = CV_value)
+  
+  # event-2 rice yield reduction from production and financial risks (joint risk(?))
   rice_yield_loss_with_production_financial_risk <- rice_yield * 
     chance_financial_risk_rice *
     prob_damage_market_risk_rice
@@ -287,7 +73,7 @@ transition_rice_to_vegetables <- function(x, varnames){
                                                  CV_if_not = CV_value)
   
   
-                                                               
+  
   
   # rice_yield_with_production_financial_risk_precal <- rice_yield - (rice_yield_loss_with_production_financial_risk)
   
@@ -320,22 +106,22 @@ transition_rice_to_vegetables <- function(x, varnames){
   rice_farming_revenue_loss_with_market_production_risk <- rice_price_with_market_risk * rice_yield_with_production_risk
   
   rice_farming_revenue_with_market_production_risk <- chance_event(chance_market_risk_rice,
-                                                                             value_if = rice_farming_revenue_loss_with_market_production_risk,
-                                                                             value_if_not = rice_farming_revenue,
-                                                                             n = n_year,
-                                                                             CV_if = 10,
-                                                                             CV_if_not = CV_value)
+                                                                   value_if = rice_farming_revenue_loss_with_market_production_risk,
+                                                                   value_if_not = rice_farming_revenue,
+                                                                   n = n_year,
+                                                                   CV_if = 10,
+                                                                   CV_if_not = CV_value)
   
   
   # event-5 rice revenue reduction from market risk under financial risk
   rice_farming_revenue_loss_with_market_financial_risk <- rice_price_with_market_risk * rice_yield_with_financial_risk
   
   rice_farming_revenue_with_market_financial_risk <- chance_event(chance_market_risk_rice,
-                                                                             value_if = rice_farming_revenue_loss_with_market_financial_risk,
-                                                                             value_if_not = rice_farming_revenue,
-                                                                             n = n_year,
-                                                                             CV_if = 10,
-                                                                             CV_if_not = CV_value)
+                                                                  value_if = rice_farming_revenue_loss_with_market_financial_risk,
+                                                                  value_if_not = rice_farming_revenue,
+                                                                  n = n_year,
+                                                                  CV_if = 10,
+                                                                  CV_if_not = CV_value)
   
   
   
@@ -344,14 +130,6 @@ transition_rice_to_vegetables <- function(x, varnames){
   final_rice_farming_revenue <- vv(final_rice_farming_revenue_with_risk, n_year, var_CV=CV_value,
                                    relative_trend = inflation_rate) 
   
-  
-  
-  # if income is less than farming cost
-  rice_farmer_need_bank_loan <- if(rice_farming_cost_precal >= rice_farming_income) {
-    rice_farmer_need_bank_loan = TRUE
-  } else {
-    rice_farmer_need_bank_loan = FALSE
-  }
   
   
   ### Rice compost benefits ####
@@ -412,6 +190,220 @@ transition_rice_to_vegetables <- function(x, varnames){
                                       n_year, var_CV=CV_value,
                                       relative_trend = inflation_rate)
   
+  ## Rice costs ####
+  
+  ### Rice farming costs ####
+  
+  # Annual rice farming cost under normal condition
+  # Assuming rice is cultivated twice per year
+  rice_farming_cost_precal <- rice_farming_input_costs + rice_machinery_costs + 
+    rice_labor_costs + irrigation_maintenance_costs  
+  
+  rice_farming_cost <- vv(rice_farming_cost_precal, n_year, var_CV=CV_value, 
+                          relative_trend = inflation_rate)
+  
+  
+  ## Chance event options on rice farming cost #
+  
+  # considering production risk (pest, disease, heavy rainfall, water shortage, etc.)
+  # so farmers need to pay higher cost for production management risk
+  # event-1, farmers need to buy more pesticides to overcome pest and disease outbreak
+  
+  rice_farming_input_costs_with_more_pesticides_precal <- rice_farming_input_costs * # farming input cost under normal condition
+    (1+portion_rice_farming_input_cost_for_pest_disease_management)
+  
+  rice_farming_input_costs_with_more_pesticides <- chance_event(chance_production_risk,
+                                                                value_if = rice_farming_input_costs_with_more_pesticides_precal,
+                                                                value_if_not = rice_farming_input_costs,
+                                                                n = n_year,
+                                                                CV_if = 10,
+                                                                CV_if_not = CV_value)
+  
+  
+  
+  # considering financial risk (lack of capital) damage on farming cost
+  # farmers may not have enough capital to purchase farming inputs
+  # then, they might get loan from bank with micro-credit program (KUR)
+  # we can consider that farmer who own 1 ha of field can get loan from IDR 10 mio to
+  # 50 mio (USD 625 to 3125)
+  
+  # event-2, farmers get loan from bank, so they need to pay annual interest
+  # this can be add up to their farming cost
+  # consider if the farming input cost is under normal condition
+  
+  # rice_farmer_get_bank_loan <- if(rice_farming_cost_precal == range_loan_for_farmers) {
+  #   rice_farmer_get_bank_loan = TRUE
+  # } else {
+  #   rice_farmer_get_bank_loan = FALSE
+  # }
+  # 
+  # rice_farming_cost_if_get_bank_loan <- if(rice_farmer_get_bank_loan == TRUE) {
+  #   rice_farming_cost + (rice_farming_cost * annual_bank_interest)
+  # } else {
+  #   rice_farming_cost = rice_farming_cost
+  # }
+  # 
+  # rice_farming_cost_with_bank_loan <- chance_event(chance_production_risk,
+  #                                                  value_if = rice_farming_cost_if_get_bank_loan,
+  #                                                  value_if_not = rice_farming_cost,
+  #                                                  n = n_year,
+  #                                                  CV_if = 10,
+  #                                                  CV_if_not = CV_value)
+  # 
+  # # event-3, farmers get loan from bank, so they need to pay annual interest
+  # # this can be add up to their farming cost
+  # # consider if the farming input cost is higher because farmers need to buy 
+  # # more pesticides to overcome pest and disease outbreak
+  # 
+  # rice_farming_high_input_cost_with_bank_loan_precal <- rice_farming_input_costs_with_more_pesticides_precal +
+  #   rice_machinery_costs + rice_labor_costs + irrigation_maintenance_costs 
+  # 
+  # rice_farming_high_input_cost_with_bank_loan <- chance_event(chance_production_risk,
+  #                                                             value_if = rice_farming_high_input_cost_with_bank_loan_precal,
+  #                                                             value_if_not = rice_farming_cost_precal,
+  #                                                             n = n_year,
+  #                                                             CV_if = 10,
+  #                                                             CV_if_not = CV_value)
+  
+  
+  
+  # annual rice farming cost after considering production and financial risk
+  # rice_farming_cost_with_risk_precal <- rice_farming_high_input_cost_with_bank_loan
+  
+  final_rice_farming_cost <- vv(rice_farming_input_costs_with_more_pesticides, n_year, var_CV=CV_value,
+                                relative_trend = inflation_rate)
+  
+  
+  
+  ### Rice compost cost ####
+  
+  # Normally, most rice farmers don't utilize the rice biomass residue as compost
+  # They will just simply throw the waste away or burn it
+  
+  # Here, we can assume that what if the rice farmers utilize the rice biomass
+  # residue into compost
+  
+  # Annual cost for composting rice biomass residue
+  # First, we need to calculate the establishment cost for composting
+  # by preparing composting facility, like compost bin and equipment
+  # the cost would be paid only for the first year
+  
+  first_year_composting_cost <- compost_bin_cost + composter_equipment_cost
+  
+  # Calculate labor cost for composting
+  # Assuming that labor is mostly needed at the end of cultivation season
+  # let's say around 5 days/season. So, farmer need to hire labors to help 
+  # them at least 10 days/year.
+  # The rest work would be handle by the farmers themselves
+  
+  annual_cost_labor_rice_composting <- daily_labor_cost * 10 #10 days for hiring labor
+  
+  # Then, we calculate the annual rice biomass composting cost
+  # Which is included for the cost of labor, compost activator, and maintenance
+  rice_compost_cost_precal <- annual_cost_labor_rice_composting +
+    compost_activator_cost + composter_maintenance_cost
+  
+  rice_compost_cost <- vv(rice_compost_cost_precal, n_year, var_CV=10)
+  
+  # Calculate the cost with the first year establishment cost
+  rice_compost_cost[1] <- rice_compost_cost[1] + first_year_composting_cost 
+  
+  
+  ## Chance event options on rice compost cost ##
+  
+  # Considering financial risk (lack of capital) damage on composting rice
+  # farmers may not have enough capital to purchase composter tools and equipment
+  # So they might get loan from bank with micro-credit program (KUR)
+  # we can consider that farmer who own 1 ha of field can get loan from IDR 10 mio to
+  # 50 mio (USD 625 to 3125)
+  
+  # event-1, farmers get loan from bank, so they need to pay annual interest
+  # this can be add up to their first year composting cost
+  
+  # rice_compost_first_year_get_bank_loan <- if(first_year_composting_cost >= range_loan_for_farmers) {
+  #   rice_compost_first_year_get_bank_loan = TRUE
+  # } else {
+  #   rice_compost_first_year_get_bank_loan = FALSE
+  # }
+  # 
+  # rice_compost_cost_first_year_if_get_bank_loan <- if(rice_compost_first_year_get_bank_loan == TRUE) {
+  #   first_year_composting_cost + (first_year_composting_cost * annual_bank_interest)
+  # } else {
+  #   first_year_composting_cost = first_year_composting_cost
+  # }
+  # 
+  # rice_compost_first_year_cost_with_bank_loan <- chance_event(chance_production_risk,
+  #                                                             value_if = rice_compost_cost_first_year_if_get_bank_loan,
+  #                                                             value_if_not = first_year_composting_cost,
+  #                                                             n = n_year,
+  #                                                             CV_if = 10,
+  #                                                             CV_if_not = CV_value)
+  # 
+  # # event-2, farmers get loan from bank, so they need to pay annual interest
+  # # this can be add up to their composting cost
+  # 
+  # rice_compost_get_bank_loan <- if(rice_compost_cost_precal >= range_loan_for_farmers) {
+  #   rice_farmer_compost_get_bank_loan = TRUE
+  # } else {
+  #   rice_farmer_compost_get_bank_loan = FALSE
+  # }
+  # 
+  # rice_compost_cost_if_get_bank_loan <- if(rice_compost_get_bank_loan == TRUE) {
+  #   rice_compost_cost_precal + (rice_compost_cost_precal * annual_bank_interest)
+  # } else {
+  #   rice_compost_cost_precal = rice_compost_cost_precal
+  # }
+  # 
+  # rice_compost_cost_if_with_bank_loan <- chance_event(chance_production_risk,
+  #                                                     value_if = rice_compost_cost_if_get_bank_loan,
+  #                                                     value_if_not = rice_compost_cost_precal,
+  #                                                     n = n_year,
+  #                                                     CV_if = 10,
+  #                                                     CV_if_not = CV_value)
+  # 
+  # 
+  # 
+  # # annual rice compost cost after considering production and financial risk
+  # rice_compost_cost_with_bank_loan <- rice_compost_cost_if_with_bank_loan 
+  # 
+  # rice_compost_cost_with_bank_loan[1] <- rice_compost_cost_with_bank_loan[1] + rice_compost_first_year_cost_with_bank_loan
+  # 
+  # final_rice_compost_cost <- vv(rice_compost_cost_with_bank_loan, n_year, var_CV=CV_value,
+  #                               relative_trend = inflation_rate)
+  # 
+  
+  
+  ### Processed rice product cost ####
+  
+  # In case of rice, this is probably not feasible to process rice as other
+  # processed product. So, we can consider that the processed rice product cost
+  # as zero
+  
+  processed_rice_product_cost <- 0
+  
+  
+  ### Eco-tourism for rice field cost ####
+  
+  # First, we need to calculate the establishment cost for eco-tourism
+  # by preparing some signs to be installed in the area
+  # the cost would be paid only for the first year
+  
+  first_year_rice_ecotourism_cost <- sign_installation_cost
+  
+  # Then, we calculate the annual cost of eco-tourism for rice field
+  # Which is included for marketing and promotion
+  annual_rice_ecotourism_cost <- marketing_and_promotion_ecotourism
+  
+  rice_ecotourism_cost <- vv(annual_rice_ecotourism_cost, n_year, var_CV=10)
+  
+  # Calculate the cost with the first year establishment cost
+  rice_ecotourism_cost[1] <- rice_ecotourism_cost[1] + first_year_rice_ecotourism_cost 
+  
+  # We consider that there is no risk affect cost of rice eco-tourism cost
+  # since the cost might be not so high
+  
+  
+  
   
   ## Rice system outcomes #### 
   
@@ -419,6 +411,61 @@ transition_rice_to_vegetables <- function(x, varnames){
   
   # Rice farming income
   rice_farming_income <- final_rice_farming_revenue - final_rice_farming_cost
+  
+  # if the case of risk events causing lose to farmers' income, then farmers 
+  # may consider to take bank loan to continue their cultivation in the next season
+  # so the farming cost is higher than farming income
+  
+  rice_farmer_get_bank_loan <- if(rice_farming_cost >= rice_farming_income) {
+    rice_farmer_get_bank_loan = TRUE
+  } else {
+    rice_farmer_get_bank_loan = FALSE
+  }
+  
+  # assuming the farming cost will be higher due to production risk (pest&disease)
+  rice_farming_input_cost_with_risk <- rice_farming_input_costs_with_more_pesticides_precal +
+    rice_machinery_costs + rice_labor_costs + irrigation_maintenance_costs 
+  
+  
+  # if farmers get loan from bank, they need to pay annual interest
+  # this can be add up to their farming cost
+  
+  rice_farming_cost_if_get_bank_loan <- if(rice_farmer_get_bank_loan == TRUE) {
+    rice_farming_input_cost_with_risk + (rice_farming_input_cost_with_risk * annual_bank_interest)
+  } else {
+    rice_farming_input_cost_with_risk = rice_farming_input_cost_with_risk
+  }
+  
+  # chance event bank loan
+  rice_farming_cost_with_bank_loan <- chance_event(chance_production_risk,
+                                                   value_if = rice_farming_input_cost_with_risk,
+                                                   value_if_not = rice_farming_cost,
+                                                   n = n_year,
+                                                   CV_if = 10,
+                                                   CV_if_not = CV_value)
+  
+  
+  # Rice farming income if take bank loan
+  rice_farming_income_if_take_loan <- final_rice_farming_revenue - rice_farming_cost_with_bank_loan
+  
+  
+  # event-3, farmers get loan from bank, so they need to pay annual interest
+  # this can be add up to their farming cost
+  # consider if the farming input cost is higher because farmers need to buy 
+  # more pesticides to overcome pest and disease outbreak
+  
+  rice_farming_high_input_cost_with_bank_loan_precal <- rice_farming_input_costs_with_more_pesticides_precal +
+    rice_machinery_costs + rice_labor_costs + irrigation_maintenance_costs 
+  
+  rice_farming_high_input_cost_with_bank_loan <- chance_event(chance_production_risk,
+                                                              value_if = rice_farming_high_input_cost_with_bank_loan_precal,
+                                                              value_if_not = rice_farming_cost_precal,
+                                                              n = n_year,
+                                                              CV_if = 10,
+                                                              CV_if_not = CV_value)
+  
+  
+  
   
   # Rice compost income
   rice_compost_income <- final_rice_compost_revenue - final_rice_farming_cost
