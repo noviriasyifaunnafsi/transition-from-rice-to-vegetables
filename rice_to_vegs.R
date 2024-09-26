@@ -922,6 +922,29 @@ transition_rice_to_vegetables <- function(x, varnames){
   vegetable_result <- vv(final_vegetables_benefits_precal, n_year, var_CV=CV_value, 
                          relative_trend = inflation_rate)
   
+  # Calculate total benefits from rice
+
+  total_benefits_rice <- final_rice_farming_revenue + final_rice_compost_revenue + processed_rice_product_revenue + 
+                          rice_ecotourism_revenue + rice_nutrition_health_benefit
+
+  # Calculate total costs from rice
+
+  total_costs_rice <- final_rice_farming_cost + final_rice_compost_cost + processed_rice_product_cost + 
+                          rice_ecotourism_cost + rice_nutrition_health_cost
+
+
+  
+  # Calculate total benefits from vegetables
+
+  total_benefits_vegetables <- final_vegetables_farming_revenue + final_vegetables_compost_revenue + processed_vegetables_product_revenue + 
+                          vegetables_ecotourism_revenue + vegetables_nutrition_health_benefit
+
+
+  # Calculate total costs from vegetables
+
+  total_costs_vegetables <- final_vegetables_farming_cost + final_vegetables_compost_cost + processed_vegetables_product_cost + 
+                          vegetables_ecotourism_cost + vegetables_nutrition_health_cost
+  
   
   # Calculate NPV ####
   
