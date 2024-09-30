@@ -1,5 +1,5 @@
 label;variable;distribution;lower;median;upper
-Number of years;n_year;const;15;;15
+Number of years;n_year;const;10;;10
 Discount rate;discount_rate;posnorm;5;;10
 Coefficient of variation  (%);CV_value;posnorm;10;;20
 Inflation rate;inflation_rate;posnorm;1;;5
@@ -73,3 +73,7 @@ Vegetable processed product income loss from market risk (%);vegetable_processed
 Estimated portion of compost loss revenue (%);portion_compost_loss_revenue;tnorm_0_1;0.05;;0.1
 Chance of market risk compost (%);chance_market_risk_compost;tnorm_0_1;0.1;;0.5
 Chance of market risk vegetable processed (%);chance_market_risk_vegetable_processed;tnorm_0_1;0.1;;0.3
+Annual vegetable yield (kg/ha);annual_vegetables_yield;posnorm;10000;;70000
+Average vegetables price in the market (USD);average_vegetables_price_market;posnorm;1;;3.5
+Annual vegetables consumption per person (kg/year);annual_vegs_consumption_per_person;posnorm;20000;;60000
+Chance of farmers consume their own vegetables (%);chance_consume_own_vegetables;tnorm_0_1;0.4;;0.8
