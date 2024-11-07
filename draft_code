@@ -1,0 +1,613 @@
+library(decisionSupport)
+library(gtExtras)
+library(ggplot2)
+library(ggthemes)
+library(extrafont)
+library(plyr)
+library(scales)
+library(svglite)
+
+input_estimates <- read.csv("input_rice_to_vegs_usd.csv", sep = ";")
+
+make_variables <- function(est,n=1)
+{ x<-random(rho=est, n=n)
+for(i in colnames(x)) assign(i,
+                             as.numeric(x[1,i]),envir=.GlobalEnv)
+}
+
+make_variables(as.estimate(input_estimates))
+
+transition_rice_to_vegetables <- function(x, varnames){
+  
+# 1st scenario: assuming farmer do everything by their own (?) ####
+  
+# Rice system ####
+  
+  # Considering rice production as baseline #
+  
+   ## Rice farming costs ####
+
+
+# This is from chatgpt suggestions btw, let's see how it works.....
+
+# Checking if the farmer gets a loan based on their farming cost
+rice_farmer_get_bank_loan <- rice_farming_cost_precal >= range_loan_for_farmers
+
+
+# Modify the farming cost if the loan condition is true
+rice_farming_cost_if_get_bank_loan <- ifelse(rice_farmer_get_bank_loan, 
+                                             rice_farming_cost + (rice_farming_cost * annual_bank_interest), 
+                                             rice_farming_cost)
+
+
+# Calculating the total farming cost with higher input cost and bank loan
+rice_farming_high_input_cost_with_bank_loan_precal <- rice_farming_input_costs_with_more_pesticides +
+  rice_machinery_costs + rice_labor_costs + irrigation_maintenance_costs
+
+
+# Handling production risk and financial risk with the chance event function
+rice_farming_input_costs_with_more_pesticides <- chance_event(
+  chance_production_risk,
+  value_if = rice_farming_input_costs_with_more_pesticides_precal,
+  value_if_not = rice_farming_input_costs,
+  n = n_year,
+  CV_if = CV_value,
+  CV_if_not = 10
+)
+
+
+
+# Annual rice farming cost considering production and financial risk
+rice_farming_cost_with_risk_precal <- rice_farming_high_input_cost_with_bank_loan
+
+# Final cost considering inflation and CV
+final_rice_farming_cost <- vv(rice_farming_cost_with_risk_precal, 
+                              n_year, 
+                              var_CV = CV_value, 
+                              relative_trend = inflation_rate)
+
+# For farming benefits
+
+
+rice_yield_loss_with_production_financial_risk <- rice_yield * (prob_damage_production_risk_rice + prob_damage_market_risk_rice)
+rice_yield_with_production_financial_risk_precal <- rice_yield - rice_yield_loss_with_production_financial_risk
+
+
+# Apply risks separately
+rice_yield_loss_from_production_risk <- rice_yield * prob_damage_production_risk_rice
+rice_yield_loss_from_market_risk <- rice_yield * prob_damage_market_risk_rice
+
+rice_yield_with_production_financial_risk_precal <- rice_yield - rice_yield_loss_from_production_risk - rice_yield_loss_from_market_risk
+
+
+
+# chance_event for yield loss
+
+rice_yield_with_production_financial_risk <- chance_event(
+  (chance_production_risk + chance_financial_risk_rice),
+  value_if = rice_yield_with_production_financial_risk_precal,
+  value_if_not = rice_yield,
+  n = n_year,
+  CV_if = CV_value,
+  CV_if_not = 10
+)
+
+
+# Suggested Change: If these risks are independent, you could model them as separate events and then combine the results later.
+
+rice_yield_with_production_financial_risk <- chance_event(
+  chance_production_risk,  # Separate the risks
+  value_if = rice_yield_with_production_financial_risk_precal,
+  value_if_not = rice_yield,
+  n = n_year,
+  CV_if = CV_value,
+  CV_if_not = 10
+)
+
+# Optionally, you can add financial risk to the result if needed
+rice_yield_with_production_financial_risk <- chance_event(
+  chance_financial_risk_rice,
+  value_if = rice_yield_with_production_financial_risk,
+  value_if_not = rice_yield,
+  n = n_year,
+  CV_if = CV_value,
+  CV_if_not = 10
+)
+
+
+
+Event 2: Rice Revenue Reduction from Market Risk
+rice_farmgate_price_with_market_risk <- rice_farmgate_price * prob_damage_market_risk_rice
+rice_farming_revenue_loss_with_market_risk_normal <- rice_farmgate_price_with_market_risk * rice_yield
+
+# Suggested change
+
+rice_farmgate_price_with_market_risk <- rice_farmgate_price * (1 - prob_damage_market_risk_rice)
+rice_farming_revenue_loss_with_market_risk_normal <- rice_farmgate_price_with_market_risk * rice_yield
+
+
+# Revenue with Market Risk (Normal Conditions)
+
+rice_farming_revenue_with_market_risk_normal <- chance_event(
+  chance_market_risk_rice,
+  value_if = rice_farming_revenue_loss_with_market_risk_normal,
+  value_if_not = rice_farming_revenue_precal,
+  n = n_year,
+  CV_if = CV_value,
+  CV_if_not = 10
+)
+
+
+
+# Event 3: Rice Revenue Reduction from Market Risk under Production and Financial Risk
+
+rice_farming_revenue_loss_with_market_production_financial_risk <- rice_farmgate_price_with_market_risk * rice_yield_with_production_financial_risk_precal
+
+
+# Final Revenue Calculation
+final_rice_farming_revenue <- vv(
+  rice_farming_revenue_loss_with_market_production_financial_risk, 
+  n_year, 
+  var_CV = CV_value,
+  relative_trend = inflation_rate
+)
+
+
+
+# vegs costs
+
+# 1. Defining Initial Costs:
+
+vegetables_farming_cost_precal <- vegetables_farming_input_costs + 
+  vegetables_machinery_costs + 
+  vegetables_labor_costs +  
+  irrigation_maintenance_costs
+
+# This looks fine as long as the variables (vegetables_farming_input_costs, vegetables_machinery_costs, etc.) are defined earlier in your code. If any of them can vary depending on conditions, consider using functions to calculate those dynamically.
+# 2. Cost Adjustment in First Year:
+
+vegetables_farming_cost[1] <- vegetables_farming_cost[1] + 
+  vegetables_equipment_costs_first_year + 
+  vegetables_irrigation_costs_first_year
+
+# This works, but make sure that the variable vegetables_farming_cost has been calculated before this modification and that it is indexed correctly.
+# 3. Production Risk on Input Costs (Pesticides):
+
+vegetable_farming_input_costs_with_more_pesticides_precal <- vegetables_farming_input_costs * 
+  (1 + portion_vegetable_farming_input_cost_for_pest_disease_management)
+
+# This is logical as you’re adjusting the cost based on risk. Ensure that portion_vegetable_farming_input_cost_for_pest_disease_management is defined correctly.
+
+vegetable_farming_input_costs_with_more_pesticides <- chance_event(chance_production_risk,
+  value_if = vegetable_farming_input_costs_with_more_pesticides_precal,
+  value_if_not = vegetables_farming_input_costs,
+  n = n_year,
+  CV_if = CV_value,
+  CV_if_not = 10)
+
+# Here, it looks like you're applying a chance event based on chance_production_risk. Just be cautious with the use of CV_value and ensure that it is properly defined.
+# 4. Bank Loan for Financial Risk:
+
+vegetable_farmer_get_bank_loan <- if(vegetables_farming_cost_precal == range_loan_for_farmers) {
+  vegetable_farmer_get_bank_loan = TRUE
+} else {
+  vegetable_farmer_get_bank_loan = FALSE
+}
+
+# You are comparing vegetables_farming_cost_precal with range_loan_for_farmers. This comparison might not work if vegetables_farming_cost_precal is a continuous value, as loans are typically based on a fixed range. It might be better to check if the cost falls within the loan range using an inequality.
+
+vegetable_farmer_get_bank_loan <- ifelse(vegetables_farming_cost_precal >= min_loan_range & 
+                                         vegetables_farming_cost_precal <= max_loan_range, 
+                                         TRUE, 
+                                         FALSE)
+# Also, this part:
+
+vegetable_farming_cost_if_get_bank_loan <- if(vegetable_farmer_get_bank_loan == TRUE) {
+  vegetables_farming_cost + (vegetables_farming_cost * annual_bank_interest)
+} else {
+  vegetables_farming_cost = vegetables_farming_cost
+}
+# You have vegetables_farming_cost = vegetables_farming_cost in the else part, which doesn’t make sense because it's assigning the same value back to vegetables_farming_cost. Instead, just return vegetables_farming_cost without modification in the else block:
+
+vegetable_farming_cost_if_get_bank_loan <- ifelse(vegetable_farmer_get_bank_loan == TRUE, 
+    vegetables_farming_cost + (vegetables_farming_cost * annual_bank_interest), 
+    vegetables_farming_cost)
+
+# 5. High Input Costs with Bank Loan:
+# This section appears logical, but be sure that vegetable_farming_input_costs_with_more_pesticides has already been adjusted as expected.
+
+vegetable_farming_high_input_cost_with_bank_loan_precal <- vegetable_farming_input_costs_with_more_pesticides +
+  vegetables_machinery_costs + 
+  vegetables_labor_costs +  
+  irrigation_maintenance_costs
+
+
+# 6. Final Calculation of Annual Costs:
+# The following line calculates the total annual farming cost based on the effective field size of 2.5 ha, which makes sense for a mixed cropping system:
+
+annual_final_vegetable_farming_cost <- vegetable_farming_high_input_cost_with_bank_loan * 2.5
+# Also, your final adjustment for the first year looks fine as well:
+
+final_vegetable_farming_cost[1] <- final_vegetable_farming_cost[1] + 
+  vegetables_equipment_costs_first_year + 
+  vegetables_irrigation_costs_first_year
+
+
+
+
+### Vegetable farming benefits ####
+  
+  # Annual vegetable farming revenue under normal condition
+  
+  # Typically, field sizes in Sinjai are small, and it's very rare to find a 
+  # 1 ha plot. Therefore, let's assume that a farmer has two different fields, 
+  # each with a size of 0.5 ha, making a total of 1 ha. The farmer can 
+  # grow 6 different vegetables per year. 
+  
+  # In this model, we consider that 'Field 1' is cultivated with Chinese mustard 
+  # green, green beans, and cabbage in rotation as main crops, with spring onions 
+  # as a side crop. In 'Field 2', tomatoes and chili are cultivated in rotation as 
+  # main crops, with spring onions as a side crop.
+  
+  # Calculating revenue from 'Field 1'
+  # For Field 1, the proportion of the field used for the main crops is 0.3 ha, 
+  # while the side crop uses 0.2 ha per season (0.6 ha per year)
+  
+  chinese_mustard_green_revenue_precal <- (chinese_mustard_green_yield * chinese_mustard_green_price) * 0.3 
+  chinese_mustard_green_revenue <- vv(chinese_mustard_green_revenue_precal, n_year, var_CV=40)
+  
+  green_bean_revenue_precal <- (green_bean_yield * green_bean_price) *  0.3 
+  green_bean_revenue <- vv(green_bean_revenue_precal, n_year, var_CV=40)
+  
+  cabbage_revenue_precal <- (cabbage_yield * cabbage_price) * 0.3 
+  cabbage_revenue <- vv(cabbage_revenue_precal, n_year, var_CV=40)
+  
+  spring_onion_revenue_precal_1 <- (spring_onion_yield * spring_onion_price) * 0.6 
+  spring_onion_revenue_1 <- vv(spring_onion_revenue_precal_1, n_year, var_CV=40)
+  
+  # total revenue from 'Field 1'
+  total_revenue_field_1 <- chinese_mustard_green_revenue + green_bean_revenue +
+    cabbage_revenue + spring_onion_revenue_1
+
+
+
+
+# 3. Risk Adjustments for Yields
+# You are considering risks related to production, financial, and market damage. These need to be handled carefully.
+
+# a. Production Risks on Vegetable Yield:
+# For calculating annual yield with production risks, you're using the vv() function with var_CV=CV_value, which adds uncertainty to the yield. Make sure that CV_value is defined properly, and it reflects the actual variability in yields. For example:
+
+annual_chinese_mustard_green_yield <- vv((chinese_mustard_green_yield * 0.3), n_year, var_CV=CV_value)
+
+# if CV_value represents the coefficient of variation (percentage of the yield that is uncertain), ensure that it is numeric and appropriately set.
+
+
+# b. Financial Risk and Market Risk:
+You are using the chance_event() function to apply risks to vegetable yield and revenue, like so:
+
+vegetable_yield_with_production_risk <- chance_event(
+    chance_production_risk,
+    value_if = vegetable_yield_with_production_risk_precal,
+    value_if_not = annual_total_yield_vegetables,
+    n = n_year,
+    CV_if = CV_value,
+    CV_if_not = 10
+)
+
+Check chance_event() Definitions: You need to ensure that chance_event() is correctly defined, particularly that it handles the probabilities (chance_production_risk, chance_financial_risk_vegetables) properly. If chance_event() expects probabilities and these probabilities are not in the range [0, 1], you might need to adjust them accordingly.
+Use of value_if and value_if_not: The value_if parameter should represent the yield (or revenue) after a risk event occurs, and value_if_not should represent the baseline (unaffected) value. Check that the values being passed here reflect the correct changes due to risks.
+
+
+# 4. Revenue Calculations with Market Risk:
+
+vegetable_price_with_market_risk <- vv((vegetable_prices * prob_damage_market_risk_vegetables), n_year, var_CV=CV_value)
+# Ensure Market Risk Factor Logic: The vegetable_prices * prob_damage_market_risk_vegetables calculation seems like it will reduce the price by a percentage. If prob_damage_market_risk_vegetables is a probability (e.g., 0.2 for 20% chance of damage), then it should reduce the price by that amount, not multiply. Consider adjusting this to:
+
+vegetable_price_with_market_risk <- vegetable_prices * (1 - prob_damage_market_risk_vegetables)
+# This reduces the price based on the market risk.
+
+# 5. Final Revenue After Risk Adjustments:
+# At the end of your code, you compute the final revenue after considering market and other risks:
+
+final_vegetable_farming_revenue <- vv(vegetable_farming_revenue_with_market_production_financial_risk_precal, 
+                                      n_year, var_CV=CV_value, relative_trend = inflation_rate)
+# Make sure that inflation_rate is properly defined (as a percentage or as a growth rate), and ensure that the application of inflation is consistent with your model. For example, if inflation is compounded annually, you might need to adjust the relative_trend calculation accordingly.
+
+
+
+# Vegetable processing chance event
+
+# Error Handling for Probabilities
+if (prob_of_processing_vegetables < 0 | prob_of_processing_vegetables > 1) {
+  stop("Invalid probability value for vegetable processing: Must be between 0 and 1.")
+}
+if (chance_financial_risk_vegetables < 0 | chance_financial_risk_vegetables > 1) {
+  stop("Invalid probability value for financial risk: Must be between 0 and 1.")
+}
+# Repeat for other probabilities...
+
+## Vegetable Processing Logic ####
+chance_vegetable_processing <- chance_event(chance = prob_of_processing_vegetables, value_if = 1, 
+                                            value_if_not = 0) 
+if (chance_vegetable_processing == 1) {
+    
+    # Cost Calculations...
+    
+    # Check loan condition
+    vegetable_processing_get_bank_loan <- if(vegetable_processing_cost_precal == range_loan_for_farmers) {
+      TRUE
+    } else {
+      FALSE
+    }
+
+    # Adjust cost if loan is taken
+    vegetable_processing_cost_if_get_bank_loan <- if (vegetable_processing_get_bank_loan) {
+      vegetable_processing_cost + (vegetable_processing_cost * annual_bank_interest)
+    } else {
+      vegetable_processing_cost
+    }
+
+    # Chance event for processing cost with loan
+    vegetable_processing_cost_with_bank_loan <- chance_event(chance_production_risk,
+                                                             value_if = vegetable_processing_cost_if_get_bank_loan,
+                                                             value_if_not = vegetable_processing_cost,
+                                                             n = n_year,
+                                                             CV_if = CV_value,
+                                                             CV_if_not = 10)
+
+    # Final vegetable processing cost after considering risks
+    final_vegetable_processing_cost <- vv(vegetable_processing_cost_with_bank_loan, 
+                                          n_year, var_CV=CV_value,
+                                          relative_trend = inflation_rate)
+
+    ## Revenue Calculations...
+
+    # Check market risk
+    vegetable_processed_revenue_loss_market_risk <- processed_vegetable_product_revenue - 
+      (processed_vegetable_product_revenue * vegetable_processed_income_loss_market_risk) 
+
+    vegetable_processed_revenue_with_market_risk <- chance_event(chance_market_risk_vegetable_processed,
+                                                                 value_if = vegetable_processed_revenue_loss_market_risk,
+                                                                 value_if_not = processed_vegetable_product_revenue,
+                                                                 n = n_year,
+                                                                 CV_if = CV_value,
+                                                                 CV_if_not = 10)
+
+    final_vegetable_processed_revenue <- vv(vegetable_processed_revenue_with_market_risk, 
+                                            n_year, var_CV=CV_value,
+                                            relative_trend = inflation_rate)
+    
+} else {
+    final_vegetable_processing_cost <- rep(x = 0, times = n_year)
+    final_vegetable_processed_revenue <- rep(x = 0, times = n_year)
+}
+
+
+
+# Vegetable processing chance event revised #
+
+## Vegetable Processing ####
+
+# Probability of vegetable processing
+chance_vegetable_processing <- chance_event(prob_of_processing_vegetables, value_if = 1, value_if_not = 0)
+
+if (chance_vegetable_processing == 1) {
+
+  #### Vegetable Processing Costs ####
+  
+  # Establishment and maintenance costs
+  maintenance_cost <- vegetable_processing_equipment_maintenance_cost + vegetable_storage_maintenance_cost
+  marketing_distribution_cost <- marketing_and_distribution_for_vegetable_product
+  labor_cost <- daily_labor_cost * 42  # Assuming labor needed for 42 days annually
+  
+  # Total annual processing cost
+  base_processing_cost <- labor_cost + maintenance_cost + marketing_distribution_cost
+  vegetable_processing_cost <- vv(base_processing_cost, n_year, var_CV = 10, relative_trend = inflation_rate)
+
+  # Financial risk considerations
+  no_capital_cost <- chance_event(chance_financial_risk_vegetables, value_if = 0, value_if_not = base_processing_cost, n = n_year)
+
+  # Loan and interest adjustments
+  bank_loan_needed <- (base_processing_cost == range_loan_for_farmers)
+  processing_cost_with_interest <- if (bank_loan_needed) {
+    vegetable_processing_cost * (1 + annual_bank_interest)
+  } else {
+    vegetable_processing_cost
+  }
+  
+  # Adjust for production risks
+  final_vegetable_processing_cost <- chance_event(chance_production_risk,
+                                                  value_if = processing_cost_with_interest,
+                                                  value_if_not = vegetable_processing_cost,
+                                                  n = n_year,
+                                                  CV_if = CV_value, CV_if_not = 10)
+
+  #### Vegetable Processing Revenue ####
+
+  # Calculate raw material from low-grade produce
+  tomato_raw <- vv(annual_tomato_yield * low_grade_vegetable_product, n_year, var_CV = 40)
+  chili_raw <- vv(annual_chili_yield * low_grade_vegetable_product, n_year, var_CV = 40)
+  
+  # Revenue from processed products
+  tomato_sauce_revenue <- vv(tomato_raw * 0.3 * tomato_sauce_price, n_year, var_CV = 10, relative_trend = inflation_rate)
+  chili_sauce_revenue <- vv(chili_raw * 0.3 * chili_sauce_price, n_year, var_CV = 10, relative_trend = inflation_rate)
+  processed_revenue <- tomato_sauce_revenue + chili_sauce_revenue
+  
+  # Market risk on processed product revenue
+  revenue_loss_due_to_market <- processed_revenue * (1 - vegetable_processed_income_loss_market_risk)
+  final_vegetable_processed_revenue <- chance_event(chance_market_risk_vegetable_processed,
+                                                    value_if = revenue_loss_due_to_market,
+                                                    value_if_not = processed_revenue,
+                                                    n = n_year,
+                                                    CV_if = CV_value, CV_if_not = 10)
+  
+} else {
+  # No processing costs or revenue if processing is not implemented
+  final_vegetable_processing_cost <- rep(0, n_year)
+  final_vegetable_processed_revenue <- rep(0, n_year)
+}
+  
+
+  
+## Compost ####
+
+# Set probability of compost usage
+chance_compost <- chance_event(chance = prob_of_compost, value_if = 1, value_if_not = 0)
+
+if (chance_compost == 1) {
+
+  ### Rice Compost Cost ####
+  
+  # Initial establishment cost for composting (only in first year)
+  first_year_composting_cost <- compost_bin_cost + composter_equipment_cost
+  
+  # Annual labor cost for rice composting (10 days per year for hired labor)
+  annual_cost_labor_rice_composting <- daily_labor_cost * 10
+  
+  # Total annual rice compost cost (labor, activator, maintenance, and manure)
+  annual_rice_compost_cost <- annual_cost_labor_rice_composting +
+                              compost_activator_cost + 
+                              composter_maintenance_cost + 
+                              manure_for_compost_cost
+  
+  # Include first-year establishment cost
+  rice_compost_cost <- vv(annual_rice_compost_cost, n_year, var_CV = 10)
+  rice_compost_cost[1] <- rice_compost_cost[1] + first_year_composting_cost
+  
+  # Financial risk: bank loan and interest cost for composting
+  rice_compost_get_bank_loan <- (annual_rice_compost_cost >= range_loan_for_farmers[1] && 
+                                 annual_rice_compost_cost <= range_loan_for_farmers[2])
+  
+  rice_compost_cost_if_get_bank_loan <- if (rice_compost_get_bank_loan) {
+    rice_compost_cost * (1 + annual_bank_interest)
+  } else {
+    rice_compost_cost
+  }
+  
+  rice_compost_cost_with_bank_loan <- chance_event(chance_production_risk,
+                                                   value_if = rice_compost_cost_if_get_bank_loan,
+                                                   value_if_not = rice_compost_cost,
+                                                   n = n_year,
+                                                   CV_if = CV_value,
+                                                   CV_if_not = 10)
+  
+  final_rice_compost_cost <- vv(rice_compost_cost_with_bank_loan, n_year, var_CV = CV_value,
+                                relative_trend = inflation_rate)
+
+  ### Rice Compost Benefits ####
+  
+  # Annual income from composting rice biomass (50% of biomass converted to compost)
+  rice_compost_revenue <- vv(biomass_rice * 0.5 * price_rice_compost, n_year, var_CV = 10,
+                             relative_trend = inflation_rate)
+  
+  # Market risk: potential loss in compost revenue
+  rice_compost_revenue_with_market_risk <- chance_event(chance_market_risk_compost,
+                                                        value_if = rice_compost_revenue * (1 - portion_compost_loss_revenue),
+                                                        value_if_not = rice_compost_revenue,
+                                                        n = n_year,
+                                                        CV_if = CV_value,
+                                                        CV_if_not = 10)
+  
+  final_rice_compost_revenue <- vv(rice_compost_revenue_with_market_risk, n_year, var_CV = CV_value,
+                                   relative_trend = inflation_rate)
+  
+  ### Vegetable Compost Cost ####
+  
+  # Annual labor cost for vegetable composting (15 days per year for hired labor)
+  annual_cost_labor_vegetable_composting <- daily_labor_cost * 15
+  
+  # Total annual vegetable compost cost (labor, activator, and maintenance)
+  vegetable_compost_cost <- vv(annual_cost_labor_vegetable_composting + 
+                               compost_activator_cost + 
+                               composter_maintenance_cost, n_year, var_CV = 10)
+  
+  # Include first-year establishment cost
+  vegetable_compost_cost[1] <- vegetable_compost_cost[1] + first_year_composting_cost
+  
+  # Financial risk: bank loan and interest cost for composting
+  vegetable_compost_get_bank_loan <- (vegetable_compost_cost[1] >= range_loan_for_farmers[1] && 
+                                      vegetable_compost_cost[1] <= range_loan_for_farmers[2])
+  
+  vegetable_compost_cost_if_get_bank_loan <- if (vegetable_compost_get_bank_loan) {
+    vegetable_compost_cost * (1 + annual_bank_interest)
+  } else {
+    vegetable_compost_cost
+  }
+  
+  vegetable_compost_cost_with_bank_loan <- chance_event(chance_production_risk,
+                                                        value_if = vegetable_compost_cost_if_get_bank_loan,
+                                                        value_if_not = vegetable_compost_cost,
+                                                        n = n_year,
+                                                        CV_if = CV_value,
+                                                        CV_if_not = 10)
+  
+  final_vegetable_compost_cost <- vv(vegetable_compost_cost_with_bank_loan, n_year, var_CV = CV_value,
+                                     relative_trend = inflation_rate)
+
+  ### Vegetable Compost Benefits ####
+  
+  # Annual income from composting vegetable biomass (30% of biomass converted to compost)
+  vegetable_compost_revenue <- vv(biomass_vegetables * 0.3 * price_vegetable_compost, n_year, var_CV = 10)
+  
+  # Market risk: potential loss in compost revenue
+  vegetable_compost_revenue_with_market_risk <- chance_event(chance_market_risk_compost,
+                                                             value_if = vegetable_compost_revenue * (1 - portion_compost_loss_revenue),
+                                                             value_if_not = vegetable_compost_revenue,
+                                                             n = n_year,
+                                                             CV_if = CV_value,
+                                                             CV_if_not = 10)
+  
+  final_vegetable_compost_revenue <- vv(vegetable_compost_revenue_with_market_risk, n_year, var_CV = CV_value,
+                                        relative_trend = inflation_rate)
+
+} else {
+  # Set all costs and revenues to zero if composting is not used
+  final_rice_compost_cost <- rep(0, n_year)
+  final_rice_compost_revenue <- rep(0, n_year)
+  final_vegetable_compost_cost <- rep(0, n_year)
+  final_vegetable_compost_revenue <- rep(0, n_year)
+}
+
+
+## Agrotourism ####
+
+# Probability of agrotourism 
+chance_agrotourism <- chance_event(chance = prob_of_agrotourism, value_if = 1, value_if_not = 0)
+
+if (chance_agrotourism == 1) {
+
+  ### Agrotourism Cost and Revenue for Rice Field ####
+  
+  # Establishment cost (first year only)
+  first_year_rice_agrotourism_cost <- sign_installation_cost
+  
+  # Annual cost for marketing and promotion
+  annual_rice_agrotourism_cost <- marketing_and_promotion_ecotourism
+  rice_agrotourism_cost <- vv(annual_rice_agrotourism_cost, n_year, var_CV = 10)
+  rice_agrotourism_cost[1] <- rice_agrotourism_cost[1] + first_year_rice_agrotourism_cost
+  
+  # Annual revenue from rice field agrotourism
+  rice_agrotourism_revenue <- vv(rice_ecotourism_value, n_year, var_CV = CV_value)
+
+  ### Agrotourism Cost and Revenue for Vegetable Field ####
+  
+  # Establishment cost (first year only)
+  first_year_vegetable_agrotourism_cost <- sign_installation_cost
+  
+  # Annual cost for marketing and promotion
+  annual_vegetable_agrotourism_cost <- marketing_and_promotion_ecotourism
+  vegetable_agrotourism_cost <- vv(annual_vegetable_agrotourism_cost, n_year, var_CV = 10)
+  vegetable_agrotourism_cost[1] <- vegetable_agrotourism_cost[1] + first_year_vegetable_agrotourism_cost
+  
+  # Annual revenue from vegetable field agrotourism
+  vegetables_agrotourism_revenue <- vv(vegetable_ecotourism_value, n_year, var_CV = 10)
+
+} else {
+  # Set all costs and revenues to zero if agrotourism is not implemented
+  rice_agrotourism_cost <- rep(0, n_year)
+  rice_agrotourism_revenue <- rep(0, n_year)
+  vegetable_agrotourism_cost <- rep(0, n_year)
+  vegetables_agrotourism_revenue <- rep(0, n_year)
+}
+
