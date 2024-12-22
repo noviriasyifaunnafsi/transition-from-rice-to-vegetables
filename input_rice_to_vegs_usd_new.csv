@@ -1,0 +1,102 @@
+label;variable;distribution;lower;median;upper;description
+Number of years;n_year;const;10;;10;
+Discount rate;discount_rate;posnorm;5;;10;
+Coefficient of variation  (%);CV_value;posnorm;10;;20;
+Inflation rate;inflation_rate;posnorm;1;;5;
+Rice yield (kg/ha/year);rice_yield;posnorm;7000;;10000;
+Chinese mustard green yield (kg/ha/year);chinese_mustard_green_yield;posnorm;10000;;20000;
+Green bean yield (kg/ha/year);green_bean_yield;posnorm;12000;;30000;
+Cabbage yield (kg/ha/year);cabbage_yield;posnorm;30000;;70000;
+Chili yield (kg/ha/year);chili_yield;posnorm;10000;;40000;
+Tomato yield (kg/ha/year);tomato_yield;posnorm;15000;;40000;
+Spring onion yield (kg/ha/year);spring_onion_yield;posnorm;10000;;24000;
+Rice farmgate price (USD/kg);rice_farmgate_price;posnorm;0.33;;0.43;
+Rice market price (USD/kg);rice_market_price;posnorm;0.5;;0.8;
+Rice cultural value (USD/ha/year);rice_cultural_value;posnorm;3600;;8210;
+Chinese mustard green price (USD/kg);chinese_mustard_green_price;posnorm;0.3;;0.7;
+Green bean price (USD/kg);green_bean_price;posnorm;0.25;;0.5;
+Cabbage price (USD/kg);cabbage_price;posnorm;0.09;;0.44;
+Chili price (USD/kg);chili_price;posnorm;0.16;;2.5;
+Tomato price (USD/kg);tomato_price;posnorm;0.25;;1.25;
+Spring onion price (USD/kg);spring_onion_price;posnorm;0.13;;1.25;
+Overall vegetable farmgate prices (USD/kg);vegetable_farmgate_prices;posnorm;0.09;;2.5;
+Chinese mustard green contract price (USD/kg);chinese_mustard_green_contract_price;posnorm;0.3;;0.5;
+Biomass residue from rice (kg/ha/year);biomass_rice;posnorm;8000;;13000;
+Biomass residue from vegetables (kg/ha/year);biomass_vegetables;posnorm;10000;;20000;
+Price of compost made from rice biomass residue (USD/kg);price_rice_compost;posnorm;0.05;;0.12;
+Price of compost made from vegetable biomass residue (USD/kg);price_vegetable_compost;posnorm;0.1;;0.2;
+Estimated economic value of ecotourism from rice field (USD/year);rice_ecotourism_value;posnorm;125;;500;
+Estimated economic value of ecotourism from vegetable field (USD/year);vegetable_ecotourism_value;posnorm;187;;938;
+Estimated annual health cost savings from rice (USD/ha/year);health_cost_savings_from_rice;posnorm;18;;700;
+Estimated annual health cost savings from vegetables (USD/ha/year);health_cost_savings_from_vegetables;posnorm;2131;;8325;
+Rice farming input costs (USD/ha/year);rice_farming_input_costs;posnorm;687.5;;880;
+Rice farming input costs  with government assistance (USD/ha/year);rice_farming_input_costs_with_gov_assistance;posnorm;625;;800;
+Rice labor costs (USD/ha/year);rice_labor_costs;posnorm;197;;262.5;
+Rice machinery costs (USD/ha/year);rice_machinery_costs;posnorm;275;;687.5;
+Rice machinery costs with government assistance (USD/ha/year);rice_machinery_costs_with_gov_assistance;posnorm;250;;625;
+Vegetable farming input costs (USD/ha/year);vegetables_farming_input_costs;posnorm;2750;;5500;
+Vegetable farming input costs with government assistance  (USD/ha/year);vegetables_farming_input_costs_with_gov_assistance;posnorm;2500;;5000;The costs are not so much different with government assistance because only fertilizers that government supported with subsidized. So assuming that the cost different is only about 10% less than without subsidise
+Vegetable equipment costs (USD/ha/year);vegetables_equipment_costs_first_year;posnorm;687.5;;2750;Only for investement for the first year
+Vegetable equipment costs with government assistance (USD/ha/year);vegetables_equipment_costs_first_year_with_gov_assistance;posnorm;625;;1750;The costs are not so much different with government assistance because farmers still need to bare most of the equipment by themeselves. However, they can use the equipment alternately with the goup's member
+Vegetable machinery costs (USD/ha/year);vegetables_machinery_costs;posnorm;375;;750;Only for investement for the first year. In case the farmer need to purchase machinery by themselves.
+Vegetable machinery costs with government assistance (USD/ha/year);vegetables_machinery_costs_with_gov_assistance;posnorm;50;;250;For fuel and operator wage
+Vegetable labor costs (USD/ha/year);vegetables_labor_costs;posnorm;1250;;3750;
+Vegetable irrigation costs (USD/ha/year);vegetables_irrigation_costs_first_year;posnorm;1500;;7125;Only for investement for the first year. In case the farmer need to purchase irrigation equipment (eg. pipe, water pump, etc.) by themselves.
+Vegetable irrigation costs with government assistance (USD/ha/year);vegetables_irrigation_costs_first_year_with_gov_assistance;posnorm;500;;1000;Consider that government provide pipes and water pump for each farmer group. However farmers still need to pay forirrigation equipment maintenance cost and fuel.
+Irrigation maintenance costs to be paid every season to farmers' group or P3A (USD/year);irrigation_maintenance_costs;posnorm;1.3;;6.3;This is excluded irrigation equipment (pipes, hose, etc) maintenance costs. The payment is only for maintaining the irrigation channels and water pond
+Water pump rent fee with government assistance (USD/ha/year);water_pump_rent_fee_with_gov_assistance;posnorm;15;;37.5;
+Tomato sauce price (IDR/kg);tomato_sauce_price;posnorm;0.5;;0.625;
+Chili sauce price (IDR/kg);chili_sauce_price;posnorm;0.6;;1;
+Compost bin costs (USD);compost_bin_cost;posnorm;31.25;;61.25;
+Compost bin costs with government assistance (USD);compost_bin_cost_with_gov_assistance;posnorm;15;;30;
+Composter equipment and maintenance costs (USD/year);composter_equipment_cost;posnorm;20;;40;
+Composter equipment and maintenance costs with government assistance (USD/year);composter_equipment_cost_with_gov_assistance;posnorm;10;;20;
+Compost activator cost (USD/litre);compost_activator_cost;posnorm;1.7;;1.9;
+Composter maintenance costs (USD/year);composter_maintenance_cost;posnorm;6;;15;
+Manure as additional ingredients for compost (USD/year);manure_for_compost_cost;posnorm;6;;13;
+Vegetable processing equipment and maintenance cost (USD/year);vegetable_processing_equipment_maintenance_cost;posnorm;32;;50;
+Vegetable storage equipment maintenance cost (USD/year);vegetable_storage_maintenance_cost;posnorm;50;;125;
+Vegetable processing building facility cost (USD/year) (increament costs for 10 years);vegetable_processing_building_facility_cost;posnorm;500;;1000;Increament costs for 10 years
+Vegetable processing equipment procurement cost (USD/year) (increament costs for 10 years);vegetable_processing_equipment_procurement_cost;posnorm;500;;800;Increament costs for 10 years. Purchased in the first year
+Vegetable processing storage equipment procurement cost (USD/year) (increament costs for 10 years);vegetable_processing_storage_equipment_procurement_cost;posnorm;100;;200;Increament costs for 10 years.Purchased in the first year. (Maybe just include this to equipment?)
+Marketing and distribution for processed vegetable product (USD/year);marketing_and_distribution_for_vegetable_product;posnorm;15;;32;
+Daily labor cost (USD/day);daily_labor_cost;posnorm;5;;9;
+Marketing and promotion for ecotourims cost (USD/year);marketing_and_promotion_ecotourism;posnorm;15;;32;
+Annual cost for agrotourism (USD/year);annual_cost_agrotourism;posnorm;60;;200;
+Signage installation (USD);sign_installation_cost;posnorm;32;;63;
+Annual vegetable yield (kg/ha);annual_vegetables_yield;posnorm;10000;;70000;
+Average vegetables price in the market (USD/kg);average_vegetables_price_market;posnorm;0.3;;3.5;
+Annual vegetables consumption per person (kg/year);annual_vegs_consumption_per_person;posnorm;40;;50;
+Range bank loan for farmers (USD);range_loan_for_farmers;posnorm;625;;3125;
+Annual bank interest rate (%);annual_bank_interest;tnorm_0_1;0.06;;0.09;
+Chance of farmers to take loan (%);chance_farmers_take_loan;tnorm_0_1;0.01;;0.05;
+Estimated portion of low grade of vegetable products (%);portion_low_grade_vegetable_product;tnorm_0_1;0.01;;0.1;
+Estimated portion of rice farming input costs for pest and disease management (%);portion_rice_farming_input_cost_for_pest_disease_management;tnorm_0_1;0.01;;0.05;
+Estimated portion of vegetable farming input costs for pest and disease management (%);portion_vegetable_farming_input_cost_for_pest_disease_management;tnorm_0_1;0.1;;0.2;
+Chance of production risk (%);chance_production_risk;tnorm_0_1;0.01;;0.1;
+Damage from production risk on rice (%);prob_damage_production_risk_rice;tnorm_0_1;0.01;;0.05;
+Damage from production risk on vegetables (%);prob_damage_production_risk_vegetables;tnorm_0_1;0.05;;0.3;
+Chance of market risk on rice (%);chance_market_risk_rice;tnorm_0_1;0.01;;0.1;
+Chance of market risk on vegetables (%);chance_market_risk_vegetables;tnorm_0_1;0.1;;0.2;
+Damage from market risk on rice (%);prob_damage_market_risk_rice;tnorm_0_1;0.01;;0.05;
+Damage from market risk on vegetables (%);prob_damage_market_risk_vegetables;tnorm_0_1;0.1;;0.3;
+Chance of financial risk on rice (%);chance_financial_risk_rice;tnorm_0_1;0.01;;0.05;
+Chance of financial risk on vegetables (%);chance_financial_risk_vegetables;tnorm_0_1;0.05;;0.1;
+Damage from financial risk on rice (%);prob_damage_financial_risk_rice;tnorm_0_1;0.01;;0.05;
+Damage from financial risk on vegetables (%);prob_damage_financial_risk_vegetables;tnorm_0_1;0.01;;0.1;
+Chance of institutional risk (%);chance_institutional_risk;tnorm_0_1;0.01;;0.1;
+Damage from institutional risk on rice (%);prob_damage_institutional_risk_rice;tnorm_0_1;0.01;;0.05;
+Damage from institutional risk on vegetables (%);prob_damage_institutional_risk_vegetables;tnorm_0_1;0.05;;0.3;
+Probability of farmers do compost (%);prob_of_compost;tnorm_0_1;0.02;;0.08;
+Probability of farmers do processing vegetables (%);prob_of_processing_vegetables;tnorm_0_1;0.01;;0.05;
+Probability of farmers do ecotourism (%);prob_of_agrotourism;tnorm_0_1;0.01;;0.05;
+Estimated portion of rice biomass waste increase due to production risk (%);rice_biomass_increase_from_production_risk;tnorm_0_1;0.05;;0.1;
+Estimated portion of vegetables biomass waste increase due to production risk (%);vegetable_biomass_increase_from_production_risk;tnorm_0_1;0.01;;0.1;
+Chance of rice price loss from market risk (%);chance_rice_price_loss_market_risk;tnorm_0_1;0.01;;0.05;
+Chance of vegetable price loss from market risk (%);chance_vegetable_price_loss_market_risk;tnorm_0_1;0.1;;0.3;
+Compost income loss from market risk (%);compost_income_loss_market_risk;tnorm_0_1;0.5;;0.9;
+Estimated portion of vegetable processed product income loss from market risk (%);vegetable_processed_income_loss_market_risk;tnorm_0_1;0.2;;0.6;
+Estimated portion of compost loss revenue (%);portion_compost_loss_revenue;tnorm_0_1;0.05;;0.1;
+Chance of market risk compost (%);chance_market_risk_compost;tnorm_0_1;0.1;;0.5;
+Chance of market risk vegetable processed (%);chance_market_risk_vegetable_processed;tnorm_0_1;0.1;;0.3;
+Chance of farmers consume their own vegetables (%);chance_consume_own_vegetables;tnorm_0_1;0.4;;0.8;
