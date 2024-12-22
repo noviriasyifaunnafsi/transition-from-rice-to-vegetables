@@ -6,6 +6,8 @@ library(extrafont)
 library(plyr)
 library(scales)
 library(svglite)
+library(patchwork)
+library(dplyr)
 
 input_estimates <- read.csv("input_rice_to_vegs_usd_new.csv", sep = ";")
 
@@ -1411,8 +1413,6 @@ transition_rice_to_vegetables <- function(x, varnames)
     # by preparing some signs to be installed in the area
     # the cost would be paid only for the first year
     
-    # first_year_vegetable_agrotourism_cost <- sign_installation_cost
-    
     # Then, we calculate the annual cost of agrotourism for rice field
     # Which is included for marketing and promotion
     # annual_vegetable_agrotourism_cost <- marketing_and_promotion_ecotourism
@@ -1579,15 +1579,6 @@ TRV_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
                                   functionSyntax = "plainNames")
 
 
-# Subset the outputs from the mcSimulation function (y) to summarize only on the variables that we want.
-# names(TRV_mc_simulation$x)
-mcSimulation_summary <- data.frame(TRV_mc_simulation$x[5:84],
-                                   # names(TRV_mc_simulation$x)
-                                   TRV_mc_simulation$y[3])
-
-gtExtras::gt_plt_summary(mcSimulation_summary)
-
-
 # NPV distribution #####
 
 # plot NPV distribution for rice and vegetables
@@ -1601,7 +1592,7 @@ NPV_vegetable_decision_boxplot <-
                      base_size = 15)+
   labs(title = "NPV decisions")
 
-
+# simple overlay
 NPV_vegetable_decision <- 
   plot_distributions(mcSimulation_object = TRV_mc_simulation,
                      vars = c("NPV_vegetables_decision_do_with_gov_assistance",
@@ -1610,6 +1601,28 @@ NPV_vegetable_decision <-
                      color = c("lightgreen", "lightblue"),
                      base_size = 15)+
   labs(title = "NPV decisions")
+
+
+# summary of statistics
+simulation_results <- data.frame(TRV_mc_simulation$y)
+selected_data <- 
+  simulation_results[, c("NPV_vegetables_decision_do_with_gov_assistance",
+                         "NPV_vegetables_decision_do_without_gov_assistance")]
+
+summary_stats <- selected_data %>%
+  summarise(across(everything(), list(
+    Min = min,
+    Q25 = ~ quantile(.x, 0.25),
+    Median = median,
+    Mean = mean,
+    Q75 = ~ quantile(.x, 0.75),
+    Max = max
+  )))
+
+str(summary_stats)
+
+write.csv(summary_stats, "summary_statistics.csv", row.names = FALSE)
+
 
 
 # Cashflow analysis ####
@@ -1687,7 +1700,7 @@ evpi_TRV <- multi_EVPI(mc = mcSimulation_table,
 
 # Plot EVPI
 
-plot_evpi_vegetable_decision_with_gov_assistance  <- 
+plot_evpi_vegetable_decision  <- 
   plot_evpi(evpi_TRV,
             decision_vars = c("NPV_vegetables_decision_do_with_gov_assistance",
                               "NPV_vegetables_decision_do_without_gov_assistance"),
@@ -1704,20 +1717,11 @@ labs(x = "EVPI (USD)", y = "Variable") +
   ggtitle(c("NPV vegetables decision with and without government assistance"))
 
 
-ggplot() + geom_bar(aes(y = percentage, x = Nutrient, fill = System), data = charts.data,
-                    stat="identity")+ theme_bw()+
-  geom_text(data=charts.data, aes(x = Nutrient, y = pos, label = paste0(percentage,"%")), family='serif',
-            size=6)+
-  
-  
-  # legend = c("NPV vegetables decision with government assistance",
-  #                      "NPV vegetables decision with government assistance"))
-  
-  plot_evpi_vegetable_decision_without_gov_assistance  <- 
-  plot_evpi(evpi_TRV,
-            decision_vars = "NPV_vegetables_decision_do_without_gov_assistance",
-            base_size = 10, x_axis_name = "Expected Value of Perfect Information (USD)")
 
-evpi_all <- (plot_evpi_vegetable_decision_with_gov_assistance) / 
-  (plot_evpi_vegetable_decision_without_gov_assistance)
+# Subset the outputs from the mcSimulation function (y) to summarize only on the variables that we want.
+# names(TRV_mc_simulation$x)
+mcSimulation_summary <- data.frame(TRV_mc_simulation$x[5:84],
+                                   # names(TRV_mc_simulation$x)
+                                   TRV_mc_simulation$y[3])
 
+gtExtras::gt_plt_summary(mcSimulation_summary)
