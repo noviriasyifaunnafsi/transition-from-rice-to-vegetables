@@ -47,7 +47,7 @@ transition_rice_to_vegetables <- function(x, varnames)
     rice_farming_input_costs_with_gov_assistance + 
     rice_machinery_costs_with_gov_assistance + 
     irrigation_maintenance_costs + 
-  rice_labor_costs # Normally, farmers do not pay for labor costs in cash. 
+    rice_labor_costs # Normally, farmers do not pay for labor costs in cash. 
   # Instead, they share their harvest with those who help them during 
   # cultivation. Therefore, rice labor costs are estimated based on the 
   # amount of harvest that they will share with those who assist them.
@@ -68,20 +68,33 @@ transition_rice_to_vegetables <- function(x, varnames)
   # Event 1: Farmers need to buy more pesticides to manage pest and disease 
   # outbreaks
   
+  chance_risk_rice_farming_high_input_cost <- 
+    chance_event(chance = chance_production_risk, value_if = 1, 
+                 value_if_not = 0) 
   
-  rice_farming_input_costs_with_more_pesticides_precal <- 
-    rice_farming_input_costs * 
-    # farming input cost under normal condition
-    (1+portion_rice_farming_input_cost_for_pest_disease_management)
+  if(chance_risk_rice_farming_high_input_cost == 1){
+    
+    rice_farming_input_costs_with_more_pesticides_with_gov_assistance_precal <- 
+      rice_farming_input_costs * 
+      # farming input cost under normal condition
+      (1+portion_rice_farming_input_cost_for_pest_disease_management)
+    
+    rice_farming_input_costs_with_more_pesticides_with_gov_assistance <- 
+      vv(rice_farming_input_costs_with_more_pesticides_with_gov_assistance_precal, 
+         n_year, var_CV= CV_value, relative_trend = inflation_rate)
+    
+  }else{
+    rice_farming_input_costs_with_more_pesticides_with_gov_assistance <- 
+      rice_farming_input_costs_with_gov_assistance
+  }
   
-  rice_farming_input_costs_with_more_pesticides <- 
-    chance_event(chance_production_risk,
-                 value_if = rice_farming_input_costs_with_more_pesticides_precal,
-                 value_if_not = rice_farming_input_costs,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10)
-  
+  # rice_farming_input_costs_with_more_pesticides <- 
+  #   chance_event(chance_production_risk,
+  #                value_if = rice_farming_input_costs_with_more_pesticides_precal,
+  #                value_if_not = rice_farming_input_costs,
+  #                n = n_year,
+  #                CV_if = CV_value,
+  #                CV_if_not = 10)
   
   # Considering financial risks (lack of capital) and their impact on farming 
   # costs, farmers may not have enough capital to purchase farming inputs.
@@ -99,12 +112,7 @@ transition_rice_to_vegetables <- function(x, varnames)
     chance_event(chance = chance_farmers_take_loan, value_if = 1, 
                  value_if_not = 0) 
   
-  if(chance_farmers_take_loan == 1){
-    
-    rice_farming_input_costs_with_more_pesticides_with_gov_assistance <- 
-      rice_farming_input_costs_with_gov_assistance * 
-      # farming input cost under normal condition
-      (1 + portion_rice_farming_input_cost_for_pest_disease_management)
+  if(chance_risk_rice_farming_high_input_cost_with_bank_loan == 1){
     
     rice_farming_high_input_cost_with_bank_loan_with_gov_assistance_precal <- 
       (rice_farming_input_costs_with_more_pesticides_with_gov_assistance +
@@ -115,16 +123,38 @@ transition_rice_to_vegetables <- function(x, varnames)
       vv(rice_farming_high_input_cost_with_bank_loan_with_gov_assistance_precal,
          n_year, var_CV=10, relative_trend = inflation_rate)
     
-    # annual rice farming cost after considering production and financial risk
-    final_rice_farming_cost_with_risk_with_gov_assistance <- 
-      rice_farming_input_costs_with_more_pesticides +
-      rice_machinery_costs_with_gov_assistance + 
-      irrigation_maintenance_costs +
-      rice_labor_costs
+  }else{
+    rice_farming_high_input_cost_with_bank_loan_with_gov_assistance <- 
+      rice_farming_input_costs_with_more_pesticides_with_gov_assistance
+  }
+  
+  
+  # Consider institutional risk to cost with government asssitance
+  chance_institutional_risk_rice_with_gov_assistance <- 
+    chance_event(chance = chance_institutional_risk, value_if = 1, 
+                 value_if_not = 0) 
+  
+  if(chance_institutional_risk_rice_with_gov_assistance == 1){
+    
+    # Farming input costs may increase due to institutional risks
+    rice_farming_input_costs_with_institutional_risk <- 
+      rice_farming_high_input_cost_with_bank_loan_with_gov_assistance +
+      (rice_farming_high_input_cost_with_bank_loan_with_gov_assistance *
+         prob_damage_institutional_risk_rice)
     
   }else{
-    final_rice_farming_cost_with_risk_with_gov_assistance <- rep(x = 0, times=n_year)
-  } 
+    rice_farming_input_costs_with_institutional_risk <- 
+      rice_farming_high_input_cost_with_bank_loan_with_gov_assistance
+  }
+  
+  
+  # annual rice farming cost after considering production, financial, and
+  # institutional risks
+  final_rice_farming_cost_with_risk_with_gov_assistance <- 
+    rice_farming_input_costs_with_institutional_risk +
+    rice_machinery_costs_with_gov_assistance + 
+    irrigation_maintenance_costs +
+    rice_labor_costs
   
   
   ###  Rice benefits #1 ####
@@ -187,11 +217,13 @@ transition_rice_to_vegetables <- function(x, varnames)
     rice_farmgate_price_with_market_risk * 
     rice_yield_with_production_financial_risk_precal
   
-  
-  # Annual rice farming revenue after considering risks
+  # Annual rice farming revenue after considering all risks
   final_rice_farming_revenue_with_gov_assistance <- 
     vv(rice_farming_revenue_loss_with_market_production_financial_risk,
        n_year, var_CV=CV_value, relative_trend = inflation_rate) 
+  
+  
+  
   
   ####  Rice cultural value #1 ####
   
@@ -247,18 +279,33 @@ transition_rice_to_vegetables <- function(x, varnames)
   # Event 1: Farmers need to buy more pesticides to overcome pest and disease 
   # outbreaks.
   
-  vegetable_farming_input_costs_with_more_pesticides_precal <-
-    vegetables_farming_input_costs_with_gov_assistance *
-    # farming input cost under normal condition
-    (1 + portion_vegetable_farming_input_cost_for_pest_disease_management)
+  chance_risk_vegetable_farming_high_input_cost_with_gov_assistance_precal <- 
+    chance_event(chance = chance_production_risk, value_if = 1, 
+                 value_if_not = 0) 
   
-  vegetable_farming_input_costs_with_more_pesticides <-
-    chance_event(chance_production_risk,
-                 value_if = vegetable_farming_input_costs_with_more_pesticides_precal,
-                 value_if_not = vegetables_farming_input_costs,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10)
+  if(chance_risk_vegetable_farming_high_input_cost_with_gov_assistance_precal == 1){
+    
+    vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance_precal <-
+      vegetables_farming_input_costs_with_gov_assistance *
+      # farming input cost under normal condition
+      (1 + portion_vegetable_farming_input_cost_for_pest_disease_management)
+    
+    vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance <-
+      vv(vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance_precal,
+         n_year, var_CV = CV_value)
+    
+  }else{
+    vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance <- 
+      vegetables_farming_input_costs_with_gov_assistance
+  }
+  
+  # vegetable_farming_input_costs_with_more_pesticides <-
+  #   chance_event(chance_production_risk,
+  #                value_if = vegetable_farming_input_costs_with_more_pesticides_precal,
+  #                value_if_not = vegetables_farming_input_costs,
+  #                n = n_year,
+  #                CV_if = CV_value,
+  #                CV_if_not = 10)
   
   
   # Considering financial risks (lack of capital) affecting farming costs.
@@ -276,12 +323,7 @@ transition_rice_to_vegetables <- function(x, varnames)
     chance_event(chance = chance_farmers_take_loan, value_if = 1, 
                  value_if_not = 0) 
   
-  if(chance_farmers_take_loan == 1){
-    
-    vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance <- 
-      vegetables_farming_input_costs_with_gov_assistance * 
-      # farming input cost under normal condition
-      (1 + portion_vegetable_farming_input_cost_for_pest_disease_management)
+  if(chance_risk_vegetable_farming_high_input_cost_with_bank_loan == 1){
     
     vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance_precal <- 
       (vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance +
@@ -292,45 +334,65 @@ transition_rice_to_vegetables <- function(x, varnames)
       vv(vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance_precal,
          n_year, var_CV=10, relative_trend = inflation_rate)
     
+  }else{
+    vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance <- 
+      vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance
+  }
+  
+  
+  # Consider institutional risk to cost with government asssitance
+  chance_institutional_vegetable_rice_with_gov_assistance <- 
+    chance_event(chance = chance_institutional_risk, value_if = 1, 
+                 value_if_not = 0) 
+  
+  if(chance_institutional_vegetable_rice_with_gov_assistance == 1){
     
-    # Annual vegetable farming costs after considering production risks.
-    
-    # Typically, field sizes in Sinjai are small, and it is very rare to find a 
-    # 1 ha plot. Therefore, let's assume that a farmer has two different fields, 
-    # each with a size of 0.5 ha, making a total of 1 ha. The farmer can 
-    # grow 6 different vegetables per year. 
-    
-    # In this model, we assume that 'Field 1' is cultivated with Chinese 
-    # mustard greens, green beans, and cabbage in rotation as main crops, with 
-    # spring onions as a side crop. In 'Field 2', tomatoes and chilies are 
-    # cultivated in rotation as main crops, with spring onions as a side crop.
-    
-    # For Field 1, the proportion of the field used for the main crops is 0.3 
-    # ha, while the side crop uses 0.2 ha per season (0.6 ha per year) --> 1.5 
-    # ha in total. For Field 2, the proportion of the field used for the main 
-    # crops is 0.4 ha, while the side crop uses 0.1 ha per season (0.2 ha per 
-    # year) --> 1 ha in total. Therefore, the total effective field size per year is 2.5 ha.
-    
-    # Since the unit cost is for 1 ha per year, the annual total cost should be calculated
-    # based on the total effective field size per year.
-    
-    
-    annual_final_vegetable_farming_cost_with_gov_assistance <- 
-      vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance * 
-      2.5 # effective field size
-    
-    final_vegetable_farming_cost_with_gov_assistance <- 
-      vv(annual_final_vegetable_farming_cost_with_gov_assistance, 
-         n_year, var_CV=CV_value, relative_trend = inflation_rate)
-    
-    final_vegetable_farming_cost_with_gov_assistance[1] <- 
-      final_vegetable_farming_cost_with_gov_assistance[1] + 
-      vegetables_equipment_costs_first_year_with_gov_assistance + 
-      vegetables_irrigation_costs_first_year_with_gov_assistance
+    # Farming input costs may increase due to institutional risks
+    vegetable_farming_input_costs_with_institutional_risk <- 
+      vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance +
+      (vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance *
+         prob_damage_institutional_risk_vegetables)
     
   }else{
-    final_vegetable_farming_cost_with_gov_assistance <- rep(x = 0, times=n_year)
+    vegetable_farming_input_costs_with_institutional_risk <- 
+      vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance
   }
+  
+  
+  # Annual vegetable farming costs after considering production risks.
+  
+  # Typically, field sizes in Sinjai are small, and it is very rare to find a 
+  # 1 ha plot. Therefore, let's assume that a farmer has two different fields, 
+  # each with a size of 0.5 ha, making a total of 1 ha. The farmer can 
+  # grow 6 different vegetables per year. 
+  
+  # In this model, we assume that 'Field 1' is cultivated with Chinese 
+  # mustard greens, green beans, and cabbage in rotation as main crops, with 
+  # spring onions as a side crop. In 'Field 2', tomatoes and chilies are 
+  # cultivated in rotation as main crops, with spring onions as a side crop.
+  
+  # For Field 1, the proportion of the field used for the main crops is 0.3 
+  # ha, while the side crop uses 0.2 ha per season (0.6 ha per year) --> 1.5 
+  # ha in total. For Field 2, the proportion of the field used for the main 
+  # crops is 0.4 ha, while the side crop uses 0.1 ha per season (0.2 ha per 
+  # year) --> 1 ha in total. Therefore, the total effective field size per year is 2.5 ha.
+  
+  # Since the unit cost is for 1 ha per year, the annual total cost should be calculated
+  # based on the total effective field size per year.
+  
+  
+  annual_final_vegetable_farming_cost_with_gov_assistance <- 
+    vegetable_farming_input_costs_with_institutional_risk * 
+    2.5 # effective field size
+  
+  final_vegetable_farming_cost_with_gov_assistance <- 
+    vv(annual_final_vegetable_farming_cost_with_gov_assistance, 
+       n_year, var_CV=CV_value, relative_trend = inflation_rate)
+  
+  final_vegetable_farming_cost_with_gov_assistance[1] <- 
+    final_vegetable_farming_cost_with_gov_assistance[1] + 
+    vegetables_equipment_costs_first_year_with_gov_assistance + 
+    vegetables_irrigation_costs_first_year_with_gov_assistance
   
   
   ### Vegetable benefits #1 ####
@@ -617,43 +679,60 @@ transition_rice_to_vegetables <- function(x, varnames)
   # event-1, farmers need to buy more pesticides to overcome pest and disease 
   # outbreak
   
-  rice_farming_input_costs_with_more_pesticides_precal <- 
-    rice_farming_input_costs * 
-    # farming input cost under normal condition
-    (1+portion_rice_farming_input_cost_for_pest_disease_management)
+  chance_risk_rice_farming_high_input_cost <- 
+    chance_event(chance = chance_production_risk, value_if = 1, 
+                 value_if_not = 0) 
   
-  rice_farming_input_costs_with_more_pesticides <- 
-    chance_event(chance_production_risk,
-                 value_if = rice_farming_input_costs_with_more_pesticides_precal,
-                 value_if_not = rice_farming_input_costs,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10)
+  if(chance_risk_rice_farming_high_input_cost == 1){
+    
+    rice_farming_input_costs_with_more_pesticides_without_gov_assistance_precal <- 
+      rice_farming_input_costs * 
+      # farming input cost under normal condition
+      (1+portion_rice_farming_input_cost_for_pest_disease_management)
+    
+    rice_farming_input_costs_with_more_pesticides_without_gov_assistance <- 
+      vv(rice_farming_input_costs_with_more_pesticides_without_gov_assistance_precal, 
+         n_year, var_CV= CV_value, relative_trend = inflation_rate)
+    
+  }else{
+    rice_farming_input_costs_with_more_pesticides_without_gov_assistance <- 
+      rice_farming_input_costs
+  }
   
   
   
-  # considering financial risk (lack of capital) damage on farming cost
-  # farmers may not have enough capital to purchase farming inputs
-  # then, they might get loan from bank with micro-credit program (KUR)
-  # we can consider that farmer who own 1 ha of field can get loan from IDR 10 mio to
-  # 50 mio (USD 625 to 3125)
+  # rice_farming_input_costs_with_more_pesticides_precal <- 
+  #   rice_farming_input_costs * 
+  #   # farming input cost under normal condition
+  #   (1+portion_rice_farming_input_cost_for_pest_disease_management)
+  # 
+  # rice_farming_input_costs_with_more_pesticides <- 
+  #   chance_event(chance_production_risk,
+  #                value_if = rice_farming_input_costs_with_more_pesticides_precal,
+  #                value_if_not = rice_farming_input_costs,
+  #                n = n_year,
+  #                CV_if = CV_value,
+  #                CV_if_not = 10)
   
-  # event-2, farmers get loan from bank, so they need to pay annual interest
-  # this can be add up to their farming cost
   
-  # consider if the farming input cost is higher because farmers need to buy 
-  # more pesticides to overcome pest and disease outbreak
   
-  chance_risk_rice_farming_high_input_cost_with_bank_loan <- 
+  # Considering financial risks (lack of capital) and their impact on farming 
+  # costs, farmers may not have enough capital to purchase farming inputs.
+  # They might then obtain a loan from a bank through the micro-credit program 
+  # (KUR). It is assumed that a farmer who owns 1 ha of land can receive a loan 
+  # ranging from IDR 10 to 50 million (USD 625 to 3,125).
+  
+  # Event 2: Farmers obtain a loan from the bank, so they need to pay annual 
+  # interest. This can add to their farming costs.
+  
+  # Consider if the farming input costs are higher because farmers need to buy 
+  # more pesticides to manage pest and disease outbreaks.
+  
+  chance_risk_rice_farming_high_input_cost_with_bank_loan_without_gov_assistance <- 
     chance_event(chance = chance_farmers_take_loan, value_if = 1, 
                  value_if_not = 0) 
   
-  if(chance_farmers_take_loan == 1){
-    
-    rice_farming_input_costs_with_more_pesticides_without_gov_assistance <- 
-      rice_farming_input_costs * 
-      # farming input cost under normal condition
-      (1 + portion_rice_farming_input_cost_for_pest_disease_management)
+  if(chance_risk_rice_farming_high_input_cost_with_bank_loan_without_gov_assistance == 1){
     
     rice_farming_high_input_cost_with_bank_loan_without_gov_assistance_precal <- 
       (rice_farming_input_costs_with_more_pesticides_without_gov_assistance +
@@ -664,23 +743,20 @@ transition_rice_to_vegetables <- function(x, varnames)
       vv(rice_farming_high_input_cost_with_bank_loan_without_gov_assistance_precal,
          n_year, var_CV=10, relative_trend = inflation_rate)
     
-    
-    
-    # annual rice farming cost after considering production and financial risk
-    final_rice_farming_cost_with_risk_without_gov_assistance <- 
-      rice_farming_input_costs_with_more_pesticides +
-      rice_machinery_costs + 
-      irrigation_maintenance_costs +
-      rice_labor_costs #normally farmers don't pay for labor cost in cash, instead 
-    # they share their harvest to those who help them during the cultivation. 
-    # So, rice labor costs is estimated based on how much the amount of harvest 
-    # that they will share with those who help them.
-    
-    
   }else{
-    final_rice_farming_cost_with_risk_without_gov_assistance <- 
-      rep(x = 0, times=n_year)
+    rice_farming_high_input_cost_with_bank_loan_without_gov_assistance <- 
+      rice_farming_input_costs_with_more_pesticides_without_gov_assistance
   } 
+  
+  # annual rice farming cost after considering production and financial risk
+  final_rice_farming_cost_with_risk_without_gov_assistance <- 
+    rice_farming_high_input_cost_with_bank_loan_without_gov_assistance +
+    rice_machinery_costs + 
+    irrigation_maintenance_costs +
+    rice_labor_costs #normally farmers don't pay for labor cost in cash, instead 
+  # they share their harvest to those who help them during the cultivation. 
+  # So, rice labor costs is estimated based on how much the amount of harvest 
+  # that they will share with those who help them.
   
   
   ### Rice benefits #2 ####
@@ -808,18 +884,40 @@ transition_rice_to_vegetables <- function(x, varnames)
   # event-1, farmers need to buy more pesticides to overcome pest and disease 
   # outbreak
   
-  vegetable_farming_input_costs_with_more_pesticides_precal <-
-    vegetables_farming_input_costs *
-    # farming input cost under normal condition
-    (1 + portion_vegetable_farming_input_cost_for_pest_disease_management)
+  chance_risk_vegetable_farming_high_input_cost_without_gov_assistance_precal <- 
+    chance_event(chance = chance_production_risk, value_if = 1, 
+                 value_if_not = 0) 
   
-  vegetable_farming_input_costs_with_more_pesticides <-
-    chance_event(chance_production_risk,
-                 value_if = vegetable_farming_input_costs_with_more_pesticides_precal,
-                 value_if_not = vegetables_farming_input_costs,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10)
+  if(chance_risk_vegetable_farming_high_input_cost_without_gov_assistance_precal == 1){
+    
+    vegetable_farming_input_costs_with_more_pesticides_without_gov_assistance_precal <-
+      vegetables_farming_input_costs *
+      # farming input cost under normal condition
+      (1 + portion_vegetable_farming_input_cost_for_pest_disease_management)
+    
+    vegetable_farming_input_costs_with_more_pesticides_without_gov_assistance <-
+      vv(vegetable_farming_input_costs_with_more_pesticides_without_gov_assistance_precal,
+         n_year, var_CV = CV_value)
+    
+  }else{
+    vegetable_farming_input_costs_with_more_pesticides_without_gov_assistance <- 
+      vegetables_farming_input_costs
+  }
+  
+  
+  
+  # vegetable_farming_input_costs_with_more_pesticides_precal <-
+  #   vegetables_farming_input_costs *
+  #   # farming input cost under normal condition
+  #   (1 + portion_vegetable_farming_input_cost_for_pest_disease_management)
+  # 
+  # vegetable_farming_input_costs_with_more_pesticides <-
+  #   chance_event(chance_production_risk,
+  #                value_if = vegetable_farming_input_costs_with_more_pesticides_precal,
+  #                value_if_not = vegetables_farming_input_costs,
+  #                n = n_year,
+  #                CV_if = CV_value,
+  #                CV_if_not = 10)
   
   
   # considering financial risk (lack of capital) damage on farming cost
@@ -833,16 +931,11 @@ transition_rice_to_vegetables <- function(x, varnames)
   # consider if the farming input cost is higher because farmers need to buy 
   # more pesticides to overcome pest and disease outbreak
   
-  chance_risk_vegetable_farming_high_input_cost_with_bank_loan <- 
+  chance_risk_vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance <- 
     chance_event(chance = chance_farmers_take_loan, value_if = 1, 
                  value_if_not = 0) 
   
-  if(chance_farmers_take_loan == 1){
-    
-    vegetable_farming_input_costs_with_more_pesticides_without_gov_assistance <- 
-      vegetables_farming_input_costs * 
-      # farming input cost under normal condition
-      (1 + portion_vegetable_farming_input_cost_for_pest_disease_management)
+  if(chance_risk_vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance == 1){
     
     vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance_precal <- 
       (vegetable_farming_input_costs_with_more_pesticides_without_gov_assistance +
@@ -853,46 +946,46 @@ transition_rice_to_vegetables <- function(x, varnames)
       vv(vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance_precal,
          n_year, var_CV=10, relative_trend = inflation_rate)
     
-    
-    # Annual vegetable farming cost after considering production risk
-    
-    # Typically, field sizes in Sinjai are small, and it's very rare to find a 
-    # 1 ha plot. Therefore, let's assume that a farmer has two different fields, 
-    # each with a size of 0.5 ha, making a total of 1 ha. The farmer can 
-    # grow 6 different vegetables per year. 
-    
-    # In this model, we consider that 'Field 1' is cultivated with Chinese 
-    # mustard green, green beans, and cabbage in rotation as main crops, with 
-    # spring onions as a side crop. In 'Field 2', tomatoes and chili are 
-    # cultivated in rotation as main crops, with spring onions as a side crop.
-    
-    # For Field 1, the proportion of the field used for the main crops is 0.3 
-    # ha, while the side crop uses 0.2 ha per season (0.6 ha per year) --> 1.5 
-    # ha in total. For Field 2, the proportion of the field used for the main 
-    # crops is 0.4 ha, while the side crop uses 0.1 ha per season (0.2 ha per 
-    # year) --> 1 ha in total. Therefore, the total effective field size per 
-    # year is 2.5 ha
-    
-    # Since the unit cost is for 1 ha per year, then the annual total cost 
-    # should be calculated based on the total effective field size per year
-    
-    annual_final_vegetable_farming_cost_without_gov_assistance <- 
-      vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance * 
-      2.5 # effective field size
-    
-    final_vegetable_farming_cost_without_gov_assistance <- 
-      vv(annual_final_vegetable_farming_cost_without_gov_assistance, 
-         n_year, var_CV=CV_value, relative_trend = inflation_rate)
-    
-    final_vegetable_farming_cost_without_gov_assistance[1] <- 
-      final_vegetable_farming_cost_without_gov_assistance[1] + 
-      vegetables_equipment_costs_first_year + 
-      vegetables_irrigation_costs_first_year
-    
   }else{
-    final_vegetable_farming_cost_without_gov_assistance <- 
-      rep(x = 0, times=n_year)
+    vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance <- 
+      vegetable_farming_input_costs_with_more_pesticides_without_gov_assistance
   }
+  
+  
+  # Annual vegetable farming cost after considering production risk
+  
+  # Typically, field sizes in Sinjai are small, and it's very rare to find a 
+  # 1 ha plot. Therefore, let's assume that a farmer has two different fields, 
+  # each with a size of 0.5 ha, making a total of 1 ha. The farmer can 
+  # grow 6 different vegetables per year. 
+  
+  # In this model, we consider that 'Field 1' is cultivated with Chinese 
+  # mustard green, green beans, and cabbage in rotation as main crops, with 
+  # spring onions as a side crop. In 'Field 2', tomatoes and chili are 
+  # cultivated in rotation as main crops, with spring onions as a side crop.
+  
+  # For Field 1, the proportion of the field used for the main crops is 0.3 
+  # ha, while the side crop uses 0.2 ha per season (0.6 ha per year) --> 1.5 
+  # ha in total. For Field 2, the proportion of the field used for the main 
+  # crops is 0.4 ha, while the side crop uses 0.1 ha per season (0.2 ha per 
+  # year) --> 1 ha in total. Therefore, the total effective field size per 
+  # year is 2.5 ha
+  
+  # Since the unit cost is for 1 ha per year, then the annual total cost 
+  # should be calculated based on the total effective field size per year
+  
+  annual_final_vegetable_farming_cost_without_gov_assistance <- 
+    vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance * 
+    2.5 # effective field size
+  
+  final_vegetable_farming_cost_without_gov_assistance <- 
+    vv(annual_final_vegetable_farming_cost_without_gov_assistance, 
+       n_year, var_CV=CV_value, relative_trend = inflation_rate)
+  
+  final_vegetable_farming_cost_without_gov_assistance[1] <- 
+    final_vegetable_farming_cost_without_gov_assistance[1] + 
+    vegetables_equipment_costs_first_year + 
+    vegetables_irrigation_costs_first_year
   
   
   ### Vegetable benefits #2 ####
@@ -1081,13 +1174,6 @@ transition_rice_to_vegetables <- function(x, varnames)
     }
     
     
-    # vegetable_farmer_have_no_capital_for_processing <-
-    #   chance_event(chance_financial_risk_vegetables,
-    #                value_if = 0,
-    #                value_if_not = vegetable_processing_cost_with_gov_assistance_precal,
-    #                n = n_year)
-    
-    
     ## 2nd scenario: Cost of vegetable processing ####
     
     # For the second scenario, farmers don't get assistance from government
@@ -1120,8 +1206,9 @@ transition_rice_to_vegetables <- function(x, varnames)
     if(chance_farmers_take_loan == 1){
       
       vegetable_processing_costs_with_bank_loan <- 
-        vegetable_processing_cost + (vegetable_processing_cost * 
-                                       annual_bank_interest)
+        vegetable_processing_cost_without_gov_assistance + 
+        (vegetable_processing_cost_without_gov_assistance * 
+           annual_bank_interest)
       
       final_vegetable_processing_cost_without_gov_assistance <- 
         vv(vegetable_processing_costs_with_bank_loan,
@@ -1249,10 +1336,10 @@ transition_rice_to_vegetables <- function(x, varnames)
       compost_activator_cost + composter_maintenance_cost + 
       manure_for_compost_cost
     
-    rice_compost_cost <- vv(annual_rice_compost_cost, n_year, var_CV=10)
+    final_rice_compost_cost <- vv(annual_rice_compost_cost, n_year, var_CV=10)
     
     # Calculate the cost with the first year establishment cost
-    final_rice_compost_cost[1] <- rice_compost_cost[1] + first_year_composting_cost 
+    final_rice_compost_cost[1] <- final_rice_compost_cost[1] + first_year_composting_cost 
     
     
     ## Rice compost benefits ####
@@ -1578,38 +1665,42 @@ TRV_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
 
 # NPV distribution #####
 
-# plot NPV distribution for rice and vegetables
+## Plot NPV distribution for both scenarios ####
+
 NPV_vegetable_decision_boxplot <- 
   plot_distributions(mcSimulation_object = TRV_mc_simulation,
                      vars = c("NPV_vegetables_decision_do_with_gov_assistance",
                               "NPV_vegetables_decision_do_without_gov_assistance"),
                      y_axis_name = "",
+                     x_axis_name = "Outcome distribution (USD)",
                      color = c("lightgreen", "lightblue"),
                      method = 'boxplot',
-                     base_size = 15)+
-  labs(title = "NPV decisions")
+                     base_size = 15) +
+  scale_color_manual(values = c("lightgreen", "lightblue"), 
+                     labels = c("", ""))+ # Hides labels
+  labs(title = "NPV Vegetable Farming Decisions", fill = "Decision option")+
+  theme(plot.title = element_text(size = 18, face = "bold", 
+                                  hjust = 0.5), axis.text.y = element_blank())+
+  theme(legend.position = "right")
+
+# Save NPV plot figure
+png("NPV.png", width = 2500, height = 1500, res = 250)
+plot(NPV_vegetable_decision_boxplot)
+dev.off()
+
 
 # simple overlay
-NPV_vegetable_decision <- 
+NPV_vegetable_decision_overlay <- 
   plot_distributions(mcSimulation_object = TRV_mc_simulation,
                      vars = c("NPV_vegetables_decision_do_with_gov_assistance",
                               "NPV_vegetables_decision_do_without_gov_assistance"),
                      y_axis_name = "",
-                     color = c("lightgreen", "lightblue"),
+                     color = c("lightblue", "lightgreen"),
                      base_size = 15)+
   labs(title = "NPV decisions")
 
 
-NPV_vegetable_decision_with <- 
-  plot_distributions(mcSimulation_object = TRV_mc_simulation,
-                     vars = c("NPV_vegetables_decision_do_with_gov_assistance"),
-                     y_axis_name = "",
-                     color = c("lightgreen"),
-                     base_size = 15)+
-  labs(title = "NPV decisions")
-
-
-# summary of statistics
+## Summary of statistics NPV ####
 simulation_results <- data.frame(TRV_mc_simulation$y)
 selected_data <- 
   simulation_results[, c("NPV_vegetables_decision_do_with_gov_assistance",
@@ -1627,28 +1718,90 @@ summary_stats <- selected_data %>%
 
 str(summary_stats)
 
-write.csv(summary_stats, "summary_statistics.csv", row.names = FALSE)
+# Save table summary NPV
+write.csv(summary_stats, "summary_statistics_npv.csv", row.names = FALSE)
 
 
 
 # Cashflow analysis ####
 
-# Plot cashflow vegetables
+## Plot cashflow vegetables with government assistance ####
 cashflow_vegetables_with_gov_assistance <- 
   plot_cashflow(mcSimulation_object = TRV_mc_simulation,
                 cashflow_var_name = "cashflow_vegetables_with_gov_assistance",
                 x_axis_name = "Years with intervention",
-                y_axis_name = "Annual cashflow in USD",
+                y_axis_name = "Annual cashflow (USD)",
                 color_25_75 = "lightgreen", color_5_95 = "grey",
-                color_median = "blue", base_size = 15)
+                color_median = "blue", base_size = 18)
 
+# Save cashflow plot figure
+png("cashflow_with.png", width = 2500, height = 1500, res = 250)
+plot(cashflow_vegetables_with_gov_assistance)
+dev.off()
+
+## Plot cashflow vegetables with government assistance ####
+
+#  Plot cashflow
 cashflow_vegetables_without_gov_assistance <- 
   plot_cashflow(mcSimulation_object = TRV_mc_simulation,
-                cashflow_var_name = "cashflow_vegetables_with_gov_assistance",
+                cashflow_var_name = "cashflow_vegetables_without_gov_assistance",
                 x_axis_name = "Years with intervention",
-                y_axis_name = "Annual cashflow in USD",
+                y_axis_name = "Annual cashflow (USD)",
                 color_25_75 = "lightblue", color_5_95 = "grey",
-                color_median = "blue", base_size = 15)
+                color_median = "blue", base_size = 18)
+
+
+# Save cashflow plot figure
+png("cashflow_without.png", width = 2500, height = 1500, res = 250)
+plot(cashflow_vegetables_without_gov_assistance)
+dev.off()
+
+# Combined two cashflows
+combined_cashflow <- (cashflow_vegetables_with_gov_assistance | cashflow_vegetables_without_gov_assistance)
+
+
+# Save combined cashflow plot figure
+png("cashflow_both.png", width = 3800, height = 2000, res = 250)
+plot(combined_cashflow)
+dev.off()
+
+
+## Summary statistic for cashflow ####
+
+# with gov assistance
+
+# Assuming 'data$y' contains the simulated cashflow data
+# Extract columns related to cashflows (e.g., those starting with "cashflow_vegetables_with_gov_assistance")
+cashflow_columns <- TRV_mc_simulation$y[, grepl("^cashflow_vegetables", names(TRV_mc_simulation$y))]
+
+# Compute summary statistics for each cashflow variable
+cashflow_summary <- apply(cashflow_columns, 2, function(column) {
+  c(
+    Min = min(column, na.rm = TRUE),
+    Q5 = quantile(column, 0.05, na.rm = TRUE),
+    Q25 = quantile(column, 0.25, na.rm = TRUE),
+    Median = median(column, na.rm = TRUE),
+    Q75 = quantile(column, 0.75, na.rm = TRUE),
+    Q95 = quantile(column, 0.95, na.rm = TRUE)
+  )
+})
+
+
+str(cashflow_summary)
+
+# Convert to a data frame for easier display
+cashflow_summary_df <- as.data.frame(t(cashflow_summary))
+cashflow_summary_df <- round(cashflow_summary_df, 2)  # Round values for better readability
+
+# Add variable names for clarity
+cashflow_summary_df <- cbind(Cashflow = rownames(cashflow_summary_df), cashflow_summary_df)
+rownames(cashflow_summary_df) <- NULL  # Remove rownames for clean display
+
+# Display the summary statistics
+print(cashflow_summary_df)
+
+# Save table summary cashflow
+write.csv(cashflow_summary_df, "cashflow_summary.csv")
 
 
 # Projection to Latent Structures (PLS) analysis ####
@@ -1658,13 +1811,18 @@ pls_result_vegetables_with_gov_assistance <-
   plsr.mcSimulation(object = TRV_mc_simulation,
                     resultName = names(TRV_mc_simulation$y)[1], ncomp = 1)
 
+# Create plot
 plot_pls_vegetables_with_gov_assistance <- 
   plot_pls(pls_result_vegetables_with_gov_assistance,
-           threshold = 1.5, base_size = 12,
-           pos_color = "lightgreen") +
-  labs(title = "With Government Assistance", size = 6)+
-  scale_y_discrete(position = "right") + # Move the y-axis to the right
-  scale_x_reverse() + 
+           threshold = 1.5, base_size = 15,
+           pos_color = "seagreen3") +
+  labs(title = "With Government Assistance", size = 15, 
+       face = "bold", hjust = 0.5)+
+  theme(plot.title = element_text(size = 18, face = "bold", 
+                                  hjust = 0.5))+
+  
+  scale_y_discrete(position = "left") + # Move the y-axis to the right
+  scale_x_reverse() +
   theme(
     axis.title.y = element_text(hjust = 0.5),  # Ensure the y-axis title is centered
     axis.text.y = element_blank(),             # Hide the y-axis labels (variable names)
@@ -1672,16 +1830,25 @@ plot_pls_vegetables_with_gov_assistance <-
   )
 
 
+# Save PLS plot figure
+png("PLS_with.png", width = 2500, height = 1500, res = 250)
+plot(plot_pls_vegetables_with_gov_assistance)
+dev.off()
+
+
 # Plot PLS without government assistance
 pls_result_vegetables_without_gov_assistance <- 
   plsr.mcSimulation(object = TRV_mc_simulation,
                     resultName = names(TRV_mc_simulation$y)[2], ncomp = 1)
-
+# Create plot
 plot_pls_vegetables_without_gov_assistance <- 
   plot_pls(pls_result_vegetables_without_gov_assistance,
-           threshold = 1.5, base_size = 12,
+           threshold = 1.5, base_size = 15,
            pos_color = "lightblue") +
-  labs(title = "Without Government Assistance", size = 5)+
+  labs(title = "Without Government Assistance", size = 15,
+       face = "bold", hjust = 0.5)+
+  theme(plot.title = element_text(size = 18, face = "bold", 
+                                  hjust = 0.5))+
   scale_y_discrete(
     position = "left", # Move y-axis to the right
     labels = function(x) gsub("_", " ", x)  # Replace underscores with spaces
@@ -1692,42 +1859,159 @@ plot_pls_vegetables_without_gov_assistance <-
     axis.title.x = element_blank())+             # Optionally remove x-axis title
   theme(legend.title=element_blank())
 
-# Combine the plots
+
+# Save PLS plot figure
+png("PLS_without.png", width = 2500, height = 1500, res = 250)
+plot(plot_pls_vegetables_without_gov_assistance)
+dev.off()
+
+
+# Combine the two PLS plots
 combined_plot_pls <- plot_pls_vegetables_with_gov_assistance + 
   plot_pls_vegetables_without_gov_assistance +
   plot_layout(ncol = 2)
 
+# Save combined PLS plot figure
+png("PLS_both.png", width = 3500, height = 1800, res = 250)
+plot(combined_plot_pls)
+dev.off()
 
-# VoI analysis ####
+
+# VoI analysis (EVPI) ####
 mcSimulation_table <- data.frame(TRV_mc_simulation$x, TRV_mc_simulation$y[1:2])
 evpi_TRV <- multi_EVPI(mc = mcSimulation_table, 
                        first_out_var = "NPV_vegetables_decision_do_with_gov_assistance", 
                        write_table = TRUE)
 
-# Plot EVPI
+## Plot EVPI individually (?) ####
 
-plot_evpi_vegetable_decision  <- 
+# EVPI with government assistance
+plot_evpi_vegetable_decision_with_gov_assistance  <- 
   plot_evpi(evpi_TRV,
-            decision_vars = c("NPV_vegetables_decision_do_with_gov_assistance",
-                              "NPV_vegetables_decision_do_without_gov_assistance"),
-            new_names = c("NPV vegetables decision with government assistance",
-                          "NPV vegetables decision without government assistance"),
-            bar_color = c("cadetblue", "blue3"),
-            base_size = 13)+
-  theme(legend.title = element_blank())+
-  theme(legend.text = element_text(size = 20, face = "bold"))+
-  theme(legend.position = "bottom")+
-  theme(plot.title = element_text(size = 15, face = "bold"))+ # Set title
-  coord_flip()
-labs(x = "EVPI (USD)", y = "Variable") +
-  ggtitle(c("NPV vegetables decision with and without government assistance"))
+            decision_vars = c("NPV_vegetables_decision_do_with_gov_assistance"),
+            new_names = c("NPV vegetables decision with government assistance"),
+            bar_color = c("seagreen3"),
+            base_size = 15)+
+  scale_y_discrete(
+    position = "right", # Move y-axis to the right
+    labels = function(x) gsub("_", " ", x)  # Replace underscores with spaces
+  ) 
+
+# EVPI without government assistance
+plot_evpi_vegetable_decision_with_gov_assistance  <- 
+  plot_evpi(evpi_TRV,
+            decision_vars = c("NPV_vegetables_decision_do_with_gov_assistance"),
+            new_names = c("With Government Assistance"),
+            bar_color = c("seagreen3"),
+            base_size = 20) +
+  scale_y_discrete(
+    position = "right", # Move y-axis to the right
+    labels = function(x) gsub("_", " ", x)  # Replace underscores with spaces
+  ) +
+  labs(x = "EVPI (USD)", y = "Variable", size = 10)+
+  theme(
+    legend.text = element_text(size = 12), # Adjust legend text size
+    axis.title.y = element_blank(), # Optional: Remove y-axis title
+    axis.title.x = element_blank(),
+    axis.text.y = element_text(size = 12) # Adjust y-axis label text size
+  )
+
+# Save EVPI plot figure 
+png("evpi_with.png", width = 3000, height = 1500, res = 250)
+plot(plot_evpi_vegetable_decision_with_gov_assistance)
+dev.off()
 
 
+# EVPI without government assistance
+plot_evpi_vegetable_decision_without_gov_assistance  <- 
+  plot_evpi(evpi_TRV,
+            decision_vars = c("NPV_vegetables_decision_do_without_gov_assistance"),
+            new_names = c("Without Government Assistance"),
+            bar_color = c("lightblue"),
+            base_size = 20)+
+  scale_y_discrete(
+    position = "right", # Move y-axis to the right
+    labels = function(x) gsub("_", " ", x)  # Replace underscores with spaces
+  ) +
+  labs(x = "EVPI (USD)", y = "Variable", size = 10)+
+  theme(
+    legend.text = element_text(size = 12), # Adjust legend text size
+    axis.title.y = element_blank(), # Optional: Remove y-axis title
+    axis.text.y = element_text(size = 12) # Adjust y-axis label text size
+  )
 
-# Subset the outputs from the mcSimulation function (y) to summarize only on the variables that we want.
-# names(TRV_mc_simulation$x)
-mcSimulation_summary <- data.frame(TRV_mc_simulation$x[5:84],
-                                   # names(TRV_mc_simulation$x)
-                                   TRV_mc_simulation$y[3])
+# Save EVPI plot figure   
+png("evpi_without.png", width = 3000, height = 1500, res = 250)
+plot(plot_evpi_vegetable_decision_without_gov_assistance)
+dev.off()
 
-gtExtras::gt_plt_summary(mcSimulation_summary)
+# Combined two individual EVPI plot
+evpi_combined <- (plot_evpi_vegetable_decision_with_gov_assistance / plot_evpi_vegetable_decision_without_gov_assistance) 
+
+
+# Save combined EVPI plot figure
+png("evpi_combined.png", width = 2000, height = 1500, res = 250)
+plot(evpi_combined)
+dev.off()
+
+
+## Plot EVPI (better?) ####
+
+# Load the first dataset
+data1 <- read.csv("EVPI_table_NPV_vegetables_decision_do_with_gov_assistance.csv")
+data1 <- data1 %>%
+  filter(!is.na(EVPI_do) & EVPI_do != 0) %>%
+  mutate(source = "With Government Assistance") # Add a column for the source
+
+# Load the second dataset
+data2 <- read.csv("EVPI_table_NPV_vegetables_decision_do_without_gov_assistance.csv")
+data2 <- data2 %>%
+  filter(!is.na(EVPI_do) & EVPI_do != 0) %>%
+  mutate(source = "Without Government Assistance") # Add a column for the source
+
+# Combine the two datasets
+combined_data <- bind_rows(data1, data2)
+
+# Calculate percentages within each variable
+combined_data <- combined_data %>%
+  group_by(variable) %>%
+  mutate(percentage = (EVPI_do / sum(EVPI_do)) * 100) %>%
+  ungroup()
+
+# Replace underscores in variable names with spaces (for labels)
+combined_data <- combined_data %>%
+  mutate(variable = gsub("_", " ", variable),  # Replace underscores with spaces
+         variable = toTitleCase(variable)) # Capitalize each word
+
+
+# Create a single combined plot with percentages
+EVPI_combined_plot <- 
+  ggplot(combined_data, aes(x = "", y = EVPI_do, fill = source)) + 
+  geom_bar(stat = "identity") + 
+  geom_text(aes(label = sprintf("%.1f%%", percentage)), 
+            position = position_stack(vjust = 0.5), size = 4) + # Add percentage labels within stacks
+  coord_flip() + # Flip for horizontal bar style
+  labs(
+    x = NULL,
+    y = "Expected Value of Perfect Information (USD)",
+    fill = "Scenario",
+    title = "EVPI with Percentages for Each Variable"
+  ) +
+  facet_wrap(~variable, scales = "free", ncol = 1) + # Remove additional text from labels
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5), # Bold and italic title
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14, face = "bold"),
+    strip.text = element_text(size = 13, face = "bold.italic", hjust = 0), # Style facet labels
+    legend.text = element_text(size = 10),
+    legend.title = element_text(size = 12, face = "bold"),
+    strip.background = element_blank() # Optional: Remove background of facet titles
+  )
+
+# Save EVPI plot figure
+png("evpi_combined_plot.png", width = 2000, height = 1500, res = 250)
+plot(EVPI_combined_plot)
+dev.off()
+
+
