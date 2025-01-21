@@ -444,13 +444,14 @@ transition_rice_to_vegetables <- function(x, varnames)
   
   chili_revenue_precal <- (chili_yield * chili_price) * 0.4 
   chili_revenue <- vv(chili_revenue_precal, n_year, var_CV=40)
-  
+  # farmgate price chili_price per kg at the farm gate
   tomato_revenue_precal <- (tomato_yield * tomato_price) * 0.4
   tomato_revenue <- vv(tomato_revenue_precal, n_year, var_CV=40)
   
   spring_onion_revenue_precal_2 <- (spring_onion_yield * spring_onion_price) * 0.2 
   spring_onion_revenue_2 <- vv(spring_onion_revenue_precal_2, n_year, var_CV=40)
   
+
   # total revenue from 'Field 2'
   total_revenue_field_2 <- chili_revenue + tomato_revenue + spring_onion_revenue_2 
   
@@ -556,31 +557,26 @@ transition_rice_to_vegetables <- function(x, varnames)
                  CV_if_not = 10) # the variance may not so differ 
   # if without financial risk
   
-  
-  
   # event-2 vegetable revenue reduction from market risk under normal condition
   ## (not include other risks e.g. production and financial)
   
   # considering market risk damage on vegetable price
   # causing reduction to farmers' revenue
   
-  ## calculate vegetable price with market risk
-  vegetable_price_with_market_risk <- 
-    vv((vegetable_farmgate_prices * prob_damage_market_risk_vegetables), 
-       n_year, var_CV=CV_value)
+  ## calculate vegetable price with market risk 
+  vegetable_price_with_market_risk <- # price per kg
+    vv((total_revenue_vegetables * (1- prob_damage_market_risk_vegetables)), 
+       n_year, var_CV=CV_value) # price per kg
   
   ## calculate vegetable farming revenue with market risk only 
-  vegetable_farming_revenue_with_market_risk_normal <- 
-    vegetable_price_with_market_risk * annual_total_yield_vegetables
-  
+  # vegetable_farming_revenue_with_market_risk_normal <- #total price / yr for all yield
+  #   vegetable_price_with_market_risk # * annual_total_yield_vegetables #only market risk
+  # # 
   ## chance event vegetable revenue with market risk only
-  vegetable_farming_revenue_with_market_risk_normal <- 
-    chance_event(chance_market_risk_vegetables,
-                 value_if = vegetable_farming_revenue_with_market_risk_normal,
-                 value_if_not = total_revenue_vegetables,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10) # the variance may not so differ 
+  vegetable_farming_revenue_with_market_risk_normal <- #total price / yr for all yield
+    chance_event(chance_market_risk_vegetables, 
+                 value_if = vegetable_price_with_market_risk,
+                 value_if_not = total_revenue_vegetables) # the variance may not so differ 
   # if without financial risk
   
   
@@ -610,7 +606,6 @@ transition_rice_to_vegetables <- function(x, varnames)
     vv(vegetable_farming_revenue_with_market_production_financial_risk_precal, 
        n_year, var_CV=CV_value,
        relative_trend = inflation_rate)
-  
   
   
   #### -> Vegetable health benefit ####
