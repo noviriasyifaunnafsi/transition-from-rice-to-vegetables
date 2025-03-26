@@ -84,17 +84,12 @@ transition_rice_to_vegetables <- function(x, varnames)
          n_year, var_CV= CV_value, relative_trend = inflation_rate)
     
   }else{
+    rice_farming_input_costs_with_more_pesticides_with_gov_assistance_precal <- 
+      rep(x = 0, times = n_year)
     rice_farming_input_costs_with_more_pesticides_with_gov_assistance <- 
       rice_farming_input_costs_with_gov_assistance
   }
   
-  # rice_farming_input_costs_with_more_pesticides <- 
-  #   chance_event(chance_production_risk,
-  #                value_if = rice_farming_input_costs_with_more_pesticides_precal,
-  #                value_if_not = rice_farming_input_costs,
-  #                n = n_year,
-  #                CV_if = CV_value,
-  #                CV_if_not = 10)
   
   # Considering financial risks (lack of capital) and their impact on farming 
   # costs, farmers may not have enough capital to purchase farming inputs.
@@ -124,6 +119,8 @@ transition_rice_to_vegetables <- function(x, varnames)
          n_year, var_CV=10, relative_trend = inflation_rate)
     
   }else{
+    rice_farming_high_input_cost_with_bank_loan_with_gov_assistance_precal <- 
+      rep(x = 0, times = n_year)
     rice_farming_high_input_cost_with_bank_loan_with_gov_assistance <- 
       rice_farming_input_costs_with_more_pesticides_with_gov_assistance
   }
@@ -178,7 +175,7 @@ transition_rice_to_vegetables <- function(x, varnames)
     (prob_damage_production_risk_rice + prob_damage_market_risk_rice)
   
   rice_yield_with_production_financial_risk_precal <- rice_yield - 
-    (rice_yield_loss_with_production_financial_risk)
+    rice_yield_loss_with_production_financial_risk
   
   rice_yield_with_production_financial_risk <- 
     chance_event((chance_production_risk + chance_financial_risk_rice),
@@ -295,17 +292,11 @@ transition_rice_to_vegetables <- function(x, varnames)
          n_year, var_CV = CV_value)
     
   }else{
+    vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance_precal <- 
+      rep(x = 0, times = n_year)
     vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance <- 
       vegetables_farming_input_costs_with_gov_assistance
   }
-  
-  # vegetable_farming_input_costs_with_more_pesticides <-
-  #   chance_event(chance_production_risk,
-  #                value_if = vegetable_farming_input_costs_with_more_pesticides_precal,
-  #                value_if_not = vegetables_farming_input_costs,
-  #                n = n_year,
-  #                CV_if = CV_value,
-  #                CV_if_not = 10)
   
   
   # Considering financial risks (lack of capital) affecting farming costs.
@@ -335,6 +326,8 @@ transition_rice_to_vegetables <- function(x, varnames)
          n_year, var_CV=10, relative_trend = inflation_rate)
     
   }else{
+    vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance_precal <-
+      rep(x = 0, times = n_year)
     vegetable_farming_high_input_cost_with_bank_loan_with_gov_assistance <- 
       vegetable_farming_input_costs_with_more_pesticides_with_gov_assistance
   }
@@ -380,10 +373,9 @@ transition_rice_to_vegetables <- function(x, varnames)
   # Since the unit cost is for 1 ha per year, the annual total cost should be calculated
   # based on the total effective field size per year.
   
-  
   annual_final_vegetable_farming_cost_with_gov_assistance <- 
-    vegetable_farming_input_costs_with_institutional_risk * 
-    2.5 # effective field size
+    vegetable_farming_input_costs_with_institutional_risk 
+  # * 2.5 # effective field size
   
   final_vegetable_farming_cost_with_gov_assistance <- 
     vv(annual_final_vegetable_farming_cost_with_gov_assistance, 
@@ -416,22 +408,43 @@ transition_rice_to_vegetables <- function(x, varnames)
   # main crops, with spring onions as a side crop.
   
   # Calculating revenue from 'Field 1'
+  
+  # since the crop yield unit is kg/ha/year, it's needed to calculate the yield
+  # for per season.
+  # assuming that the crops in 'Field 1' is normally can be cultivated 3 times
+  # per year. So, the crop yield should be divided into 3
+  
+  chinese_mustard_green_yield_per_season <- vv((chinese_mustard_green_yield/3),
+                                               n_year, var_CV=CV_value)
+  green_bean_yield_per_season <- vv((green_bean_yield/3), n_year, var_CV=CV_value)
+  cabbage_yield_per_season <- vv((cabbage_yield/3), n_year, var_CV=CV_value)
+  spring_onion_yield_per_season <- vv((spring_onion_yield/3), n_year, var_CV=CV_value)
+  
   # For Field 1, the proportion of the field used for the main crops is 0.3 ha, 
   # while the side crop uses 0.2 ha per season (0.6 ha per year)
+  # so annually, the total field size used from 'Field 1' for main crops
   
-  chinese_mustard_green_revenue_precal <- (chinese_mustard_green_yield * 
+  
+  
+  chinese_mustard_green_revenue_precal <- (chinese_mustard_green_yield_per_season * 
                                              chinese_mustard_green_price) * 0.3 
   chinese_mustard_green_revenue <- vv(chinese_mustard_green_revenue_precal, 
                                       n_year, var_CV=40)
+  # farmgate price chinese_mustard_green_price per kg at the farm gate
   
-  green_bean_revenue_precal <- (green_bean_yield * green_bean_price) *  0.3 
+  
+  green_bean_revenue_precal <- (green_bean_yield_per_season * green_bean_price) *  0.3 
   green_bean_revenue <- vv(green_bean_revenue_precal, n_year, var_CV=40)
+  # farmgate price green_bean_price per kg at the farm gate
   
-  cabbage_revenue_precal <- (cabbage_yield * cabbage_price) * 0.3 
+  cabbage_revenue_precal <- (cabbage_yield_per_season * cabbage_price) * 0.3 
   cabbage_revenue <- vv(cabbage_revenue_precal, n_year, var_CV=40)
+  # farmgate price cabbage_price per kg at the farm gate
   
-  spring_onion_revenue_precal_1 <- (spring_onion_yield * spring_onion_price) * 0.6 
+  spring_onion_revenue_precal_1 <- (spring_onion_yield_per_season * spring_onion_price) * 0.6 
   spring_onion_revenue_1 <- vv(spring_onion_revenue_precal_1, n_year, var_CV=40)
+  # farmgate price spring_onion_price per kg at the farm gate
+  
   
   # total revenue from 'Field 1'
   total_revenue_field_1 <- chinese_mustard_green_revenue + green_bean_revenue +
@@ -439,20 +452,43 @@ transition_rice_to_vegetables <- function(x, varnames)
   
   
   # Calculating revenue from 'Field 2'
+  
+  # since the crop yield unit is kg/ha/year, it's needed to calculate the yield
+  # for per season.
+  # assuming that the crops in 'Field 1' is normally can be cultivated 2 times
+  # per year. So, the crop yield should be divided into 2
+  
+  chili_yield_per_season <- vv((chili_yield/2), n_year, var_CV=CV_value)
+  tomato_yield_per_season <- vv((tomato_yield/2), n_year, var_CV=CV_value)
+  
   # For Field 2, the proportion of the field used for the main crops is 0.4 ha, 
   # while the side crop uses 0.1 ha per season (0.2 ha per year)
   
-  chili_revenue_precal <- (chili_yield * chili_price) * 0.4 
+  chili_revenue_precal <- (chili_yield_per_season * chili_price) * 0.4 
   chili_revenue <- vv(chili_revenue_precal, n_year, var_CV=40)
+  # farmgate price chili_price per kg at the farm gate
   
-  tomato_revenue_precal <- (tomato_yield * tomato_price) * 0.4
+  tomato_revenue_precal <- (tomato_yield_per_season * tomato_price) * 0.4
   tomato_revenue <- vv(tomato_revenue_precal, n_year, var_CV=40)
+  # farmgate price tomato_price per kg at the farm gate
   
-  spring_onion_revenue_precal_2 <- (spring_onion_yield * spring_onion_price) * 0.2 
+  spring_onion_revenue_precal_2 <- (spring_onion_yield_per_season * spring_onion_price) * 0.2
   spring_onion_revenue_2 <- vv(spring_onion_revenue_precal_2, n_year, var_CV=40)
+  # farmgate price spring_onion_price per kg at the farm gate
+  
+  # calculate the average farmgate price of all vegetables
+  average_vegetable_farmgate_prices <- mean(chinese_mustard_green_price, 
+                                            green_bean_price,
+                                            cabbage_price,
+                                            spring_onion_price,
+                                            chili_price,
+                                            tomato_price)
+  
+  average_vegetable_farmgate_prices_vv <- vv(average_vegetable_farmgate_prices,
+                                             n_year, var_CV=40)
   
   # total revenue from 'Field 2'
-  total_revenue_field_2 <- chili_revenue + tomato_revenue + spring_onion_revenue_2 
+  total_revenue_field_2 <- chili_revenue + tomato_revenue + spring_onion_revenue_2
   
   # total revenue from all vegetable fields
   total_revenue_vegetables <- total_revenue_field_1 + total_revenue_field_2
@@ -475,25 +511,44 @@ transition_rice_to_vegetables <- function(x, varnames)
   
   # calculate the annual total yield of vegetables for production risks
   
-  annual_chinese_mustard_green_yield <- vv((chinese_mustard_green_yield * 0.3), 
-                                           n_year, var_CV=CV_value)
+  annual_total_yield_vegetables <- chinese_mustard_green_yield_per_season +
+    green_bean_yield_per_season + cabbage_yield_per_season + 
+    spring_onion_yield_per_season + chili_yield_per_season + 
+    tomato_yield_per_season
   
-  annual_green_bean_yield <- vv((green_bean_yield * 0.3), n_year, 
-                                var_CV=CV_value)
   
-  annual_cabbage_yield <- vv((cabbage_yield * 0.3), n_year, var_CV=CV_value)
   
-  annual_chili_yield <- vv((chili_yield * 0.4), n_year, var_CV=CV_value)
+  # annual_chinese_mustard_green_yield <- vv((chinese_mustard_green_yield * 0.3), 
+  #                                          n_year, var_CV=CV_value)
+  # 
+  # annual_green_bean_yield <- vv((green_bean_yield * 0.3), n_year, 
+  #                               var_CV=CV_value)
+  # 
+  # annual_cabbage_yield <- vv((cabbage_yield * 0.3), n_year, var_CV=CV_value)
+  # 
+  # annual_chili_yield <- vv((chili_yield * 0.4), n_year, var_CV=CV_value)
+  # 
+  # annual_tomato_yield <- vv((tomato_yield * 0.4), n_year, var_CV=CV_value)
+  # 
+  # annual_spring_onion_yield <- vv((spring_onion_yield * 0.8), 
+  #                                 #total from field 1 and field 2
+  #                                 n_year, var_CV=CV_value) 
+  # 
+  # annual_total_yield_vegetables <- annual_chinese_mustard_green_yield + 
+  #   annual_green_bean_yield + annual_cabbage_yield + annual_chili_yield + 
+  #   annual_tomato_yield + annual_spring_onion_yield
+  # 
   
-  annual_tomato_yield <- vv((tomato_yield * 0.4), n_year, var_CV=CV_value)
   
-  annual_spring_onion_yield <- vv((spring_onion_yield * 0.8), 
-                                  #total from field 1 and field 2
-                                  n_year, var_CV=CV_value) 
-  
-  annual_total_yield_vegetables <- annual_chinese_mustard_green_yield + 
-    annual_green_bean_yield + annual_cabbage_yield + annual_chili_yield + 
-    annual_tomato_yield + annual_spring_onion_yield
+  # chance event of risks on vegetable farming benefits
+  # chance_risks_on_vegetables_benefits <- 
+  #   chance_event(chance = (chance_production_risk + 
+  #                  chance_market_risk_vegetables + 
+  #                  chance_financial_risk_vegetables), 
+  #                value_if = 1, value_if_not = 0) 
+  # 
+  # if(chance_risks_on_vegetables_benefits == 1){
+  #   
   
   # event-1 vegetable yield reduction from production and financial risks
   
@@ -506,16 +561,11 @@ transition_rice_to_vegetables <- function(x, varnames)
     vv((annual_total_yield_vegetables - 
           vegetable_yield_loss_with_production_risk), n_year, var_CV=CV_value)
   
-  
   ## chance event with production risk
   vegetable_yield_with_production_risk <- 
     chance_event(chance_production_risk,
                  value_if = vegetable_yield_with_production_risk_precal,
-                 value_if_not = annual_total_yield_vegetables,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10) # the variance may not so differ 
-  # if without production risk
+                 value_if_not = annual_total_yield_vegetables)
   
   ## calculate the yield loss with financial risk
   vegetable_yield_loss_with_financial_risk <- annual_total_yield_vegetables * 
@@ -529,11 +579,7 @@ transition_rice_to_vegetables <- function(x, varnames)
   vegetable_yield_with_financial_risk <- 
     chance_event(chance_financial_risk_vegetables,
                  value_if = vegetable_yield_with_financial_risk_precal,
-                 value_if_not = annual_total_yield_vegetables,
-                 n = n_year, 
-                 CV_if = CV_value,
-                 CV_if_not = 10) # the variance may not so differ 
-  # if without financial risk
+                 value_if_not = annual_total_yield_vegetables)
   
   ## calculate the yield loss if production and financial risk occur the same time
   vegetable_yield_loss_with_production_and_financial_risk <- 
@@ -546,17 +592,16 @@ transition_rice_to_vegetables <- function(x, varnames)
     annual_total_yield_vegetables - 
     vegetable_yield_loss_with_production_and_financial_risk
   
+  ## calculate the revenue with reduction from production and financial risk 
+  vegetable_revenue_with_production_and_financial_risk_precal <- 
+    vegetable_yield_with_production_and_financial_risk_precal * 
+    average_vegetable_farmgate_prices_vv
+  
   ## chance event if production and financial risk occur the same time
-  vegetable_yield_with_production_and_financial_risk <- 
+  vegetable_revenue_with_production_and_financial_risk <- 
     chance_event((chance_production_risk + chance_financial_risk_vegetables),
-                 value_if = vegetable_yield_with_production_and_financial_risk_precal,
-                 value_if_not = annual_total_yield_vegetables,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10) # the variance may not so differ 
-  # if without financial risk
-  
-  
+                 value_if = vegetable_revenue_with_production_and_financial_risk_precal,
+                 value_if_not = total_revenue_vegetables) 
   
   # event-2 vegetable revenue reduction from market risk under normal condition
   ## (not include other risks e.g. production and financial)
@@ -564,53 +609,49 @@ transition_rice_to_vegetables <- function(x, varnames)
   # considering market risk damage on vegetable price
   # causing reduction to farmers' revenue
   
-  ## calculate vegetable price with market risk
-  vegetable_price_with_market_risk <- 
-    vv((vegetable_farmgate_prices * prob_damage_market_risk_vegetables), 
-       n_year, var_CV=CV_value)
+  ## calculate vegetable revenue with market risk 
+  vegetable_revenue_with_market_risk <- # price per kg
+    vv((total_revenue_vegetables * (1- prob_damage_market_risk_vegetables)), 
+       n_year, var_CV=CV_value) # price per kg
   
   ## calculate vegetable farming revenue with market risk only 
-  vegetable_farming_revenue_with_market_risk_normal <- 
-    vegetable_price_with_market_risk * annual_total_yield_vegetables
-  
+  # vegetable_farming_revenue_with_market_risk_normal <- #total price / yr for all yield
+  #   vegetable_price_with_market_risk # * annual_total_yield_vegetables #only market risk
+  # # 
   ## chance event vegetable revenue with market risk only
-  vegetable_farming_revenue_with_market_risk_normal <- 
-    chance_event(chance_market_risk_vegetables,
-                 value_if = vegetable_farming_revenue_with_market_risk_normal,
-                 value_if_not = total_revenue_vegetables,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10) # the variance may not so differ 
-  # if without financial risk
-  
+  vegetable_farming_revenue_with_market_risk <- #total price / yr for all yield
+    chance_event(chance_market_risk_vegetables, 
+                 value_if = vegetable_revenue_with_market_risk,
+                 value_if_not = total_revenue_vegetables) 
   
   # event-3 vegetable revenue reduction from market risk under production 
   # and financial risk
   
-  vegetable_farming_revenue_loss_with_market_production_financial_risk <- 
-    vegetable_price_with_market_risk * 
-    vegetable_yield_with_production_and_financial_risk
+  # vegetable_farming_revenue_loss_with_market_production_financial_risk <- 
+  #   vegetable_price_with_market_risk * 
+  #   vegetable_yield_with_production_and_financial_risk
   
-  vegetable_farming_revenue_with_market_production_financial_risk_precal <- 
-    total_revenue_vegetables - 
-    vegetable_farming_revenue_loss_with_market_production_financial_risk
+  # vegetable_farming_revenue_with_market_production_financial_risk_precal <- 
+  #   total_revenue_vegetables - 
+  #   vegetable_farming_revenue_loss_with_market_production_financial_risk
+  
+  vegetable_revenue_with_all_risks <- 
+    vv((total_revenue_vegetables * 
+          (1- (prob_damage_production_risk_vegetables +
+                 prob_damage_financial_risk_vegetables +
+                 prob_damage_market_risk_vegetables))), n_year, var_CV=CV_value)
   
   vegetable_farming_revenue_with_market_production_financial_risk <- 
-    chance_event(chance_market_risk_rice,
-                 value_if = vegetable_farming_revenue_with_market_production_financial_risk_precal,
-                 value_if_not = total_revenue_vegetables,
-                 n = n_year,
-                 CV_if = CV_value,
-                 CV_if_not = 10) # the variance may not so differ 
-  # if without financial risk
-  
+    chance_event((chance_production_risk + chance_financial_risk_vegetables +
+                    chance_market_risk_rice),
+                 value_if = vegetable_revenue_with_all_risks,
+                 value_if_not = total_revenue_vegetables)
   
   # annual vegetables farming revenue after considering all risks
   final_vegetable_farming_revenue <- 
-    vv(vegetable_farming_revenue_with_market_production_financial_risk_precal, 
+    vv(vegetable_farming_revenue_with_market_production_financial_risk, 
        n_year, var_CV=CV_value,
        relative_trend = inflation_rate)
-  
   
   
   #### -> Vegetable health benefit ####
@@ -628,7 +669,7 @@ transition_rice_to_vegetables <- function(x, varnames)
     # annual savings for purchasing vegetables   
     
     average_vegetables_price_market_vv <- vv(average_vegetables_price_market,
-                                             n_year, var_CV=CV_value, 
+                                             n_year, var_CV=CV_value,
                                              relative_trend = inflation_rate)
     
     annual_vegs_consumption_per_person_vv <- vv(annual_vegs_consumption_per_person,
@@ -644,6 +685,8 @@ transition_rice_to_vegetables <- function(x, varnames)
     vegetables_nutrition_health_benefit <- annual_spending_for_vegetables
     
   }else{
+    average_vegetables_price_market_vv <- rep(x = 0, times=n_year)
+    annual_vegs_consumption_per_person_vv <- rep(x = 0, times=n_year)
     vegetables_nutrition_health_benefit <- rep(x = 0, times=n_year)
   }  
   
@@ -698,21 +741,6 @@ transition_rice_to_vegetables <- function(x, varnames)
     rice_farming_input_costs_with_more_pesticides_without_gov_assistance <- 
       rice_farming_input_costs
   }
-  
-  
-  
-  # rice_farming_input_costs_with_more_pesticides_precal <- 
-  #   rice_farming_input_costs * 
-  #   # farming input cost under normal condition
-  #   (1+portion_rice_farming_input_cost_for_pest_disease_management)
-  # 
-  # rice_farming_input_costs_with_more_pesticides <- 
-  #   chance_event(chance_production_risk,
-  #                value_if = rice_farming_input_costs_with_more_pesticides_precal,
-  #                value_if_not = rice_farming_input_costs,
-  #                n = n_year,
-  #                CV_if = CV_value,
-  #                CV_if_not = 10)
   
   
   
@@ -975,8 +1003,8 @@ transition_rice_to_vegetables <- function(x, varnames)
   # should be calculated based on the total effective field size per year
   
   annual_final_vegetable_farming_cost_without_gov_assistance <- 
-    vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance * 
-    2.5 # effective field size
+    vegetable_farming_high_input_cost_with_bank_loan_without_gov_assistance 
+  # * 2.5 # effective field size
   
   final_vegetable_farming_cost_without_gov_assistance <- 
     vv(annual_final_vegetable_farming_cost_without_gov_assistance, 
@@ -991,6 +1019,12 @@ transition_rice_to_vegetables <- function(x, varnames)
   ### Vegetable benefits #2 ####
   
   #### -> Vegetable farming #2 ####
+  
+  # we can just assume that the total revenue for both scenarios are the same
+  # except for the income, they are different because of the costs differ 
+  # depends on how much the support from governement to farmers
+  # so we skip the calculation of revenue for this part because this is the
+  # same as in the calculation for vegetable farming in the 1st scenario
   
   # Annual vegetable farming revenue under normal condition
   
@@ -1013,50 +1047,45 @@ transition_rice_to_vegetables <- function(x, varnames)
   # For Field 1, the proportion of the field used for the main crops is 0.3 ha, 
   # while the side crop uses 0.2 ha per season (0.6 ha per year)
   
-  chinese_mustard_green_revenue_precal <- (chinese_mustard_green_yield * 
-                                             chinese_mustard_green_price) * 0.3 
-  chinese_mustard_green_revenue <- vv(chinese_mustard_green_revenue_precal, 
-                                      n_year, var_CV=40)
-  
-  green_bean_revenue_precal <- (green_bean_yield * green_bean_price) *  0.3 
-  green_bean_revenue <- vv(green_bean_revenue_precal, n_year, var_CV=40)
-  
-  cabbage_revenue_precal <- (cabbage_yield * cabbage_price) * 0.3 
-  cabbage_revenue <- vv(cabbage_revenue_precal, n_year, var_CV=40)
-  
-  spring_onion_revenue_precal_1 <- (spring_onion_yield * spring_onion_price) * 0.6 
-  spring_onion_revenue_1 <- vv(spring_onion_revenue_precal_1, n_year, var_CV=40)
-  
-  # total revenue from 'Field 1'
-  total_revenue_field_1 <- chinese_mustard_green_revenue + green_bean_revenue +
-    cabbage_revenue + spring_onion_revenue_1
-  
-  
-  # Calculating revenue from 'Field 2'
-  # For Field 2, the proportion of the field used for the main crops is 0.4 ha, 
-  # while the side crop uses 0.1 ha per season (0.2 ha per year)
-  
-  chili_revenue_precal <- (chili_yield * chili_price) * 0.4 
-  chili_revenue <- vv(chili_revenue_precal, n_year, var_CV=40)
-  
-  tomato_revenue_precal <- (tomato_yield * tomato_price) * 0.4
-  tomato_revenue <- vv(tomato_revenue_precal, n_year, var_CV=40)
-  
-  spring_onion_revenue_precal_2 <- (spring_onion_yield * spring_onion_price) * 0.2 
-  spring_onion_revenue_2 <- vv(spring_onion_revenue_precal_2, n_year, var_CV=40)
-  
-  # total revenue from 'Field 2'
-  total_revenue_field_2 <- chili_revenue + tomato_revenue + 
-    spring_onion_revenue_2 
-  
-  # total revenue from all vegetable fields
-  
-  total_revenue_vegetables <- total_revenue_field_1 + total_revenue_field_2
-  
-  # we can just assume that the total revenue for both scenarios are the same
-  # except for the income, they are different because of the costs differ 
-  # depends on how much the support from governement to farmers
-  
+  # chinese_mustard_green_revenue_precal <- (chinese_mustard_green_yield * 
+  #                                            chinese_mustard_green_price) * 0.3 
+  # chinese_mustard_green_revenue <- vv(chinese_mustard_green_revenue_precal, 
+  #                                     n_year, var_CV=40)
+  # 
+  # green_bean_revenue_precal <- (green_bean_yield * green_bean_price) *  0.3 
+  # green_bean_revenue <- vv(green_bean_revenue_precal, n_year, var_CV=40)
+  # 
+  # cabbage_revenue_precal <- (cabbage_yield * cabbage_price) * 0.3 
+  # cabbage_revenue <- vv(cabbage_revenue_precal, n_year, var_CV=40)
+  # 
+  # spring_onion_revenue_precal_1 <- (spring_onion_yield * spring_onion_price) * 0.6 
+  # spring_onion_revenue_1 <- vv(spring_onion_revenue_precal_1, n_year, var_CV=40)
+  # 
+  # # total revenue from 'Field 1'
+  # total_revenue_field_1 <- chinese_mustard_green_revenue + green_bean_revenue +
+  #   cabbage_revenue + spring_onion_revenue_1
+  # 
+  # 
+  # # Calculating revenue from 'Field 2'
+  # # For Field 2, the proportion of the field used for the main crops is 0.4 ha, 
+  # # while the side crop uses 0.1 ha per season (0.2 ha per year)
+  # 
+  # chili_revenue_precal <- (chili_yield * chili_price) * 0.4 
+  # chili_revenue <- vv(chili_revenue_precal, n_year, var_CV=40)
+  # 
+  # tomato_revenue_precal <- (tomato_yield * tomato_price) * 0.4
+  # tomato_revenue <- vv(tomato_revenue_precal, n_year, var_CV=40)
+  # 
+  # spring_onion_revenue_precal_2 <- (spring_onion_yield * spring_onion_price) * 0.2 
+  # spring_onion_revenue_2 <- vv(spring_onion_revenue_precal_2, n_year, var_CV=40)
+  # 
+  # # total revenue from 'Field 2'
+  # total_revenue_field_2 <- chili_revenue + tomato_revenue + 
+  #   spring_onion_revenue_2 
+  # 
+  # # total revenue from all vegetable fields
+  # 
+  # total_revenue_vegetables <- total_revenue_field_1 + total_revenue_field_2
   
   
   
@@ -1141,9 +1170,19 @@ transition_rice_to_vegetables <- function(x, varnames)
       maintenance_vegetable_processing_cost + 
       marketing_distribution_vegetable_processing_cost
     
-    final_vegetable_processing_cost_with_gov_assitance <- 
+    final_vegetable_processing_cost_with_gov_assistance <- 
       vv(vegetable_processing_cost_with_gov_assistance_precal,
          n_year, var_CV = CV_value, relative_trend = inflation_rate)
+    
+    # }else{
+    #   maintenance_vegetable_processing_cost  <- rep(x = 0, times=n_year)
+    #   marketing_distribution_vegetable_processing_cost <- rep(x = 0, times=n_year)
+    #   annual_cost_labor_vegetable_processing <- rep(x = 0, times=n_year)
+    #   vegetable_processing_cost_with_gov_assistance_precal <- rep(x = 0, times=n_year)
+    #   final_vegetable_processing_cost_with_gov_assistance <- 
+    #     rep(x = 0, times=n_year)
+    # }
+    
     
     # chance event options on vegetable processing costs #
     
@@ -1153,25 +1192,41 @@ transition_rice_to_vegetables <- function(x, varnames)
     
     # event-1, farmers don't have enough capital for processing vegetable
     
-    chance_risk_farmer_have_no_capital_for_processing <- 
-      chance_event(chance = chance_financial_risk_vegetables, value_if = 0, 
-                   value_if_not = 1) 
+    vegetable_processing_cost_with_gov_assistance_precal <- 
+      annual_cost_labor_vegetable_processing +
+      maintenance_vegetable_processing_cost + 
+      marketing_distribution_vegetable_processing_cost
     
-    if(chance_financial_risk_vegetables == 1){
-      
-      vegetable_processing_cost_with_gov_assistance_precal <- 
-        annual_cost_labor_vegetable_processing +
-        maintenance_vegetable_processing_cost + 
-        marketing_distribution_vegetable_processing_cost
-      
-      final_vegetable_processing_cost_with_gov_assitance <- 
-        vv(vegetable_processing_cost_with_gov_assistance_precal,
-           n_year, var_CV = CV_value, relative_trend = inflation_rate)
-      
-    }else{
-      final_vegetable_processing_cost_with_gov_assitance <- 
-        rep(x = 0, times=n_year)
-    }
+    final_vegetable_processing_cost_with_gov_assistance <- 
+      vv(vegetable_processing_cost_with_gov_assistance_precal,
+         n_year, var_CV = CV_value, relative_trend = inflation_rate)
+    
+    chance_risk_farmer_have_no_capital_for_processing <-
+      chance_event(chance_financial_risk_vegetables,
+                   value_if = final_vegetable_processing_cost_with_gov_assistance,
+                   value_if_not = rep(x = 0, times=n_year))
+    
+    # chance_risk_farmer_have_no_capital_for_processing <- 
+    #   chance_event(chance = chance_financial_risk_vegetables, value_if = 0, 
+    #                value_if_not = 1) 
+    # 
+    # if(chance_financial_risk_vegetables == 1){
+    #   
+    #   vegetable_processing_cost_with_gov_assistance_precal <- 
+    #     annual_cost_labor_vegetable_processing +
+    #     maintenance_vegetable_processing_cost + 
+    #     marketing_distribution_vegetable_processing_cost
+    #   
+    #   final_vegetable_processing_cost_with_gov_assistance <- 
+    #     vv(vegetable_processing_cost_with_gov_assistance_precal,
+    #        n_year, var_CV = CV_value, relative_trend = inflation_rate)
+    #   
+    # }else{
+    #   vegetable_processing_cost_with_gov_assistance_precal <- 
+    #     rep(x = 0, times=n_year)
+    #   final_vegetable_processing_cost_with_gov_assistance <- 
+    #     rep(x = 0, times=n_year)
+    # }
     
     
     ## 2nd scenario: Cost of vegetable processing ####
@@ -1199,25 +1254,43 @@ transition_rice_to_vegetables <- function(x, varnames)
     
     # annual vegetable processing cost after considering financial risk
     # we consider if farmer get loan from bank
-    chance_risk_vegetable_processing_cost_with_bank_loan <- 
-      chance_event(chance = chance_farmers_take_loan, value_if = 1, 
-                   value_if_not = 0) 
     
-    if(chance_farmers_take_loan == 1){
-      
-      vegetable_processing_costs_with_bank_loan <- 
-        vegetable_processing_cost_without_gov_assistance + 
-        (vegetable_processing_cost_without_gov_assistance * 
-           annual_bank_interest)
-      
-      final_vegetable_processing_cost_without_gov_assistance <- 
-        vv(vegetable_processing_costs_with_bank_loan,
-           n_year, var_CV=10, relative_trend = inflation_rate)
-      
-    }else{
-      final_vegetable_processing_cost_without_gov_assistance <- 
-        rep(x = 0, times=n_year)
-    }
+    vegetable_processing_costs_with_bank_loan <- 
+      vegetable_processing_cost_without_gov_assistance + 
+      (vegetable_processing_cost_without_gov_assistance * 
+         annual_bank_interest)
+    
+    final_vegetable_processing_cost_without_gov_assistance <- 
+      vv(vegetable_processing_costs_with_bank_loan,
+         n_year, var_CV=10, relative_trend = inflation_rate)
+    
+    chance_risk_vegetable_processing_cost_with_bank_loan <-
+      chance_event(chance_farmers_take_loan,
+                   value_if = final_vegetable_processing_cost_without_gov_assistance,
+                   value_if_not = rep(x = 0, times=n_year))
+    
+    
+    
+    # chance_risk_vegetable_processing_cost_with_bank_loan <- 
+    #   chance_event(chance = chance_farmers_take_loan, value_if = 1, 
+    #                value_if_not = 0) 
+    # 
+    # if(chance_farmers_take_loan == 1){
+    #   
+    #   vegetable_processing_costs_with_bank_loan <- 
+    #     vegetable_processing_cost_without_gov_assistance + 
+    #     (vegetable_processing_cost_without_gov_assistance * 
+    #        annual_bank_interest)
+    #   
+    #   final_vegetable_processing_cost_without_gov_assistance <- 
+    #     vv(vegetable_processing_costs_with_bank_loan,
+    #        n_year, var_CV=10, relative_trend = inflation_rate)
+    #   
+    # }else{
+    #   vegetable_processing_costs_with_bank_loan <- rep(x = 0, times=n_year)
+    #   final_vegetable_processing_cost_without_gov_assistance <- 
+    #     rep(x = 0, times=n_year)
+    # }
     
     
     ## Benefit of vegetable processing ####
@@ -1227,13 +1300,13 @@ transition_rice_to_vegetables <- function(x, varnames)
     # We only consider tomato and chili that can be processed as processed food
     
     # calculate annual tomato raw material
-    tomato_raw_material <- vv(annual_tomato_yield * 
+    tomato_raw_material <- vv(tomato_yield_per_season * 
                                 portion_low_grade_vegetable_product, 
                               n_year, var_CV=40) #CV is quite higher considering 
     # that not all farmers would do processing
     
     # calculate chili raw material
-    chili_raw_material <- vv(annual_chili_yield * 
+    chili_raw_material <- vv(chili_yield_per_season * 
                                portion_low_grade_vegetable_product, 
                              n_year, var_CV=40) #CV is quite higher considering 
     # that not all farmers would do processing
@@ -1282,10 +1355,10 @@ transition_rice_to_vegetables <- function(x, varnames)
          n_year, var_CV=CV_value, relative_trend = inflation_rate) 
     
   }else{
-    final_vegetable_processing_cost_with_gov_assitance <- rep(x = 0, times=n_year)
-    final_vegetable_processing_cost_without_gov_assitance <- rep(x = 0, times=n_year)
+    final_vegetable_processing_cost_with_gov_assistance <- rep(x = 0, times=n_year)
+    final_vegetable_processing_cost_without_gov_assistance <- rep(x = 0, times=n_year)
     final_vegetable_processed_revenue <- rep(x = 0, times=n_year)
-  }
+  } 
   
   
   ## Compost ####
@@ -1300,9 +1373,9 @@ transition_rice_to_vegetables <- function(x, varnames)
   
   # Probability of compost 
   
-  chance_compots <- chance_event(chance = prob_of_compost, value_if = 1, 
+  chance_compost <- chance_event(chance = prob_of_compost, value_if = 1, 
                                  value_if_not = 0) 
-  if(chance_compots == 1){
+  if(chance_compost == 1){
     
     ### Rice compost cost ####
     
@@ -1344,9 +1417,11 @@ transition_rice_to_vegetables <- function(x, varnames)
     
     ## Rice compost benefits ####
     
-    # Assuming that 50% of biomass resulting in compost
-    amount_rice_compost <- vv((biomass_rice * 0.5), n_year, 
-                              var_CV=CV_value, relative_trend = inflation_rate)
+    # Assuming that about 40 to 60% of biomass resulting in compost
+    amount_rice_compost <- vv((biomass_rice * 
+                                 portion_compost_result_from_biomass_waste), 
+                              n_year, var_CV=CV_value, 
+                              relative_trend = inflation_rate)
     
     # Annual income for composting rice biomass residue
     rice_compost_revenue <- vv((amount_rice_compost * price_rice_compost), 
@@ -1412,9 +1487,10 @@ transition_rice_to_vegetables <- function(x, varnames)
     
     ## Vegetable compost benefits ####
     
-    # Assuming that 30% of biomass resulting in compost
-    amount_vegetable_compost <- vv((biomass_vegetables * 0.3), n_year, 
-                                   var_CV = CV_value)
+    # Assuming that 40 to 60% of biomass resulting in compost
+    amount_vegetable_compost <- vv((biomass_vegetables * 
+                                      portion_compost_result_from_biomass_waste), 
+                                   n_year, var_CV = CV_value)
     
     # Annual income for composting vegetables biomass residue
     vegetables_compost_revenue <- vv((amount_vegetable_compost * 
@@ -1447,6 +1523,8 @@ transition_rice_to_vegetables <- function(x, varnames)
     
     
   }else{
+    first_year_composting_cost <- rep(x = 0, times=n_year)
+    annual_cost_labor_rice_composting <- rep(x = 0, times=n_year)
     final_rice_compost_cost <- rep(x = 0, times=n_year)
     final_rice_compost_revenue <- rep(x = 0, times=n_year)
     final_vegetable_compost_cost <- rep(x = 0, times=n_year)
@@ -1512,6 +1590,10 @@ transition_rice_to_vegetables <- function(x, varnames)
     vegetables_agrotourism_revenue <- vv(vegetable_ecotourism_value, n_year, 
                                          var_CV=10)
   }else{
+    annual_rice_agrotourism_cost <- rep(x = 0, times=n_year)
+    rice_agrotourism_revenue <- rep(x = 0, times=n_year)
+    annual_vegetable_agrotourism_cost <- rep(x = 0, times=n_year)
+    annual_vegetable_agrotourism_cost <- rep(x = 0, times=n_year)
     rice_agrotourism_cost <- rep(x = 0, times=n_year)
     rice_agrotourism_revenue <- rep(x = 0, times=n_year)
     vegetable_agrotourism_cost <- rep(x = 0, times=n_year)
@@ -1555,7 +1637,7 @@ transition_rice_to_vegetables <- function(x, varnames)
   final_vegetable_costs_with_gov_assistance <- 
     final_vegetable_farming_cost_with_gov_assistance + 
     final_vegetable_compost_cost +
-    final_vegetable_processing_cost_with_gov_assitance + 
+    final_vegetable_processing_cost_with_gov_assistance + 
     annual_vegetable_agrotourism_cost
   
   #### Final result for vegetables
@@ -1598,7 +1680,7 @@ transition_rice_to_vegetables <- function(x, varnames)
   final_vegetable_costs_without_gov_assistance <- 
     final_vegetable_farming_cost_without_gov_assistance + 
     final_vegetable_compost_cost +
-    final_vegetable_processing_cost_without_gov_assitance + 
+    final_vegetable_processing_cost_with_gov_assistance + 
     annual_vegetable_agrotourism_cost
   
   #### Final result for vegetables
@@ -1748,7 +1830,11 @@ cashflow_vegetables_without_gov_assistance <-
                 x_axis_name = "Years with intervention",
                 y_axis_name = "Annual cashflow (USD)",
                 color_25_75 = "lightblue", color_5_95 = "grey",
-                color_median = "blue", base_size = 18)
+                color_median = "blue", base_size = 18)+
+  scale_y_discrete(
+    labels = function(x) gsub("_", " ", x)  # Replace underscores with spaces
+  ) 
+
 
 
 # Save cashflow plot figure
@@ -1761,7 +1847,7 @@ combined_cashflow <- (cashflow_vegetables_with_gov_assistance | cashflow_vegetab
 
 
 # Save combined cashflow plot figure
-png("cashflow_both.png", width = 3800, height = 2000, res = 250)
+png("cashflow_both.png", width = 3800, height = 1500, res = 250)
 plot(combined_cashflow)
 dev.off()
 
@@ -1820,8 +1906,13 @@ plot_pls_vegetables_with_gov_assistance <-
        face = "bold", hjust = 0.5)+
   theme(plot.title = element_text(size = 18, face = "bold", 
                                   hjust = 0.5))+
-  
-  scale_y_discrete(position = "left") + # Move the y-axis to the right
+  scale_y_discrete(
+    position = "left", # Move y-axis to the right
+    labels = function(x) gsub("_", " ", x)  # Replace underscores with spaces
+  ) 
+
+
+scale_y_discrete(position = "left") + # Move the y-axis to the right
   scale_x_reverse() +
   theme(
     axis.title.y = element_text(hjust = 0.5),  # Ensure the y-axis title is centered
@@ -1850,9 +1941,15 @@ plot_pls_vegetables_without_gov_assistance <-
   theme(plot.title = element_text(size = 18, face = "bold", 
                                   hjust = 0.5))+
   scale_y_discrete(
-    position = "left", # Move y-axis to the right
+    position = "right", # Move y-axis to the right
     labels = function(x) gsub("_", " ", x)  # Replace underscores with spaces
-  ) +
+  ) 
+
+
+scale_y_discrete(
+  position = "left", # Move y-axis to the right
+  labels = function(x) gsub("_", " ", x)  # Replace underscores with spaces
+) +
   theme(
     axis.title.y = element_text(hjust = 0.5),  # Center the y-axis title
     axis.text.y = element_text(hjust = 0.5),   # Center the y-axis labels (variable names)
@@ -2013,5 +2110,4 @@ EVPI_combined_plot <-
 png("evpi_combined_plot.png", width = 2000, height = 1500, res = 250)
 plot(EVPI_combined_plot)
 dev.off()
-
 
