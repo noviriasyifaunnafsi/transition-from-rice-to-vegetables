@@ -10,8 +10,8 @@ Cabbage yield (kg/ha/year);cabbage_yield;posnorm;30000;;70000;
 Chili yield (kg/ha/year);chili_yield;posnorm;10000;;40000;
 Tomato yield (kg/ha/year);tomato_yield;posnorm;15000;;40000;
 Spring onion yield (kg/ha/year);spring_onion_yield;posnorm;10000;;24000;
-Rice farmgate price (USD/kg);rice_farmgate_price;posnorm;0.33;;0.43;
-Rice market price (USD/kg);rice_market_price;posnorm;0.5;;0.8;
+Rice farmgate price (USD/kg);rice_farmgate_price;posnorm;0.6;;0.7;
+Rice market price (USD/kg);rice_market_price;posnorm;0.7;;1;
 Rice cultural value (USD/ha/year);rice_cultural_value;posnorm;3600;;8210;
 Chinese mustard green price (USD/kg);chinese_mustard_green_price;posnorm;0.3;;0.7;
 Green bean price (USD/kg);green_bean_price;posnorm;0.25;;0.5;
@@ -92,6 +92,7 @@ Probability of farmers do processing vegetables (%);prob_of_processing_vegetable
 Probability of farmers do ecotourism (%);prob_of_agrotourism;tnorm_0_1;0.01;;0.05;
 Estimated portion of rice biomass waste increase due to production risk (%);rice_biomass_increase_from_production_risk;tnorm_0_1;0.05;;0.1;
 Estimated portion of vegetables biomass waste increase due to production risk (%);vegetable_biomass_increase_from_production_risk;tnorm_0_1;0.01;;0.1;
+Estimated portion compost resulted from biomass waste (%);portion_compost_result_from_biomass_waste;tnorm_0_1;0.3;;0.6;
 Chance of rice price loss from market risk (%);chance_rice_price_loss_market_risk;tnorm_0_1;0.01;;0.05;
 Chance of vegetable price loss from market risk (%);chance_vegetable_price_loss_market_risk;tnorm_0_1;0.1;;0.3;
 Compost income loss from market risk (%);compost_income_loss_market_risk;tnorm_0_1;0.5;;0.9;
@@ -100,3 +101,8 @@ Estimated portion of compost loss revenue (%);portion_compost_loss_revenue;tnorm
 Chance of market risk compost (%);chance_market_risk_compost;tnorm_0_1;0.1;;0.5;
 Chance of market risk vegetable processed (%);chance_market_risk_vegetable_processed;tnorm_0_1;0.1;;0.3;
 Chance of farmers consume their own vegetables (%);chance_consume_own_vegetables;tnorm_0_1;0.4;;0.8;
+Rice cultural value proxy of quality or satisfaction (USD/kg);rice_cultural_value_proxy_quality_and_satisfaction;posnorm;0.33;;0.43;We use the difference between common rice price in the region and the most premium/expensive rice in Indonesia
+Rice cultural value proxy of local identity or pride (USD/kg);rice_cultural_value_proxy_local_identity;posnorm;0.3125;;0.625;We consider about the future without rice in this region. Then, people need to purchase rice from outside the region with higher price of course, of course including transportation costs)
+Rice cultural value proxy of local cultural practice (tudang sipulung);rice_cultural_value_proxy_local_cultural_practice_tudang_sipulung;tnorm_0_1;0.05;;0.1;"We consider that there are more benefits for farmers If they keep doing this local practice, especially related to the efficiency of crop management. For example: lower cost for crop protection (because with this practice, farmers can arrange the farming schedule together and more efficiently among farmers. And according to farmers, with this, they can manage the season bettter and also avoid high risk of failure due to pest and disease.
+So maybe we can estimate that like with this practice, we can expect that the crop management costs (excluding labos costs) can be lower up to 5-10% if compared to without this practice (?) like in vegs farming. So we can use the difference as the value for this, I think..."
+Rice cultural value proxy of local cultural practice (gotong royong);rice_cultural_value_proxy_local_cultural_practice_gotong_royong;tnorm_0_1;0.1;;0.35;We can estimate this by expecting that the labr costs can be lower up to 10-35% if compared to normal daily wages for vegs farming. So we can also use the difference as the value for this, I think..

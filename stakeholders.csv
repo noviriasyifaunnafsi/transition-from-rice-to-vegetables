@@ -1,23 +1,23 @@
 stakeholders;position;Gender;official_role;decision_role;Expertise;Experience;Availability;Interest;Relevance;Influence;Attitude
-Farmers who have shifted their cultivation from rice to vegetables;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;5;5;4;Positive
-Farmers who cultivate both rice and vegetables;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;4;5;4;Positive
-Farmers who cultivate vegetables since they began farming;Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;5;5;5;Positive
-Farmers who cultivate rice only;Farmer;Male;NA;Decision-maker for their own field;Farming;3;2.5;3;3;2;Positive
-Farmers who also work as wholesaler and retailer;Farmer;Male;NA;Decision-maker for their own field;Farming;5;4;5;5;5;Positive
-Local farmers group;Head;Male;Represents local farmers;Participates in farmers' decision-making;Knowledge of local agricultural condition;5;4;4;5;4;Positive
+Farmers (rice to vegs);Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;5;5;4;Positive
+Farmers (rice and vegs);Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;4;5;4;Positive
+Farmers (vegs);Farmer;Male;NA;Decision-maker for their own field;Farming;5;5;5;5;5;Positive
+Farmers (rice);Farmer;Male;NA;Decision-maker for their own field;Farming;3;2.5;3;3;2;Neutral
+Farmers (wholesaler and retailer);Farmer;Male;NA;Decision-maker for their own field;Farming;5;4;5;5;5;Positive
+Local farmers group;Head;Male;Represents local farmers;Participates in farmers' decision-making;Knowledge of local agricultural condition and production management;5;4;4;5;4;Positive
 Association of farmers group;Member;Male;Represents local farmers group;Participates in farmers' decision-making;Coordination with official agencies;4;4;4;5;3;Positive
 Women farmers group;Head;Female;Represents women farmers;Participates in farmers' decision-making;Knowledge of local agricultural condition and production management;4;5;5;5;4;Positive
-Association of water users of farmer group;Head;Male;Management of water use among farmers within the same village;Participates in farmers' decision-making;Knowledge of local agricultural condition;3.5;2.5;3;3;2.5;Positive
-Local wholesaler;Vegetable wholesaler;Mixed;Collect farmers produce and sell to other wholesalers/retailers;Influence market;Market trends and demands;3;4;5;5;4;Positive
-Local retailer;Vegetable retailer;Female;Sells produce to consumers;Influence market and consumer choices;Market trends and demands;3;3;4;4;3;Positive
-Outside retailer;Retailer in other areas;Mixed;Sells produce to consumers;Influence market and consumer choices;Market trends and demands;3;3;3;3;2.5;Neutral
-Farming input supplier;Farming input supplier;Male;Sells farming input to farmers;Influence market and consumer choices;Supplying farming inputs;3;2.5;3.5;4;3.5;Positive
-Agricultural extension worker agency in West Sinjai;Head and staff;Mixed;Oversees extension workers activities;Technical support in sharing knowledge about vegetable farming practices with farmers;Dissemination knowledge of suitable agricultural practices;4;4;3;3;2.5;Positive
-HFHS-Agricultural agency of Sinjai Regency;Head of the food crops and horticulture sector;Male;Sets agricultural policies and programs related to food crops and horticulture in Sinjai regency;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;3;3;3;2;Neutral
-HFS-Agricultural agency of South Sulawesi Province;Head of the food crops sector;Male;Sets and implements the agricultural policies and program related to food crops and horticulture in South Sulawesi Province that regulated by the ministry of agriculture;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;2;3;3;2;Neutral
-HHS-Agricultural agency of South Sulawesi Province;Head of the horticulture sector;Female;Sets and implements the agricultural policies and program related to horticultural in South Sulawesi Province that regulated by the ministry of agriculture;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;2;3;3;2;Neutral
-HAIFS-Agricultural agency of South Sulawesi Province;Head of the agricultural inputs and infrastructures;Male;Sets and implements the agricultural policies and program related agricultural inputs and infrastructure in South Sulawesi Province;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;2;3;3;2;Neutral
-Research institute/University;Lecturer at the agricultural faculty of Hasanuddin University;Female;Research and study;Research and study;Education and policy advocacy;2.5;2;3;2.5;1.5;Positive
+Association of water users of farmer group;Head;Male;Management of water use among farmers within the same village;Participates in farmers' decision-making;Knowledge of local agricultural condition and production management;3.5;2.5;3;3;2.5;Positive
+Local wholesaler;Vegetable wholesaler;Mixed;Collect farmers produce and sell to other wholesalers/retailers;Influence market;Supply chain actor;3;4;5;5;4;Positive
+Local retailer;Vegetable retailer;Female;Sells produce to consumers;Influence market and consumer choices;Supply chain actor;3;3;4;4;3;Positive
+Outside retailer;Retailer in other areas;Mixed;Sells produce to consumers;Influence market and consumer choices;Supply chain actor;3;3;3;3;2.5;Positive
+Farming input supplier;Farming input supplier;Male;Sells farming input to farmers;Influence market and consumer choices;Supply chain actor;3;2.5;3.5;4;3.5;Positive
+AEWA West Sinjai;Head and staff;Mixed;Oversees extension workers activities;Technical support in sharing knowledge about vegetable farming practices with farmers;Dissemination knowledge of suitable agricultural practices;4;4;3;3;2.5;Positive
+HFHS-AA Sinjai;Head of the food crops and horticulture sector;Male;Sets agricultural policies and programs related to food crops and horticulture in Sinjai regency;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;3;3;3;2;Neutral
+HFS-AA SS;Head of the food crops sector;Male;Sets and implements the agricultural policies and program related to food crops and horticulture in South Sulawesi Province that regulated by the ministry of agriculture;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;2;3;3;2;Neutral
+HHS-AA SS;Head of the horticulture sector;Female;Sets and implements the agricultural policies and program related to horticultural in South Sulawesi Province that regulated by the ministry of agriculture;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;2;3;3;2;Neutral
+HAIFS-AA SS;Head of the agricultural inputs and infrastructures;Male;Sets and implements the agricultural policies and program related agricultural inputs and infrastructure in South Sulawesi Province;Technical support in sharing knowledge about vegetable farming practices with farmers;Policy-making and regulatory expertise;3;2;3;3;2;Neutral
+Research institute/University;Lecturer at the agricultural faculty of Hasanuddin University;Female;Research and study;Research and study;Education and policy advocacy;2.5;2;3;2.5;1.5;Neutral
 Bank;Staff;Male;Manage micro credit program (Kredit Usaha Rakyat/KUR) for smallholder farmers;Capital assistance;Financial;3;2;2.5;2.5;2.5;Positive
 Vegetable trading company;Director;Male;Purchase vegetable from farmers;Influence farmers' decision making in growing crops with contract farming;Food/vegetable processing and trading;2.5;2;3.5;3;3.5;Positive
 Food processing company;NA;None;Purchase vegetable from farmers;Influence farmers' decision making in growing crops with contract farming;Food/vegetable processing and trading;1;1;1;3;3.5;No information

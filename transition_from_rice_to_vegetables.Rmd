@@ -4,11 +4,11 @@ title: 'Fieldwork report: Decision Analysis of transition from Rice to Vegetable
 author: "Noviria Syifaun Nafsi"
 date: "2024-05-16"
 output:
-  pdf_document: default
+  
   html_document: default
+  pdf_document: default
   word_document: default
   bibliography: 
-  
 ---
 
 ```{r setup, include=FALSE}
