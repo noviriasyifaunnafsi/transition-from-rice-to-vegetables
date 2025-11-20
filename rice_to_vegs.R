@@ -322,34 +322,8 @@ transition_rice_to_vegetables <- function(x, varnames)
   # that makes farmers persist to grow rice despite of the high profit
   # from vegetable farming
   
-  # so there are 3 proxies in estimating this value:
-  # 1) Quality / satisfaction
-  # this is associated to the perception by rice farmers who thinks that by 
-  # growing their own rice, they can keep the quality of their rice consumption 
-  # especially in terms of taste. and they also feel more satisfy with their own 
-  # rice so this can be measured by estimating the difference between common 
-  # rice price in the region and the most premium/expensive rice in Indonesia
-  # let's say, the difference would be IDR 10k - 20k (USD 1-2) per kg
-  # most expensive rice is IDR 35k/kg that known for its taste
-  
-  # rice_cultural_value_proxy_quality <- 
-  #   vv(rice_cultural_value_proxy_quality_and_satisfaction * rice_yield, 
-  #      n_year, var_CV=CV_value, relative_trend = inflation_rate)
-  
-  # 2) Local identity / pride
-  # this is associated to how those rice farmers keep trying to preserving their
-  # local heritage (?) from their ancestor by keep growing rice in the area
-  # so this can be measured by assuming what if there is no more rice in the 
-  # region so then farmers need to pay more for buying rice.
-  # so we can estimating this by use the difference between the current higher
-  # price in the area and the most common rice price in the area
-  # or just estimating the rice price in outside region with transportation costs
-  
-  # rice_cultural_value_proxy_local_identity <- 
-  #   vv(rice_cultural_value_proxy_local_identity * rice_yield, 
-  #      n_year, var_CV=CV_value, relative_trend = inflation_rate)
-  
-  # 3) Local cultural practices
+  # so there are 2 proxies in estimating this value:
+  # Local cultural practices
   # this is associated with the local practices that solely implemented on rice
   # farming, but not in vegetable farming.
   
@@ -363,7 +337,6 @@ transition_rice_to_vegetables <- function(x, varnames)
   # so we can estimate this like by thinking there will be lower costs for crop 
   # protection, let's say maybe around 5-10% decrease.
   
-  
   # calculate farming costs associated with cultural value 'tudang sipulung'
   
   rice_cultural_value_proxy_local_cultural_practice_tudang_sipulung_vv <-
@@ -376,7 +349,6 @@ transition_rice_to_vegetables <- function(x, varnames)
     (rice_farming_input_costs_with_gov_assistance_vv + 
        rice_machinery_costs_with_gov_assistance_vv + 
        irrigation_maintenance_costs_vv)
-  
   
   # without government assistance
   rice_tudang_sipulung_without_gov_assistance <- 
@@ -406,15 +378,11 @@ transition_rice_to_vegetables <- function(x, varnames)
   
   # with government assistance
   rice_cultural_value_with_gov_assistance <- 
-    # rice_cultural_value_proxy_quality +
-    # rice_cultural_value_proxy_local_identity +
     rice_tudang_sipulung_with_gov_assistance +
     rice_gotong_royong_value
   
   # without government assistance
   rice_cultural_value_without_gov_assistance <- 
-    # rice_cultural_value_proxy_quality +
-    # rice_cultural_value_proxy_local_identity +
     rice_tudang_sipulung_without_gov_assistance +
     rice_gotong_royong_value
   
